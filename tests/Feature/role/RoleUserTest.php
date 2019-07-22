@@ -2,7 +2,7 @@
 
 namespace Tests\Feature;
 
-use App\User;
+use App\Models\User;
 use Spatie\Permission\Models\Role;
 use Tests\TestCase;
 

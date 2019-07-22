@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Api\permission;
 
 use App\Http\Controllers\ApiController;
-use App\User;
+use App\Models\User;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Permission;

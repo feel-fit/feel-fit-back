@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Api\passport;
 
 use App\Http\Controllers\ApiController;
-use App\User;
+use App\Models\User;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;

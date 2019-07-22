@@ -8,7 +8,7 @@
 
 namespace App\Observers;
 
-use App\User;
+use App\Models\User;
 
 class UserObserver
 {

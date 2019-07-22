@@ -3,7 +3,8 @@
 namespace App\Http\Controllers\Api\users;
 
 use App\Http\Controllers\ApiController;
-use App\User;
+
+use App\Models\User;
 use Exception;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;

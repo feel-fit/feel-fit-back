@@ -2,7 +2,7 @@
 
 namespace Tests\Feature;
 
-use App\User;
+use App\Models\User;
 use \Spatie\Permission\Models\Role;
 use Tests\TestCase;
 
@@ -10,13 +10,13 @@ class UsuariosTest extends TestCase
 {
 	protected $url   = 'api/v1/users/';
 	protected $table = 'users';
-	
+
 	public function testUsuariosList()
 	{
 		$user = User::find(1);
 		$this->get($this->url, $this->headers())->assertStatus(200)->assertJsonFragment($user->toArray());
 	}
-	
+
 	public function testUsuariosPost()
 	{
 		$data    = factory(User::class)->make()->toarray();
@@ -26,13 +26,13 @@ class UsuariosTest extends TestCase
 		     ->assertJsonStructure(array_keys($data), $data);
 		$this->assertDatabaseHas($this->table, $data);
 	}
-	
+
 	public function testUsuariosShow()
 	{
 		$user = factory(User::class)->create();
 		$this->get($this->url . $user->id, $this->headers())->assertStatus(200)->assertJsonFragment($user->toarray());
 	}
-	
+
 	public function testUsuariosDelete()
 	{
 		$user = factory(User::class)->create();
@@ -41,7 +41,7 @@ class UsuariosTest extends TestCase
 		     ->assertJsonFragment($user->toarray());
 		$this->assertSoftDeleted($this->table, $user->toarray());
 	}
-	
+
 	public function testUsuariosUpdate()
 	{
 		$user = factory(User::class)->create();
@@ -49,21 +49,21 @@ class UsuariosTest extends TestCase
 		$this->put($this->url . $user->id, $data, $this->headers())->assertStatus(200)->assertJsonFragment($data);
 		$this->assertDatabaseHas($this->table, $data);
 	}
-	
+
 	//users con roles
 	public function test_usuarios_roles_list()
 	{
 		$user = factory(User::class)->create();
 		$this->get($this->url . $user->id . '/roles', $this->headers())->assertStatus(200);
 	}
-	
+
 	public function test_usuarios_roles_attach()
 	{
 		$role = factory(\Spatie\Permission\Models\Role::class)->create();
 		$user = factory(User::class)->create();
 		$this->put($this->url . $user->id . '/roles/' . $role->id, $this->headers())->assertStatus(200);
 	}
-	
+
 	public function test_usuarios_roles_dettach()
 	{
 		$role = factory(Role::class)->create();

@@ -1,10 +1,12 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use App\Http\Resources\UserCollection;
 use App\Http\Resources\UserResource;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -13,7 +15,7 @@ use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable
 {
-    use HasApiTokens, Notifiable, HasRoles;
+    use HasApiTokens, Notifiable, HasRoles, SoftDeletes;
 
     /**
      * The attributes that are mass assignable.
@@ -24,8 +26,9 @@ class User extends Authenticatable
         'name', 'email', 'password',
     ];
 
-    public    $resource           = UserResource::class;
-    public    $resourceCollection = UserCollection::class;
+    public $resource = UserResource::class;
+    public $resourceCollection = UserCollection::class;
+    protected $dates = ['created_at', 'updated_at', 'deleted_at'];
 
     /**
      * The attributes that should be hidden for arrays.
@@ -69,9 +72,9 @@ class User extends Authenticatable
      */
     public static function fillPassword($request)
     {
-        if( ! $request->password){
+        if (!$request->password) {
             $request->merge(['password' => bcrypt(str_random(10))]);
-        }else {
+        } else {
             $request->merge(['password' => bcrypt($request->password)]);
         }
     }
@@ -90,4 +93,30 @@ class User extends Authenticatable
     {
         return $this->hasMany(Address::class);
     }
+
+    /**
+     * @return HasMany
+     */
+    public function shoppings()
+    {
+        return $this->hasMany(Shopping::class);
+    }
+
+    /**
+     * @return BelongsToMany
+     */
+    public function discounts()
+    {
+        return $this->belongsToMany(Discount::class);
+    }
+
+    /**
+     * @return HasMany
+     */
+    public function wishlists()
+    {
+        return $this->hasMany(Wishlist::class);
+    }
+
+
 }
