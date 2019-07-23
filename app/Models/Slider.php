@@ -14,8 +14,8 @@ class Slider extends Model
     //protected $table = '';
     protected $dates = ['created_at', 'updated_at', 'deleted_at'];
     //protected $relationships = [''];
-    public $resource           = SliderResource::class;
+    public $resource = SliderResource::class;
     public $resourceCollection = SliderCollection::class;
-    //protected $fillable = [''];
+    protected $fillable = ['name', 'position'];
 
 }

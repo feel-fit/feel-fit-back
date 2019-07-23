@@ -17,7 +17,7 @@ class Image extends Model
     //protected $relationships = [''];
     public $resource           = ImageResource::class;
     public $resourceCollection = ImageCollection::class;
-    //protected $fillable = [''];
+    protected $fillable = ['url','product_id','position'];
     /*
 	|--------------------------------------------------------------------------
 	| Relations database

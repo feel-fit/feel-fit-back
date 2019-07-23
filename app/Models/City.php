@@ -18,7 +18,7 @@ class City extends Model
     //protected $relationships = [''];
     public $resource           = CityResource::class;
     public $resourceCollection = CityCollection::class;
-    //protected $fillable = [''];
+    protected $fillable = ['name','department_id'];
     /*
 	|--------------------------------------------------------------------------
 	| Relations database

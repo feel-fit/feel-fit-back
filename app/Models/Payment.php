@@ -17,7 +17,7 @@ class Payment extends Model
     //protected $relationships = [''];
     public $resource           = PaymentResource::class;
     public $resourceCollection = PaymentCollection::class;
-    //protected $fillable = [''];
+    protected $fillable = ['name'];
     /*
 	|--------------------------------------------------------------------------
 	| Relations database

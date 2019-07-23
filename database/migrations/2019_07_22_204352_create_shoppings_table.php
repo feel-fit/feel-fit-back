@@ -15,6 +15,13 @@ class CreateShoppingsTable extends Migration
     {
         Schema::create('shoppings', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->unsignedInteger('status_order_id');
+            $table->unsignedInteger('user_id');
+            $table->unsignedInteger('discount_id')->nullable();
+            $table->unsignedInteger('address_id');
+            $table->unsignedInteger('shipping_id')->nullable();
+            $table->unsignedInteger('payment_id')->nullable();
+            $table->unsignedInteger('total');
             $table->timestamps();
             $table->softDeletes();
         });

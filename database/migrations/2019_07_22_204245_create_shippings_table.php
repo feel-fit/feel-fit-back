@@ -15,6 +15,9 @@ class CreateShippingsTable extends Migration
     {
         Schema::create('shippings', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->unsignedInteger('value');
+            $table->string('transporter');
+            $table->string('track')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

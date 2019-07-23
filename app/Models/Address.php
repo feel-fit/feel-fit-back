@@ -17,7 +17,7 @@ class Address extends Model
     //protected $relationships = [''];
     public $resource           = AddressResource::class;
     public $resourceCollection = AddressCollection::class;
-    //protected $fillable = [''];
+    protected $fillable = ['name','address','user_id','city_id'];
 
 
     /*

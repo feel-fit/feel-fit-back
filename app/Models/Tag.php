@@ -17,7 +17,7 @@ class Tag extends Model
     //protected $relationships = [''];
     public $resource           = TagResource::class;
     public $resourceCollection = TagCollection::class;
-    //protected $fillable = [''];
+    protected $fillable = ['name'];
     /*
 	|--------------------------------------------------------------------------
 	| Relations database

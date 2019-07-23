@@ -17,7 +17,7 @@ class Shipping extends Model
     //protected $relationships = [''];
     public $resource           = ShippingResource::class;
     public $resourceCollection = ShippingCollection::class;
-    //protected $fillable = [''];
+    protected $fillable = ['value','transporter','track'];
     /*
 	|--------------------------------------------------------------------------
 	| Relations database

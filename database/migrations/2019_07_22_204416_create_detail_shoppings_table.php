@@ -15,6 +15,10 @@ class CreateDetailShoppingsTable extends Migration
     {
         Schema::create('detail_shoppings', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->unsignedInteger('shopping_id');
+            $table->unsignedInteger('product_id');
+            $table->unsignedInteger('value');
+            $table->unsignedTinyInteger('quantity');
             $table->timestamps();
             $table->softDeletes();
         });

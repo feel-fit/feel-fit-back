@@ -8,6 +8,8 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class ShippingTest extends TestCase
 {
+    protected $url   = 'v1/addresses/';
+    protected $table = 'addresses';
     /**
      * A basic feature test example.
      *
@@ -15,8 +17,7 @@ class ShippingTest extends TestCase
      */
     public function testExample()
     {
-        $response = $this->get('/');
-
-        $response->assertStatus(200);
+        $this->get($this->url, $this->headers())
+            ->assertStatus(200);
     }
 }

@@ -16,6 +16,9 @@ use Illuminate\Http\Request;
 
 Route::group(['prefix' => 'v1'], function () {
 
+    //Addresses ===========================================================================================================.
+    Route::apiResource('addresses', 'Api\Addresses\AddressController');
+
     // Oauth ===========================================================================================================.
     Route::post('oauth/login', 'Api\passport\PassportController@login');
     Route::post('oauth/register', 'Api\passport\PassportController@register');

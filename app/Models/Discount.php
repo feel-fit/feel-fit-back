@@ -18,7 +18,7 @@ class Discount extends Model
     //protected $relationships = [''];
     public $resource           = DiscountResource::class;
     public $resourceCollection = DiscountCollection::class;
-    //protected $fillable = [''];
+    protected $fillable = ['name','value'];
     /*
 	|--------------------------------------------------------------------------
 	| Relations database

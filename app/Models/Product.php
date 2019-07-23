@@ -18,7 +18,7 @@ class Product extends Model
     //protected $relationships = [''];
     public $resource           = ProductResource::class;
     public $resourceCollection = ProductCollection::class;
-    //protected $fillable = [''];
+    protected $fillable = ['category_id','name','description','price','surprise_box'];
     /*
 	|--------------------------------------------------------------------------
 	| Relations database

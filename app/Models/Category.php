@@ -17,7 +17,7 @@ class Category extends Model
     //protected $relationships = [''];
     public $resource           = CategoryResource::class;
     public $resourceCollection = CategoryCollection::class;
-    //protected $fillable = [''];
+    protected $fillable = ['name'];
     /*
 	|--------------------------------------------------------------------------
 	| Relations database

@@ -15,6 +15,12 @@ class CreateNutritionalFactsTable extends Migration
     {
         Schema::create('nutritional_facts', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('name');
+            $table->string('quantity');
+            $table->string('percentage');
+            $table->unsignedInteger('product_id');
+            $table->unsignedInteger('parent_id')->nullable();
+            $table->enum('position_fact',['superior','medio','inferior'])->default('inferior');
             $table->timestamps();
             $table->softDeletes();
         });

@@ -17,9 +17,9 @@ class Shopping extends Model
     //protected $table = '';
     protected $dates = ['created_at', 'updated_at', 'deleted_at'];
     //protected $relationships = [''];
-    public $resource           = ShoppingResource::class;
+    public $resource = ShoppingResource::class;
     public $resourceCollection = ShoppingCollection::class;
-    //protected $fillable = [''];
+    protected $fillable = ['status_order_id', 'user_id', 'discount_id', 'address_id', 'shipping_id', 'payment_id', 'total'];
     /*
 	|--------------------------------------------------------------------------
 	| Relations database

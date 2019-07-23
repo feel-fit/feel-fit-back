@@ -17,7 +17,7 @@ class Wishlist extends Model
     //protected $relationships = [''];
     public $resource = WishlistResource::class;
     public $resourceCollection = WishlistCollection::class;
-    //protected $fillable = [''];
+    protected $fillable = ['product_id','user_id'];
     /*
 	|--------------------------------------------------------------------------
 	| Relations database

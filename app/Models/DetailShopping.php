@@ -18,7 +18,7 @@ class DetailShopping extends Model
     //protected $relationships = [''];
     public $resource           = DetailShoppingResource::class;
     public $resourceCollection = DetailShoppingCollection::class;
-    //protected $fillable = [''];
+    protected $fillable = ['shopping_id','product_id','value','quantity'];
     /*
 	|--------------------------------------------------------------------------
 	| Relations database

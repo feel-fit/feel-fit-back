@@ -17,7 +17,7 @@ class StatusOrder extends Model
     //protected $relationships = [''];
     public $resource = StatusOrderResource::class;
     public $resourceCollection = StatusOrderCollection::class;
-    //protected $fillable = [''];
+    protected $fillable = ['name'];
     /*
 	|--------------------------------------------------------------------------
 	| Relations database
