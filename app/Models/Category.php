@@ -2,11 +2,11 @@
 
 namespace App\Models;
 
-use App\Http\Resources\Categories\CategoryCollection;
-use App\Http\Resources\Categories\CategoryResource;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use App\Http\Resources\Categories\CategoryResource;
+use App\Http\Resources\Categories\CategoryCollection;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Category extends Model
 {
@@ -15,23 +15,21 @@ class Category extends Model
     //protected $table = '';
     protected $dates = ['created_at', 'updated_at', 'deleted_at'];
     //protected $relationships = [''];
-    public $resource           = CategoryResource::class;
+    public $resource = CategoryResource::class;
     public $resourceCollection = CategoryCollection::class;
     protected $fillable = ['name'];
     /*
-	|--------------------------------------------------------------------------
-	| Relations database
-	|--------------------------------------------------------------------------
-	|
-	*/
+    |--------------------------------------------------------------------------
+    | Relations database
+    |--------------------------------------------------------------------------
+    |
+    */
 
     /**
      * @return BelongsToMany
      */
-    public function products(){
+    public function products()
+    {
         return $this->belongsToMany(Product::class);
     }
-
-
-
 }

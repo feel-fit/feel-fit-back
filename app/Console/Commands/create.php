@@ -40,39 +40,37 @@ class create extends Command
         $model = $this->argument('model') ?? $this->ask('What is the name of the model?');
 
         $this->call('make:model', [
-            'name' => 'Models/' . $model,
-            '--migration' => true
+            'name' => 'Models/'.$model,
+            '--migration' => true,
         ]);
 
         $this->call('make:controller', [
-            'name' => 'Api/' . str_plural($model) . '/' . $model . 'Controller',
+            'name' => 'Api/'.str_plural($model).'/'.$model.'Controller',
             '--api' => true,
-            '--model' => 'Models/'.$model
+            '--model' => 'Models/'.$model,
         ]);
 
         $this->call('make:factory', [
-            'name' => $model . 'Factory',
-            '--model' => 'Models/'.$model
+            'name' => $model.'Factory',
+            '--model' => 'Models/'.$model,
         ]);
 
         $this->call('make:resource', [
-            'name' => str_plural($model) . '/' . $model .'Resource'
+            'name' => str_plural($model).'/'.$model.'Resource',
         ]);
 
         $this->call('make:resource', [
-            'name' => str_plural($model) . '/' . $model . 'Collection'
+            'name' => str_plural($model).'/'.$model.'Collection',
         ]);
 
         $this->call('make:test', [
-            'name' => str_plural($model) . '/' . $model . 'Test'
+            'name' => str_plural($model).'/'.$model.'Test',
         ]);
 
         $this->call('make:seeder', [
-            'name' => str_plural($model) . 'TableSeeder'
+            'name' => str_plural($model).'TableSeeder',
         ]);
 
         $this->info("Create all elements for {$model}.");
-
     }
 }
-

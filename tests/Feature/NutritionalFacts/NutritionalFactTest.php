@@ -8,8 +8,9 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class NutritionalFactTest extends TestCase
 {
-    protected $url   = 'v1/addresses/';
+    protected $url = 'v1/addresses/';
     protected $table = 'addresses';
+
     /**
      * A basic feature test example.
      *

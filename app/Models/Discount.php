@@ -2,12 +2,12 @@
 
 namespace App\Models;
 
-use App\Http\Resources\Discounts\DiscountCollection;
-use App\Http\Resources\Discounts\DiscountResource;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use App\Http\Resources\Discounts\DiscountResource;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use App\Http\Resources\Discounts\DiscountCollection;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Discount extends Model
 {
@@ -16,29 +16,29 @@ class Discount extends Model
     //protected $table = '';
     protected $dates = ['created_at', 'updated_at', 'deleted_at'];
     //protected $relationships = [''];
-    public $resource           = DiscountResource::class;
+    public $resource = DiscountResource::class;
     public $resourceCollection = DiscountCollection::class;
-    protected $fillable = ['name','value'];
+    protected $fillable = ['name', 'value'];
     /*
-	|--------------------------------------------------------------------------
-	| Relations database
-	|--------------------------------------------------------------------------
-	|
-	*/
+    |--------------------------------------------------------------------------
+    | Relations database
+    |--------------------------------------------------------------------------
+    |
+    */
 
     /**
      * @return BelongsToMany
      */
-    public function users(){
+    public function users()
+    {
         return $this->belongsToMany(User::class);
     }
 
     /**
      * @return HasMany
      */
-    public function shoppings(){
+    public function shoppings()
+    {
         return $this->hasMany(Shopping::class);
     }
-
-
 }

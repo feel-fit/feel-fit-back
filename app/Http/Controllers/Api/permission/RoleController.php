@@ -2,15 +2,15 @@
 
 namespace App\Http\Controllers\Api\permission;
 
-use App\Http\Controllers\ApiController;
 use Exception;
-use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Response;
-use Illuminate\Validation\ValidationException;
-use Spatie\Permission\Models\Role;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
+use Illuminate\Http\JsonResponse;
+use Spatie\Permission\Models\Role;
+use App\Http\Controllers\ApiController;
+use Illuminate\Validation\ValidationException;
 
-class roleController extends ApiController
+class RoleController extends ApiController
 {
     public function __construct()
     {

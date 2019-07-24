@@ -2,13 +2,13 @@
 
 namespace App\Models;
 
-use App\Http\Resources\NutritionalFacts\NutritionalFactCollection;
-use App\Http\Resources\NutritionalFacts\NutritionalFactResource;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use App\Http\Resources\NutritionalFacts\NutritionalFactResource;
+use App\Http\Resources\NutritionalFacts\NutritionalFactCollection;
 
 class NutritionalFact extends Model
 {
@@ -21,11 +21,11 @@ class NutritionalFact extends Model
     public $resourceCollection = NutritionalFactCollection::class;
     protected $fillable = ['name', 'quantity', 'percentage', 'product_id', 'parent_id', 'position_fact'];
     /*
-	|--------------------------------------------------------------------------
-	| Relations database
-	|--------------------------------------------------------------------------
-	|
-	*/
+    |--------------------------------------------------------------------------
+    | Relations database
+    |--------------------------------------------------------------------------
+    |
+    */
 
     /**
      * @return BelongsTo
@@ -40,7 +40,7 @@ class NutritionalFact extends Model
      */
     public function children()
     {
-        return $this->hasMany(NutritionalFact::class, 'parent_id');
+        return $this->hasMany(self::class, 'parent_id');
     }
 
     /**
@@ -48,7 +48,6 @@ class NutritionalFact extends Model
      */
     public function parent()
     {
-        return $this->hasOne(NutritionalFact::class, 'id', 'parent_id');
+        return $this->hasOne(self::class, 'id', 'parent_id');
     }
-
 }

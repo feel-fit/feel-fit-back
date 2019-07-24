@@ -2,11 +2,11 @@
 
 namespace App\Models;
 
-use App\Http\Resources\Images\ImageCollection;
-use App\Http\Resources\Images\ImageResource;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use App\Http\Resources\Images\ImageResource;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use App\Http\Resources\Images\ImageCollection;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Image extends Model
 {
@@ -15,22 +15,21 @@ class Image extends Model
     //protected $table = '';
     protected $dates = ['created_at', 'updated_at', 'deleted_at'];
     //protected $relationships = [''];
-    public $resource           = ImageResource::class;
+    public $resource = ImageResource::class;
     public $resourceCollection = ImageCollection::class;
-    protected $fillable = ['url','product_id','position'];
+    protected $fillable = ['url', 'product_id', 'position'];
     /*
-	|--------------------------------------------------------------------------
-	| Relations database
-	|--------------------------------------------------------------------------
-	|
-	*/
+    |--------------------------------------------------------------------------
+    | Relations database
+    |--------------------------------------------------------------------------
+    |
+    */
 
     /**
      * @return BelongsTo
      */
-    public function product(){
+    public function product()
+    {
         return $this->belongsTo(Product::class);
     }
-
-
 }

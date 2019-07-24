@@ -2,13 +2,13 @@
 
 namespace Tests\Feature\Permissions;
 
+use Tests\TestCase;
 use App\Models\User;
 use Spatie\Permission\Models\Permission;
-use Tests\TestCase;
 
 class PermissionUserTest extends TestCase
 {
-    protected $url   = 'v1/permissions/';
+    protected $url = 'v1/permissions/';
     protected $table = 'permissions';
 
     /**

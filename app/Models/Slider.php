@@ -2,10 +2,10 @@
 
 namespace App\Models;
 
-use App\Http\Resources\Sliders\SliderCollection;
-use App\Http\Resources\Sliders\SliderResource;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use App\Http\Resources\Sliders\SliderResource;
+use App\Http\Resources\Sliders\SliderCollection;
 
 class Slider extends Model
 {
@@ -17,5 +17,4 @@ class Slider extends Model
     public $resource = SliderResource::class;
     public $resourceCollection = SliderCollection::class;
     protected $fillable = ['name', 'position'];
-
 }

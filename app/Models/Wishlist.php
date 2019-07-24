@@ -2,11 +2,11 @@
 
 namespace App\Models;
 
-use App\Http\Resources\Wishlists\WishlistCollection;
-use App\Http\Resources\Wishlists\WishlistResource;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use App\Http\Resources\Wishlists\WishlistResource;
+use App\Http\Resources\Wishlists\WishlistCollection;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Wishlist extends Model
 {
@@ -17,13 +17,13 @@ class Wishlist extends Model
     //protected $relationships = [''];
     public $resource = WishlistResource::class;
     public $resourceCollection = WishlistCollection::class;
-    protected $fillable = ['product_id','user_id'];
+    protected $fillable = ['product_id', 'user_id'];
     /*
-	|--------------------------------------------------------------------------
-	| Relations database
-	|--------------------------------------------------------------------------
-	|
-	*/
+    |--------------------------------------------------------------------------
+    | Relations database
+    |--------------------------------------------------------------------------
+    |
+    */
 
     /**
      * @return BelongsTo

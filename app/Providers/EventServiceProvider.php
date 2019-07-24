@@ -2,8 +2,8 @@
 
 namespace App\Providers;
 
-use App\Observers\UserObserver;
 use App\Models\User;
+use App\Observers\UserObserver;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
@@ -20,7 +20,7 @@ class EventServiceProvider extends ServiceProvider
         Registered::class => [
             SendEmailVerificationNotification::class,
         ],
-        'Illuminate\Auth\Events\Logout' => ['App\Listeners\LogSuccessfulLogout']
+        'Illuminate\Auth\Events\Logout' => ['App\Listeners\LogSuccessfulLogout'],
     ];
 
     /**
