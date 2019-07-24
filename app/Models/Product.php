@@ -2,12 +2,12 @@
 
 namespace App\Models;
 
-use App\Http\Resources\Products\ProductCollection;
-use App\Http\Resources\Products\ProductResource;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use App\Http\Resources\Products\ProductResource;
+use App\Http\Resources\Products\ProductCollection;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Product extends Model
 {
@@ -16,15 +16,15 @@ class Product extends Model
     //protected $table = '';
     protected $dates = ['created_at', 'updated_at', 'deleted_at'];
     //protected $relationships = [''];
-    public $resource           = ProductResource::class;
+    public $resource = ProductResource::class;
     public $resourceCollection = ProductCollection::class;
-    protected $fillable = ['category_id','name','description','price','surprise_box'];
+    protected $fillable = ['category_id', 'name', 'description', 'price', 'surprise_box'];
     /*
-	|--------------------------------------------------------------------------
-	| Relations database
-	|--------------------------------------------------------------------------
-	|
-	*/
+    |--------------------------------------------------------------------------
+    | Relations database
+    |--------------------------------------------------------------------------
+    |
+    */
 
     /**
      * @return HasMany

@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers\Api\permission;
 
-use App\Http\Controllers\ApiController;
-use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
-use Spatie\Permission\Models\Permission;
+use Illuminate\Http\JsonResponse;
 use Spatie\Permission\Models\Role;
+use App\Http\Controllers\ApiController;
+use Spatie\Permission\Models\Permission;
 
 class PermissionRoleController extends ApiController
 {
@@ -38,6 +38,7 @@ class PermissionRoleController extends ApiController
         }
 
         $role->givePermissionTo($permission);
+
         return $this->successResponse(['data' => $permission->refresh(), 'message' => 'Role Updated']);
     }
 
@@ -50,11 +51,12 @@ class PermissionRoleController extends ApiController
      */
     public function destroy(Permission $permission, Role $role)
     {
-        if (!$role->hasPermissionTo($permission)) {
+        if (! $role->hasPermissionTo($permission)) {
             return $this->errorResponse('permission don`t have this Role', 422);
         }
 
         $role->revokePermissionTo($permission);
+
         return $this->successResponse(['data' => $role->refresh(), 'message' => 'Role Deleted']);
     }
 }

@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers\Api\users;
 
-use App\Http\Controllers\ApiController;
 use App\User;
-use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Http\JsonResponse;
 use Spatie\Permission\Models\Role;
+use App\Http\Controllers\ApiController;
 
 class UserRoleController extends ApiController
 {

@@ -2,14 +2,14 @@
 
 namespace App\Exceptions;
 
-use App\Traits\ApiResponser;
 use Exception;
-use Illuminate\Auth\AuthenticationException;
-use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
-use Illuminate\Http\JsonResponse;
+use App\Traits\ApiResponser;
 use Illuminate\Http\Request;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Auth\AuthenticationException;
 use Illuminate\Validation\ValidationException;
 use Symfony\Component\HttpFoundation\Response;
+use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 
 class Handler extends ExceptionHandler
 {
@@ -69,7 +69,7 @@ class Handler extends ExceptionHandler
         if ($exception instanceof ModelNotFoundException) {
             $modelo = class_basename($exception->getModel());
 
-            return $this->errorResponse('There is no record from the ' . $modelo . ' model with the specified ID', 404);
+            return $this->errorResponse('There is no record from the '.$modelo.' model with the specified ID', 404);
         }
 
         if ($exception instanceof AuthenticationException) {

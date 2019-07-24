@@ -2,11 +2,11 @@
 
 namespace App\Models;
 
-use App\Http\Resources\Tags\TagCollection;
-use App\Http\Resources\Tags\TagResource;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use App\Http\Resources\Tags\TagResource;
+use App\Http\Resources\Tags\TagCollection;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Tag extends Model
 {
@@ -15,15 +15,15 @@ class Tag extends Model
     //protected $table = '';
     protected $dates = ['created_at', 'updated_at', 'deleted_at'];
     //protected $relationships = [''];
-    public $resource           = TagResource::class;
+    public $resource = TagResource::class;
     public $resourceCollection = TagCollection::class;
     protected $fillable = ['name'];
     /*
-	|--------------------------------------------------------------------------
-	| Relations database
-	|--------------------------------------------------------------------------
-	|
-	*/
+    |--------------------------------------------------------------------------
+    | Relations database
+    |--------------------------------------------------------------------------
+    |
+    */
 
     /**
      * @return BelongsToMany

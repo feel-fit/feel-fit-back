@@ -2,16 +2,16 @@
 
 namespace App\Models;
 
-use App\Http\Resources\UserCollection;
-use App\Http\Resources\UserResource;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
-use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Notifications\Notifiable;
-use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Illuminate\Foundation\Auth\User as Authenticatable;
 use Laravel\Passport\HasApiTokens;
+use App\Http\Resources\UserResource;
+use App\Http\Resources\UserCollection;
 use Spatie\Permission\Traits\HasRoles;
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class User extends Authenticatable
 {
@@ -23,7 +23,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password','identification','gender','phone','status'
+        'name', 'email', 'password', 'identification', 'gender', 'phone', 'status',
     ];
 
     public $resource = UserResource::class;
@@ -72,7 +72,7 @@ class User extends Authenticatable
      */
     public static function fillPassword($request)
     {
-        if (!$request->password) {
+        if (! $request->password) {
             $request->merge(['password' => bcrypt(str_random(10))]);
         } else {
             $request->merge(['password' => bcrypt($request->password)]);
@@ -80,11 +80,11 @@ class User extends Authenticatable
     }
 
     /*
-	|--------------------------------------------------------------------------
-	| Relations database
-	|--------------------------------------------------------------------------
-	|
-	*/
+    |--------------------------------------------------------------------------
+    | Relations database
+    |--------------------------------------------------------------------------
+    |
+    */
 
     /**
      * @return HasMany
@@ -117,6 +117,4 @@ class User extends Authenticatable
     {
         return $this->hasMany(Wishlist::class);
     }
-
-
 }

@@ -2,12 +2,12 @@
 
 namespace Tests\Feature\Roles;
 
-use Spatie\Permission\Models\Role;
 use Tests\TestCase;
+use Spatie\Permission\Models\Role;
 
 class RoleTest extends TestCase
 {
-    protected $url   = 'v1/roles/';
+    protected $url = 'v1/roles/';
     protected $table = 'roles';
 
     /**
@@ -21,7 +21,7 @@ class RoleTest extends TestCase
             ->assertStatus(200);
     }
 
-    /**
+    /*
      * A basic test example.
      */
    /* public function test_list_role()

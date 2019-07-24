@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers\Api\permission;
 
-use App\Http\Controllers\ApiController;
 use App\Models\User;
-use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Http\JsonResponse;
+use App\Http\Controllers\ApiController;
 use Spatie\Permission\Models\Permission;
 
 class PermissionUserController extends ApiController
@@ -50,11 +50,12 @@ class PermissionUserController extends ApiController
      */
     public function destroy(Permission $permission, User $user)
     {
-        if (!$user->hasPermissionTo($permission)) {
+        if (! $user->hasPermissionTo($permission)) {
             return $this->errorResponse('permission don`t have this User', 422);
         }
 
         $user->revokePermissionTo($permission);
+
         return $this->successResponse(['data' => $user->refresh(), 'message' => 'User Delete']);
     }
 }

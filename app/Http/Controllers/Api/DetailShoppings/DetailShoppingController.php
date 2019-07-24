@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\Api\DetailShoppings;
 
-use App\Models\DetailShopping;
 use Illuminate\Http\Request;
+use App\Models\DetailShopping;
 use App\Http\Controllers\Controller;
 
 class DetailShoppingController extends Controller

@@ -2,11 +2,11 @@
 
 namespace App\Models;
 
-use App\Http\Resources\Messages\MessageCollection;
-use App\Http\Resources\Messages\MessageResource;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use App\Http\Resources\Messages\MessageResource;
+use App\Http\Resources\Messages\MessageCollection;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Message extends Model
 {
@@ -19,18 +19,17 @@ class Message extends Model
     //public $resourceCollection = '';
     //protected $fillable = [''];
 
-
     protected $dates = ['created_at', 'updated_at', 'deleted_at'];
     protected $fillable = ['user_id', 'name', 'email', 'description'];
     public $resource = MessageResource::class;
     public $resourceCollection = MessageCollection::class;
 
     /*
-	|--------------------------------------------------------------------------
-	| Relations database
-	|--------------------------------------------------------------------------
-	|
-	*/
+    |--------------------------------------------------------------------------
+    | Relations database
+    |--------------------------------------------------------------------------
+    |
+    */
 
     /**
      * @return BelongsTo
@@ -41,5 +40,4 @@ class Message extends Model
             $user->name = 'Anónimo';
         });
     }
-
 }

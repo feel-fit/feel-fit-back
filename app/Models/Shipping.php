@@ -2,11 +2,11 @@
 
 namespace App\Models;
 
-use App\Http\Resources\Shippings\ShippingCollection;
-use App\Http\Resources\Shippings\ShippingResource;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use App\Http\Resources\Shippings\ShippingResource;
+use App\Http\Resources\Shippings\ShippingCollection;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Shipping extends Model
 {
@@ -15,15 +15,15 @@ class Shipping extends Model
     //protected $table = '';
     protected $dates = ['created_at', 'updated_at', 'deleted_at'];
     //protected $relationships = [''];
-    public $resource           = ShippingResource::class;
+    public $resource = ShippingResource::class;
     public $resourceCollection = ShippingCollection::class;
-    protected $fillable = ['value','transporter','track'];
+    protected $fillable = ['value', 'transporter', 'track'];
     /*
-	|--------------------------------------------------------------------------
-	| Relations database
-	|--------------------------------------------------------------------------
-	|
-	*/
+    |--------------------------------------------------------------------------
+    | Relations database
+    |--------------------------------------------------------------------------
+    |
+    */
 
     /**
      * @return BelongsTo

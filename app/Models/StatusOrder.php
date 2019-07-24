@@ -2,11 +2,11 @@
 
 namespace App\Models;
 
-use App\Http\Resources\StatusOrders\StatusOrderCollection;
-use App\Http\Resources\StatusOrders\StatusOrderResource;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use App\Http\Resources\StatusOrders\StatusOrderResource;
+use App\Http\Resources\StatusOrders\StatusOrderCollection;
 
 class StatusOrder extends Model
 {
@@ -19,11 +19,11 @@ class StatusOrder extends Model
     public $resourceCollection = StatusOrderCollection::class;
     protected $fillable = ['name'];
     /*
-	|--------------------------------------------------------------------------
-	| Relations database
-	|--------------------------------------------------------------------------
-	|
-	*/
+    |--------------------------------------------------------------------------
+    | Relations database
+    |--------------------------------------------------------------------------
+    |
+    */
 
     /**
      * @return HasMany
@@ -32,5 +32,4 @@ class StatusOrder extends Model
     {
         return $this->hasMany(Shopping::class);
     }
-
 }

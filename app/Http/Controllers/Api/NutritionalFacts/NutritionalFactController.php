@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\Api\NutritionalFacts;
 
-use App\Models\NutritionalFact;
 use Illuminate\Http\Request;
+use App\Models\NutritionalFact;
 use App\Http\Controllers\Controller;
 
 class NutritionalFactController extends Controller

@@ -2,11 +2,11 @@
 
 namespace App\Models;
 
-use App\Http\Resources\Departments\DepartmentCollection;
-use App\Http\Resources\Departments\DepartmentResource;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use App\Http\Resources\Departments\DepartmentResource;
+use App\Http\Resources\Departments\DepartmentCollection;
 
 class Department extends Model
 {
@@ -15,15 +15,15 @@ class Department extends Model
     //protected $table = '';
     protected $dates = ['created_at', 'updated_at', 'deleted_at'];
     //protected $relationships = [''];
-    public $resource           = DepartmentResource::class;
+    public $resource = DepartmentResource::class;
     public $resourceCollection = DepartmentCollection::class;
     protected $fillable = ['name'];
     /*
-	|--------------------------------------------------------------------------
-	| Relations database
-	|--------------------------------------------------------------------------
-	|
-	*/
+    |--------------------------------------------------------------------------
+    | Relations database
+    |--------------------------------------------------------------------------
+    |
+    */
 
     /**
      * @return HasMany

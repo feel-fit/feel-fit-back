@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers\Api\permission;
 
-use App\Http\Controllers\ApiController;
 use App\Models\User;
-use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Http\JsonResponse;
 use Spatie\Permission\Models\Role;
+use App\Http\Controllers\ApiController;
 
 class RoleUserController extends ApiController
 {
@@ -37,7 +37,8 @@ class RoleUserController extends ApiController
             return $this->errorResponse('Role already has this User', 422);
         }
         $user->syncRoles($role);
-		return $this->successResponse(['data'=>$user->refresh(),'message'=>'Role Updated']);
+
+        return $this->successResponse(['data'=>$user->refresh(), 'message'=>'Role Updated']);
     }
 
     /**
@@ -49,10 +50,11 @@ class RoleUserController extends ApiController
      */
     public function destroy(Role $role, User $user)
     {
-        if (!$user->hasRole($role)) {
+        if (! $user->hasRole($role)) {
             return $this->errorResponse('Role don`t have this User', 422);
         }
         $user->removeRole($role);
-		return $this->successResponse(['data'=>$user->refresh(),'message'=>'User Deleted']);
+
+        return $this->successResponse(['data'=>$user->refresh(), 'message'=>'User Deleted']);
     }
 }

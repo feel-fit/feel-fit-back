@@ -2,11 +2,11 @@
 
 namespace App\Models;
 
-use App\Http\Resources\Payments\PaymentCollection;
-use App\Http\Resources\Payments\PaymentResource;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use App\Http\Resources\Payments\PaymentResource;
+use App\Http\Resources\Payments\PaymentCollection;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Payment extends Model
 {
@@ -15,20 +15,21 @@ class Payment extends Model
     //protected $table = '';
     protected $dates = ['created_at', 'updated_at', 'deleted_at'];
     //protected $relationships = [''];
-    public $resource           = PaymentResource::class;
+    public $resource = PaymentResource::class;
     public $resourceCollection = PaymentCollection::class;
     protected $fillable = ['name'];
     /*
-	|--------------------------------------------------------------------------
-	| Relations database
-	|--------------------------------------------------------------------------
-	|
-	*/
+    |--------------------------------------------------------------------------
+    | Relations database
+    |--------------------------------------------------------------------------
+    |
+    */
 
     /**
      * @return BelongsTo
      */
-    public function shopping(){
+    public function shopping()
+    {
         return $this->belongsTo(Shopping::class);
     }
 }

@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers\Api\permission;
 
-use App\Http\Controllers\ApiController;
 use Exception;
-use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
-use Illuminate\Validation\ValidationException;
+use Illuminate\Http\JsonResponse;
+use App\Http\Controllers\ApiController;
 use Spatie\Permission\Models\Permission;
+use Illuminate\Validation\ValidationException;
 
-class permissionController extends ApiController
+class PermissionController extends ApiController
 {
     public function __construct()
     {

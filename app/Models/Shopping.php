@@ -2,13 +2,13 @@
 
 namespace App\Models;
 
-use App\Http\Resources\Shoppings\ShoppingCollection;
-use App\Http\Resources\Shoppings\ShoppingResource;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use App\Http\Resources\Shoppings\ShoppingResource;
+use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use App\Http\Resources\Shoppings\ShoppingCollection;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Shopping extends Model
 {
@@ -21,11 +21,11 @@ class Shopping extends Model
     public $resourceCollection = ShoppingCollection::class;
     protected $fillable = ['status_order_id', 'user_id', 'discount_id', 'address_id', 'shipping_id', 'payment_id', 'total'];
     /*
-	|--------------------------------------------------------------------------
-	| Relations database
-	|--------------------------------------------------------------------------
-	|
-	*/
+    |--------------------------------------------------------------------------
+    | Relations database
+    |--------------------------------------------------------------------------
+    |
+    */
 
     /**
      * @return HasOne
@@ -82,6 +82,4 @@ class Shopping extends Model
     {
         return $this->belongsTo(User::class);
     }
-
-
 }

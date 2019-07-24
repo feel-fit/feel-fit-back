@@ -2,12 +2,12 @@
 
 namespace App\Models;
 
-use App\Http\Resources\Cities\CityCollection;
-use App\Http\Resources\Cities\CityResource;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\HasMany;
+use App\Http\Resources\Cities\CityResource;
+use App\Http\Resources\Cities\CityCollection;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class City extends Model
 {
@@ -16,15 +16,15 @@ class City extends Model
     //protected $table = '';
     protected $dates = ['created_at', 'updated_at', 'deleted_at'];
     //protected $relationships = [''];
-    public $resource           = CityResource::class;
+    public $resource = CityResource::class;
     public $resourceCollection = CityCollection::class;
-    protected $fillable = ['name','department_id'];
+    protected $fillable = ['name', 'department_id'];
     /*
-	|--------------------------------------------------------------------------
-	| Relations database
-	|--------------------------------------------------------------------------
-	|
-	*/
+    |--------------------------------------------------------------------------
+    | Relations database
+    |--------------------------------------------------------------------------
+    |
+    */
 
     /**
      * @return HasMany

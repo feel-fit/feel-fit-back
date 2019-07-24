@@ -20,7 +20,7 @@ trait FilterQuery
                           '!' => '!=', //no igual a
     ];
 
-    private $excepts  = ['sort_by', 'order_by', 'search', 'limit', 'page', 'per_page', 'relationships', 'pagination'];
+    private $excepts = ['sort_by', 'order_by', 'search', 'limit', 'page', 'per_page', 'relationships', 'pagination'];
     private $array;
     private $collection;
     private $value;
@@ -28,7 +28,7 @@ trait FilterQuery
     private $order;
     private $attribute;
     private $include;
-    private $with     = [];
+    private $with = [];
 
     /**
      * @param Collection $collection
@@ -54,8 +54,8 @@ trait FilterQuery
     private function getQuery($attribute, $value, Collection $collection)
     {
         $this->collection = $collection;
-        $this->value      = $value;
-        $this->attribute  = $attribute;
+        $this->value = $value;
+        $this->attribute = $attribute;
         $this->getInclude();
         $this->getArray();
         $this->getOperator();
@@ -82,9 +82,9 @@ trait FilterQuery
     private function getInclude()
     {
         if (str_contains($this->attribute, '-')) {
-            $explode         = explode('-', $this->attribute);
+            $explode = explode('-', $this->attribute);
             $this->attribute = (isset($explode[1])) ? rawurldecode($explode[1]) : null;
-            $this->include   = (isset($explode[0])) ? rawurldecode($explode[0]) : null;
+            $this->include = (isset($explode[0])) ? rawurldecode($explode[0]) : null;
         } else {
             $this->include = null;
         }
@@ -110,7 +110,7 @@ trait FilterQuery
     {
         foreach ($this->operators as $key => $operator) {
             if (str_contains($this->attribute, $key)) {
-                $this->operator  = $operator;
+                $this->operator = $operator;
                 $this->attribute = str_replace($key, '', $this->attribute);
             }
         }
@@ -148,7 +148,7 @@ trait FilterQuery
     {
         $this->collection = $collection;
         if (request()->has('sort_by')) {
-            $this->attribute  = request()->sort_by;
+            $this->attribute = request()->sort_by;
             $this->collection = $collection->sortBy($this->attribute)->values();
             if (request()->has('order_by')) {
                 $this->order = request()->order_by;

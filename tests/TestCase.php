@@ -39,8 +39,7 @@ abstract class TestCase extends BaseTestCase
 
         $token = $user->createToken('Token Name')->accessToken;
 
-        return $headers = ['Authorization' => 'Bearer ' . $token, 'Accept' => 'application/json'];
-
+        return $headers = ['Authorization' => 'Bearer '.$token, 'Accept' => 'application/json'];
     }
 
     /**
@@ -54,6 +53,6 @@ abstract class TestCase extends BaseTestCase
 
         $token = $user->createToken($user->email)->accessToken;
 
-        return $headers = ['Authorization' => 'Bearer ' . $token];
+        return $headers = ['Authorization' => 'Bearer '.$token];
     }
 }

@@ -2,11 +2,11 @@
 
 namespace App\Models;
 
-use App\Http\Resources\Addresses\AddressCollection;
-use App\Http\Resources\Addresses\AddressResource;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use App\Http\Resources\Addresses\AddressResource;
+use App\Http\Resources\Addresses\AddressCollection;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Address extends Model
 {
@@ -15,42 +15,38 @@ class Address extends Model
     //protected $table = '';
     protected $dates = ['created_at', 'updated_at', 'deleted_at'];
     //protected $relationships = [''];
-    public $resource           = AddressResource::class;
+    public $resource = AddressResource::class;
     public $resourceCollection = AddressCollection::class;
-    protected $fillable = ['name','address','user_id','city_id'];
-
+    protected $fillable = ['name', 'address', 'user_id', 'city_id'];
 
     /*
-	|--------------------------------------------------------------------------
-	| Relations database
-	|--------------------------------------------------------------------------
-	|
-	*/
+    |--------------------------------------------------------------------------
+    | Relations database
+    |--------------------------------------------------------------------------
+    |
+    */
 
     /**
      * @return BelongsTo
      */
-    public function user(){
+    public function user()
+    {
         return $this->belongsTo(User::class);
     }
 
     /**
      * @return BelongsTo
      */
-    public function city(){
+    public function city()
+    {
         return $this->belongsTo(City::class);
     }
 
     /**
      * @return BelongsTo
      */
-    public function shopping(){
+    public function shopping()
+    {
         return $this->belongsTo(Shopping::class);
     }
-
-
-
-
-
-
 }

@@ -13,7 +13,6 @@ use Illuminate\Http\Request;
 |
 */
 
-
 Route::group(['prefix' => 'v1'], function () {
 
     //Addresses ===========================================================================================================.
@@ -43,6 +42,6 @@ Route::group(['prefix' => 'v1'], function () {
     //Users ===========================================================================================================.
     Route::post('users/check-email', 'Api\users\UserController@checkEmail'); //No Order
     Route::get('users/me', 'Api\users\UserController@me'); //No Order
-    Route::apiResource('users', 'Api\users\UserController')->except(['me','checkEmail']);
+    Route::apiResource('users', 'Api\users\UserController')->except(['me', 'checkEmail']);
     Route::apiResource('users.roles', 'Api\users\UserRoleController');
 });
