@@ -22,10 +22,11 @@ class UsersTest extends TestCase
     {
         $data = factory(User::class)->make()->toarray();
         $newdata = array_merge($data, ['password' => 'secret']);
-        $this->post($this->url, $newdata, $this->headers())
-             ->assertStatus(201)
-             ->assertJsonStructure(array_keys($data), $data);
-        $this->assertDatabaseHas($this->table, $data);
+        $response = $this->post($this->url, $newdata, $this->headers())
+            ->assertStatus(201)
+            ->assertJsonStructure(array_keys($data), $data);
+        $response->dump();
+        $this->assertDatabaseHas($this->table,$data);
     }
 
     /*

@@ -1,6 +1,6 @@
 <p align="center"><img width=12.5% src="https://www.facebook.com/2177680738921456/photos/2197105200312343/"></p>
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
 ![PHP](https://img.shields.io/packagist/php-v/laravel/laravel.svg)
 [![Build Status](https://travis-ci.org/anfederico/Clairvoyant.svg?branch=master)](https://travis-ci.org/anfederico/Clairvoyant)
 [![Maintainability](https://api.codeclimate.com/v1/badges/6c499259a6586d803ea9/maintainability)](https://codeclimate.com/github/feel-fit/feel-fit-back/maintainability)

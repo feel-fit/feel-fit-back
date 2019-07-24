@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers\Api\Departments;
 
+use App\Http\Controllers\ApiController;
 use App\Models\Department;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class DepartmentController extends Controller
+class DepartmentController extends ApiController
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +16,9 @@ class DepartmentController extends Controller
      */
     public function index()
     {
-        //
+        $data= Department::all();
+
+        return $this->showAll($data);
     }
 
     /**

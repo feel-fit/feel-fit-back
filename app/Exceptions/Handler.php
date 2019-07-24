@@ -41,7 +41,7 @@ class Handler extends ExceptionHandler
     /**
      * Report or log an exception.
      *
-     * @param Exception $exception
+     * @param  Exception  $exception
      * @return void
      * @throws Exception
      */
@@ -56,8 +56,8 @@ class Handler extends ExceptionHandler
     /**
      * Render an exception into an HTTP response.
      *
-     * @param Request $request
-     * @param Exception $exception
+     * @param  Request  $request
+     * @param  Exception  $exception
      * @return JsonResponse
      */
     public function render($request, Exception $exception)
@@ -69,37 +69,40 @@ class Handler extends ExceptionHandler
         if ($exception instanceof ModelNotFoundException) {
             $modelo = class_basename($exception->getModel());
 
-            return $this->errorResponse('There is no record from the '.$modelo.' model with the specified ID', 404);
+            $error = $this->errorResponse('There is no record from the '.$modelo.' model with the specified ID', 404);
         }
 
         if ($exception instanceof AuthenticationException) {
-            return $this->unauthenticated($request, $exception);
+            $error = $this->unauthenticated($request, $exception);
         }
 
         if ($exception instanceof NotFoundHttpException) {
-            return $this->errorResponse('We couldn\'t find the specified URL', 404);
+            $error = $this->errorResponse('We couldn\'t find the specified URL', 404);
         }
 
         if ($exception instanceof MethodNotAllowedHttpException) {
-            return $this->errorResponse('The method which is specified in the request, it isn\'t valid', 405);
+            $error = $this->errorResponse('The method which is specified in the request, it isn\'t valid', 405);
         }
 
         if ($exception instanceof HttpException) {
-            return $this->errorResponse($exception->getMessage(), $exception->getStatusCode());
+            $error = $this->errorResponse($exception->getMessage(), $exception->getStatusCode());
         }
 
         if (config('app.debug')) {
-            return parent::render($request, $exception);
+            $error = parent::render($request, $exception);
         }
 
+        if ($error) {
+            return $error;
+        }
         return $this->errorResponse('Unexpected Failure', 500);
     }
 
     /**
      * Convert an authentication exception into an unauthenticated response.
      *
-     * @param Request $request
-     * @param AuthenticationException $exception
+     * @param  Request  $request
+     * @param  AuthenticationException  $exception
      * @return JsonResponse
      */
     protected function unauthenticated($request, AuthenticationException $exception)
@@ -114,8 +117,8 @@ class Handler extends ExceptionHandler
     /**
      * Create a response object from the given validation exception.
      *
-     * @param ValidationException $e
-     * @param Request $request
+     * @param  ValidationException  $e
+     * @param  Request  $request
      *
      * @return Response
      */
@@ -124,7 +127,8 @@ class Handler extends ExceptionHandler
         $errors = $e->validator->errors()->getMessages();
 
         if ($this->isFrontend($request)) {
-            return $request->ajax() ? response()->json($errors, 422) : redirect()->back()->withInput($request->input())->withErrors($errors);
+            return $request->ajax() ? response()->json($errors,
+                422) : redirect()->back()->withInput($request->input())->withErrors($errors);
         }
 
         return $this->errorResponse($errors, 422);

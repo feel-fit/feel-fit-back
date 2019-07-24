@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers\Api\DetailShoppings;
 
+use App\Http\Controllers\ApiController;
 use Illuminate\Http\Request;
 use App\Models\DetailShopping;
 use App\Http\Controllers\Controller;
 
-class DetailShoppingController extends Controller
+class DetailShoppingController extends ApiController
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +16,9 @@ class DetailShoppingController extends Controller
      */
     public function index()
     {
-        //
+        $data= DetailShopping::all();
+
+        return $this->showAll($data);
     }
 
     /**

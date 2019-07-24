@@ -8,8 +8,8 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class DiscountTest extends TestCase
 {
-    protected $url = 'v1/addresses/';
-    protected $table = 'addresses';
+    protected $url = 'v1/discounts/';
+    protected $table = 'discounts';
 
     /**
      * A basic feature test example.

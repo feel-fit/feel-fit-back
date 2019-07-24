@@ -8,7 +8,7 @@ use Spatie\Permission\Models\Role;
 
 class RoleUserTest extends TestCase
 {
-    protected $url = 'api/v1/roles/';
+    protected $url = 'v1/roles/';
     protected $table = 'roles';
 
     /**

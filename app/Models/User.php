@@ -23,7 +23,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'identification', 'gender', 'phone', 'status',
+        'name', 'email','email_verified_at', 'password', 'identification', 'gender', 'phone', 'status',
     ];
 
     public $resource = UserResource::class;
@@ -48,14 +48,6 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    /**
-     * @param $value
-     * @return string
-     */
-    public function getNameAttribute($value)
-    {
-        return ucfirst($value);
-    }
 
     /**
      * @param $value

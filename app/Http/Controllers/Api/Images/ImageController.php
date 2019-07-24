@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers\Api\Images;
 
+use App\Http\Controllers\ApiController;
 use App\Models\Image;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class ImageController extends Controller
+class ImageController extends ApiController
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +16,9 @@ class ImageController extends Controller
      */
     public function index()
     {
-        //
+        $data= Image::all();
+
+        return $this->showAll($data);
     }
 
     /**

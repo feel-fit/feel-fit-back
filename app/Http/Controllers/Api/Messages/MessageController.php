@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers\Api\Messages;
 
+use App\Http\Controllers\ApiController;
 use App\Models\Message;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class MessageController extends Controller
+class MessageController extends ApiController
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +16,9 @@ class MessageController extends Controller
      */
     public function index()
     {
-        //
+        $data= Message::all();
+
+        return $this->showAll($data);
     }
 
     /**

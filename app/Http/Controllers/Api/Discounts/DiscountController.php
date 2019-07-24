@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers\Api\Discounts;
 
+use App\Http\Controllers\ApiController;
 use App\Models\Discount;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class DiscountController extends Controller
+class DiscountController extends ApiController
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +16,9 @@ class DiscountController extends Controller
      */
     public function index()
     {
-        //
+        $data= Discount::all();
+
+        return $this->showAll($data);
     }
 
     /**
