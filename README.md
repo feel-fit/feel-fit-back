@@ -3,6 +3,7 @@
 
 ![PHP](https://img.shields.io/packagist/php-v/laravel/laravel.svg)
 [![Build Status](https://travis-ci.org/anfederico/Clairvoyant.svg?branch=master)](https://travis-ci.org/anfederico/Clairvoyant)
+[![buddy pipeline](https://app.buddy.works/mauroziux/feel-fit-back/pipelines/pipeline/200958/badge.svg?token=52442a7dce4ffd2747fc753805f6f9761ede5a1d045264dfa7b1fb2740adfedc "buddy pipeline")](https://app.buddy.works/mauroziux/feel-fit-back/pipelines/pipeline/200958)
 [![StyleCI](https://github.styleci.io/repos/197462595/shield?branch=develop)](https://github.styleci.io/repos/197462595)
 [![Maintainability](https://api.codeclimate.com/v1/badges/6c499259a6586d803ea9/maintainability)](https://codeclimate.com/github/feel-fit/feel-fit-back/maintainability)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://opensource.org/licenses/MIT)

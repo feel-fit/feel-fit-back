@@ -16,5 +16,5 @@ class Slider extends Model
     //protected $relationships = [''];
     public $resource = SliderResource::class;
     public $resourceCollection = SliderCollection::class;
-    protected $fillable = ['name','url', 'position'];
+    protected $fillable = ['name', 'url', 'position'];
 }
