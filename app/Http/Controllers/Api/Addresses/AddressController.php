@@ -12,11 +12,11 @@ class AddressController extends ApiController
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
     public function index()
     {
-        $data= Address::all();
+        $data = Address::all();
 
         return $this->showAll($data);
     }

@@ -16,7 +16,7 @@ class ShoppingController extends ApiController
      */
     public function index()
     {
-        $data= Shopping::all();
+        $data = Shopping::all();
 
         return $this->showAll($data);
     }

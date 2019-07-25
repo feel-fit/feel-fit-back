@@ -11,7 +11,7 @@ use App\Http\Controllers\ApiController;
 class UserRoleController extends ApiController
 {
     /**
-     * @param User $user
+     * @param  User  $user
      * @return JsonResponse
      */
     public function index(User $user)
@@ -22,8 +22,8 @@ class UserRoleController extends ApiController
     }
 
     /**
-     * @param Request $request
-     * @param User $user
+     * @param  Request  $request
+     * @param  User  $user
      * @return JsonResponse
      */
     public function update(Request $request, User $user, Role $role)
@@ -34,8 +34,8 @@ class UserRoleController extends ApiController
     }
 
     /**
-     * @param User $user
-     * @param Role $role
+     * @param  User  $user
+     * @param  Role  $role
      * @return JsonResponse
      */
     public function destroy(User $user, Role $role)

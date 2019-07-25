@@ -16,7 +16,7 @@ class DiscountController extends ApiController
      */
     public function index()
     {
-        $data= Discount::all();
+        $data = Discount::all();
 
         return $this->showAll($data);
     }

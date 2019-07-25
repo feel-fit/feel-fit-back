@@ -16,7 +16,7 @@ class PaymentController extends ApiController
      */
     public function index()
     {
-        $data= Payment::all();
+        $data = Payment::all();
 
         return $this->showAll($data);
     }

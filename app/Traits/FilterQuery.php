@@ -15,9 +15,10 @@ use Illuminate\Database\Eloquent\Collection;
  */
 trait FilterQuery
 {
-    private $operators = ['>' => '>=', //mayor igual que
-                          '<' => '<=', //menor igual que
-                          '!' => '!=', //no igual a
+    private $operators = [
+        '>' => '>=', //mayor igual que
+        '<' => '<=', //menor igual que
+        '!' => '!=', //no igual a
     ];
 
     private $excepts = ['sort_by', 'order_by', 'search', 'limit', 'page', 'per_page', 'relationships', 'pagination'];
@@ -31,7 +32,7 @@ trait FilterQuery
     private $with = [];
 
     /**
-     * @param Collection $collection
+     * @param  Collection  $collection
      *
      * @return Collection|static
      */
@@ -47,7 +48,7 @@ trait FilterQuery
     /**
      * @param                                          $attribute
      * @param                                          $value
-     * @param Collection $collection
+     * @param  Collection  $collection
      *
      * @return Collection
      */
@@ -62,9 +63,11 @@ trait FilterQuery
 
         // Cargamos la relacion si no existe y se realiza el filtro
         if ($this->include) {
-            $collection->load([$this->include => function ($query) {
-                $this->setQuery($query);
-            }])->values();
+            $collection->load([
+                $this->include => function ($query) {
+                    $this->setQuery($query);
+                }
+            ])->values();
 
             return $collection->filter(function ($item) {
                 if (isset($item[$this->include])) {
@@ -140,7 +143,7 @@ trait FilterQuery
     /**
      * ordena los datos por columna ya sea ascendente o descendente.
      *
-     * @param Collection $collection
+     * @param  Collection  $collection
      *
      * @return Collection
      */
@@ -164,7 +167,7 @@ trait FilterQuery
     /**
      *search data in algolia.
      *
-     * @param Collection $collection
+     * @param  Collection  $collection
      *
      * @return Collection
      */

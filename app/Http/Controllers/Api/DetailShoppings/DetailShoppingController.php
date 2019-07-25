@@ -16,7 +16,7 @@ class DetailShoppingController extends ApiController
      */
     public function index()
     {
-        $data= DetailShopping::all();
+        $data = DetailShopping::all();
 
         return $this->showAll($data);
     }

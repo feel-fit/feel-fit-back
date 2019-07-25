@@ -16,7 +16,7 @@ class ShippingController extends ApiController
      */
     public function index()
     {
-        $data= Shipping::all();
+        $data = Shipping::all();
 
         return $this->showAll($data);
     }

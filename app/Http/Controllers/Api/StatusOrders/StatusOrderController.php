@@ -16,7 +16,7 @@ class StatusOrderController extends ApiController
      */
     public function index()
     {
-        $data= StatusOrder::all();
+        $data = StatusOrder::all();
 
         return $this->showAll($data);
     }

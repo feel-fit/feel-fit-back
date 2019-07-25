@@ -16,7 +16,7 @@ class ImageController extends ApiController
      */
     public function index()
     {
-        $data= Image::all();
+        $data = Image::all();
 
         return $this->showAll($data);
     }

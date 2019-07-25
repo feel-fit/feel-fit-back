@@ -16,7 +16,7 @@ class WishlistController extends ApiController
      */
     public function index()
     {
-        $data= Wishlist::all();
+        $data = Wishlist::all();
 
         return $this->showAll($data);
     }

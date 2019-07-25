@@ -16,7 +16,7 @@ class DepartmentController extends ApiController
      */
     public function index()
     {
-        $data= Department::all();
+        $data = Department::all();
 
         return $this->showAll($data);
     }

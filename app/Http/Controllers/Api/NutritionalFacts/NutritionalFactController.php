@@ -16,7 +16,7 @@ class NutritionalFactController extends ApiController
      */
     public function index()
     {
-        $data= NutritionalFact::all();
+        $data = NutritionalFact::all();
 
         return $this->showAll($data);
     }

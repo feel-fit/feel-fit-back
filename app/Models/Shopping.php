@@ -19,7 +19,9 @@ class Shopping extends Model
     //protected $relationships = [''];
     public $resource = ShoppingResource::class;
     public $resourceCollection = ShoppingCollection::class;
-    protected $fillable = ['status_order_id', 'user_id', 'discount_id', 'address_id', 'shipping_id', 'payment_id', 'total'];
+    protected $fillable = [
+        'status_order_id', 'user_id', 'discount_id', 'address_id', 'shipping_id', 'payment_id', 'total'
+    ];
     /*
     |--------------------------------------------------------------------------
     | Relations database

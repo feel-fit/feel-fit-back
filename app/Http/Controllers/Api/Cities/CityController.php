@@ -16,7 +16,7 @@ class CityController extends ApiController
      */
     public function index()
     {
-        $data= City::all();
+        $data = City::all();
 
         return $this->showAll($data);
     }

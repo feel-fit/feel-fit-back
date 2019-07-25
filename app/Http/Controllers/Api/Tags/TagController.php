@@ -16,7 +16,7 @@ class TagController extends ApiController
      */
     public function index()
     {
-        $data= Tag::all();
+        $data = Tag::all();
 
         return $this->showAll($data);
     }

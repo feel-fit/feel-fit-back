@@ -16,7 +16,7 @@ class MessageController extends ApiController
      */
     public function index()
     {
-        $data= Message::all();
+        $data = Message::all();
 
         return $this->showAll($data);
     }

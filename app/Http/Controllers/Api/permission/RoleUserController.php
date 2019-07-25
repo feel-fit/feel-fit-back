@@ -26,9 +26,9 @@ class RoleUserController extends ApiController
     /**
      * Update the specified resource in storage.
      *
-     * @param Request $request
-     * @param Role $role
-     * @param User $user
+     * @param  Request  $request
+     * @param  Role  $role
+     * @param  User  $user
      * @return JsonResponse
      */
     public function update(Request $request, Role $role, User $user)
@@ -38,23 +38,23 @@ class RoleUserController extends ApiController
         }
         $user->syncRoles($role);
 
-        return $this->successResponse(['data'=>$user->refresh(), 'message'=>'Role Updated']);
+        return $this->successResponse(['data' => $user->refresh(), 'message' => 'Role Updated']);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param Role $role
-     * @param User $user
+     * @param  Role  $role
+     * @param  User  $user
      * @return JsonResponse
      */
     public function destroy(Role $role, User $user)
     {
-        if (! $user->hasRole($role)) {
+        if (!$user->hasRole($role)) {
             return $this->errorResponse('Role don`t have this User', 422);
         }
         $user->removeRole($role);
 
-        return $this->successResponse(['data'=>$user->refresh(), 'message'=>'User Deleted']);
+        return $this->successResponse(['data' => $user->refresh(), 'message' => 'User Deleted']);
     }
 }

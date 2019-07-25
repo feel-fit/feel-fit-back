@@ -23,7 +23,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email','email_verified_at', 'password', 'identification', 'gender', 'phone', 'status',
+        'name', 'email', 'email_verified_at', 'password', 'identification', 'gender', 'phone', 'status',
     ];
 
     public $resource = UserResource::class;
@@ -60,11 +60,11 @@ class User extends Authenticatable
     /**
      * Si el usuario no diligencia la contraseña se le asiganara una automaticamente.
      *
-     * @param Request $request
+     * @param  Request  $request
      */
     public static function fillPassword($request)
     {
-        if (! $request->password) {
+        if (!$request->password) {
             $request->merge(['password' => bcrypt(str_random(10))]);
         } else {
             $request->merge(['password' => bcrypt($request->password)]);

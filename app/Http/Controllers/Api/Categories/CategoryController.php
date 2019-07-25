@@ -16,7 +16,7 @@ class CategoryController extends ApiController
      */
     public function index()
     {
-        $data= Category::all();
+        $data = Category::all();
 
         return $this->showAll($data);
     }

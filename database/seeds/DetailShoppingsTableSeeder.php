@@ -11,6 +11,6 @@ class DetailShoppingsTableSeeder extends Seeder
      */
     public function run()
     {
-        //
+        factory(\App\Models\DetailShopping::class, 10)->create();
     }
 }

@@ -16,7 +16,7 @@ class SliderController extends ApiController
      */
     public function index()
     {
-        $data= Slider::all();
+        $data = Slider::all();
 
         return $this->showAll($data);
     }
