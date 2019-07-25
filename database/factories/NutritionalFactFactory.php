@@ -6,7 +6,14 @@ use Faker\Generator as Faker;
 use App\Models\NutritionalFact;
 
 $factory->define(NutritionalFact::class, function (Faker $faker) {
+
     return [
-        //
+        'name' => $faker->word,
+        'quantity' => $faker->numberBetween(10, 100),
+        'percentage' => $faker->numberBetween(10, 100).'%',
+        'product_id' => \App\Models\Product::all()->random()->first()->id,
+        'parent_id' => $faker->optional()->numberBetween(1, 10),
+        'position_fact' => $faker->randomElement(['superior', 'medio', 'inferior'])
+
     ];
 });

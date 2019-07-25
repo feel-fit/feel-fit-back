@@ -25,9 +25,9 @@ class PermissionUserController extends ApiController
     /**
      * Update the specified resource in storage.
      *
-     * @param Request $request
-     * @param Permission $permission
-     * @param User $user
+     * @param  Request  $request
+     * @param  Permission  $permission
+     * @param  User  $user
      * @return JsonResponse
      */
     public function update(Request $request, Permission $permission, User $user)
@@ -44,13 +44,13 @@ class PermissionUserController extends ApiController
     /**
      * Remove the specified resource from storage.
      *
-     * @param Permission $permission
-     * @param User $user
+     * @param  Permission  $permission
+     * @param  User  $user
      * @return JsonResponse
      */
     public function destroy(Permission $permission, User $user)
     {
-        if (! $user->hasPermissionTo($permission)) {
+        if (!$user->hasPermissionTo($permission)) {
             return $this->errorResponse('permission don`t have this User', 422);
         }
 

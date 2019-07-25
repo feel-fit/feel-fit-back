@@ -11,6 +11,6 @@ class StatusOrdersTableSeeder extends Seeder
      */
     public function run()
     {
-        //
+        factory(\App\Models\StatusOrder::class, 10)->create();
     }
 }

@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers\Api\Shippings;
 
+use App\Http\Controllers\ApiController;
 use App\Models\Shipping;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class ShippingController extends Controller
+class ShippingController extends ApiController
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +16,9 @@ class ShippingController extends Controller
      */
     public function index()
     {
-        //
+        $data = Shipping::all();
+
+        return $this->showAll($data);
     }
 
     /**

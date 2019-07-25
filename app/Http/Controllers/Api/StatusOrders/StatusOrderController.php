@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers\Api\StatusOrders;
 
+use App\Http\Controllers\ApiController;
 use App\Models\StatusOrder;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class StatusOrderController extends Controller
+class StatusOrderController extends ApiController
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +16,9 @@ class StatusOrderController extends Controller
      */
     public function index()
     {
-        //
+        $data = StatusOrder::all();
+
+        return $this->showAll($data);
     }
 
     /**

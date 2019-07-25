@@ -30,17 +30,18 @@ class UserController extends ApiController
     }
 
     /**
-     * @param Request $request
+     * @param  Request  $request
      *
      * @return JsonResponse
      * @throws ValidationException
      */
     public function store(Request $request)
     {
-        $rules = ['name'     => 'required',
-                  'email'    => 'required|unique:users',
-                  'password' => 'required',
-                  'cedula'   => 'sometimes|required|unique:users', ];
+        $rules = [
+            'name' => 'required',
+            'email' => 'required|unique:users',
+            'password' => 'required',
+        ];
         $this->validate($request, $rules);
         $user = User::create($request->all());
 
@@ -48,7 +49,7 @@ class UserController extends ApiController
     }
 
     /**
-     * @param User $user
+     * @param  User  $user
      *
      * @return JsonResponse
      */
@@ -66,7 +67,7 @@ class UserController extends ApiController
     }
 
     /**
-     * @param Request $request
+     * @param  Request  $request
      *
      * @return JsonResponse
      * @throws ValidationException
@@ -80,8 +81,8 @@ class UserController extends ApiController
     }
 
     /**
-     * @param Request $request
-     * @param User $user
+     * @param  Request  $request
+     * @param  User  $user
      *
      * @return JsonResponse
      */
@@ -97,7 +98,7 @@ class UserController extends ApiController
     }
 
     /**
-     * @param User $user
+     * @param  User  $user
      *
      * @return JsonResponse
      * @throws Exception

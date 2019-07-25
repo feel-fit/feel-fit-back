@@ -27,8 +27,10 @@ class PassportController extends ApiController
      */
     public function login(Request $request)
     {
-        $rules = ['email'    => 'required|email',
-                  'password' => 'required|string|min:6', ];
+        $rules = [
+            'email' => 'required|email',
+            'password' => 'required|string|min:6',
+        ];
 
         $this->validate($request, $rules);
 
@@ -41,9 +43,11 @@ class PassportController extends ApiController
 
     public function register(Request $request)
     {
-        $rules = ['name'     => 'required',
-                  'email'    => 'required|unique:users',
-                  'password' => 'required', ];
+        $rules = [
+            'name' => 'required',
+            'email' => 'required|unique:users',
+            'password' => 'required',
+        ];
         $this->validate($request, $rules);
 
         $user = User::create($request->all());
@@ -52,7 +56,7 @@ class PassportController extends ApiController
     }
 
     /**
-     * @param Request $request
+     * @param  Request  $request
      * @return JsonResponse
      */
     public function facebook(Request $request)
@@ -78,16 +82,18 @@ class PassportController extends ApiController
     }
 
     /**
-     * @param Request $request
+     * @param  Request  $request
      * @return Token
      */
     public function ObtenerToken(Request $request)
     {
-        $request->request->add(['client_id'     => env('PASSWORD_CLIENT_ID'),
-                                'client_secret' => env('PASSWORD_CLIENT_SECRET'),
-                                'grant_type'    => 'password',
-                                'username'      => $request->email,
-                                'password'      => $request->password, ]);
+        $request->request->add([
+            'client_id' => env('PASSWORD_CLIENT_ID'),
+            'client_secret' => env('PASSWORD_CLIENT_SECRET'),
+            'grant_type' => 'password',
+            'username' => $request->email,
+            'password' => $request->password,
+        ]);
 
         $response = Route::dispatch($request->create('/oauth/token', 'POST', $request->all()));
 
@@ -101,6 +107,6 @@ class PassportController extends ApiController
      */
     public function checkToken()
     {
-        return $this->successResponse(['token'=>'Ok']);
+        return $this->successResponse(['token' => 'Ok']);
     }
 }

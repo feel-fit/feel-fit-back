@@ -11,6 +11,6 @@ class ShippingsTableSeeder extends Seeder
      */
     public function run()
     {
-        //
+        factory(\App\Models\Shipping::class, 10)->create();
     }
 }

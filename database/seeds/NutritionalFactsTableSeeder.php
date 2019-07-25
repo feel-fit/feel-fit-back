@@ -11,6 +11,6 @@ class NutritionalFactsTableSeeder extends Seeder
      */
     public function run()
     {
-        //
+        factory(\App\Models\NutritionalFact::class, 10)->create();
     }
 }

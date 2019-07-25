@@ -13,9 +13,11 @@ class UserRolesSeeder extends Seeder
     public function run()
     {
         //
-        $user_super_admin = User::create(['name'     => 'Mauricio Suarez vega',
-                                          'email'    => 'mauroziux@gmail.com',
-                                          'password' => 'caremico', ]);
+        $user_super_admin = User::create([
+            'name' => 'Mauricio Suarez vega',
+            'email' => 'mauroziux@gmail.com',
+            'password' => 'caremico',
+        ]);
 
         $user_super_admin->syncRoles('superadmin');
 
@@ -23,8 +25,5 @@ class UserRolesSeeder extends Seeder
 
         $user_admin->syncRoles('admin');
 
-        $user_client = factory(User::class)->create();
-
-        $user_client->syncRoles('client');
     }
 }

@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers\Api\Wishlists;
 
+use App\Http\Controllers\ApiController;
 use App\Models\Wishlist;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class WishlistController extends Controller
+class WishlistController extends ApiController
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +16,9 @@ class WishlistController extends Controller
      */
     public function index()
     {
-        //
+        $data = Wishlist::all();
+
+        return $this->showAll($data);
     }
 
     /**

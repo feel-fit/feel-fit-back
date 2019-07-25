@@ -32,7 +32,7 @@ class RoleController extends ApiController
     /**
      * Store a newly created resource in storage.
      *
-     * @param Request $request
+     * @param  Request  $request
      *
      * @return JsonResponse
      * @throws ValidationException
@@ -51,7 +51,7 @@ class RoleController extends ApiController
     /**
      * Display the specified resource.
      *
-     * @param Role $role
+     * @param  Role  $role
      *
      * @return JsonResponse
      */
@@ -63,8 +63,8 @@ class RoleController extends ApiController
     /**
      * Update the specified resource in storage.
      *
-     * @param Request $request
-     * @param Role $role
+     * @param  Request  $request
+     * @param  Role  $role
      *
      * @return JsonResponse
      */
@@ -83,7 +83,7 @@ class RoleController extends ApiController
     /**
      * Remove the specified resource from storage.
      *
-     * @param Role $role
+     * @param  Role  $role
      *
      * @return JsonResponse
      * @throws Exception

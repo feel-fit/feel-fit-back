@@ -15,7 +15,7 @@ class City extends Model
 
     //protected $table = '';
     protected $dates = ['created_at', 'updated_at', 'deleted_at'];
-    //protected $relationships = [''];
+    //protected $relationships = ['department'];
     public $resource = CityResource::class;
     public $resourceCollection = CityCollection::class;
     protected $fillable = ['name', 'department_id'];

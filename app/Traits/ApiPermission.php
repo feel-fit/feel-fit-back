@@ -54,8 +54,8 @@ trait ApiPermission
     }
 
     /**
-     * @param Collection $permissions
-     * @param string     $permission
+     * @param  Collection  $permissions
+     * @param  string  $permission
      *
      * @return bool
      */

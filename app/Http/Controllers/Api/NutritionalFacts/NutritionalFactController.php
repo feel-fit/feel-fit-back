@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers\Api\NutritionalFacts;
 
+use App\Http\Controllers\ApiController;
 use Illuminate\Http\Request;
 use App\Models\NutritionalFact;
 use App\Http\Controllers\Controller;
 
-class NutritionalFactController extends Controller
+class NutritionalFactController extends ApiController
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +16,9 @@ class NutritionalFactController extends Controller
      */
     public function index()
     {
-        //
+        $data = NutritionalFact::all();
+
+        return $this->showAll($data);
     }
 
     /**

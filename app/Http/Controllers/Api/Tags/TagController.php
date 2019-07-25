@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers\Api\Tags;
 
+use App\Http\Controllers\ApiController;
 use App\Models\Tag;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class TagController extends Controller
+class TagController extends ApiController
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +16,9 @@ class TagController extends Controller
      */
     public function index()
     {
-        //
+        $data = Tag::all();
+
+        return $this->showAll($data);
     }
 
     /**

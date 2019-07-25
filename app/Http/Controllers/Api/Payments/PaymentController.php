@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers\Api\Payments;
 
+use App\Http\Controllers\ApiController;
 use App\Models\Payment;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class PaymentController extends Controller
+class PaymentController extends ApiController
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +16,9 @@ class PaymentController extends Controller
      */
     public function index()
     {
-        //
+        $data = Payment::all();
+
+        return $this->showAll($data);
     }
 
     /**

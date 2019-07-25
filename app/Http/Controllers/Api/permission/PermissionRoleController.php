@@ -26,9 +26,9 @@ class PermissionRoleController extends ApiController
     /**
      * Update the specified resource in storage.
      *
-     * @param Request $request
-     * @param Permission $permission
-     * @param Role $role
+     * @param  Request  $request
+     * @param  Permission  $permission
+     * @param  Role  $role
      * @return JsonResponse
      */
     public function update(Request $request, Permission $permission, Role $role)
@@ -45,13 +45,13 @@ class PermissionRoleController extends ApiController
     /**
      * Remove the specified resource from storage.
      *
-     * @param Permission $permission
-     * @param Role $role
+     * @param  Permission  $permission
+     * @param  Role  $role
      * @return JsonResponse
      */
     public function destroy(Permission $permission, Role $role)
     {
-        if (! $role->hasPermissionTo($permission)) {
+        if (!$role->hasPermissionTo($permission)) {
             return $this->errorResponse('permission don`t have this Role', 422);
         }
 

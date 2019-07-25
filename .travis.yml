@@ -1,0 +1,30 @@
+os:
+  - linux
+
+env:
+  global:
+    - CC_TEST_REPORTER_ID=5195443164c318195ce5b0f1e1712b6e7721187bc81e27117a45788ce3058d47
+
+language: php
+
+php:
+  - '7.1'
+
+before_script:
+  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+  - chmod +x ./cc-test-reporter
+  - ./cc-test-reporter before-build
+  - cp .env.testing .env
+  - composer self-update
+  - composer install --no-interaction
+  - php artisan key:generate
+  - php artisan passport:install
+  - php artisan migrate
+  - php artisan DB:seed
+
+script:
+  - vendor/bin/phpunit --configuration phpunit.xml --coverage-text
+  - phpcs --ignore=app/Http/Controllers/Auth,app/Http/Controllers/Controller.php app/Http/Controllers
+
+after_script:
+  - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT

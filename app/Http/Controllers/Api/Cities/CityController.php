@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers\Api\Cities;
 
+use App\Http\Controllers\ApiController;
 use App\Models\City;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class CityController extends Controller
+class CityController extends ApiController
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +16,9 @@ class CityController extends Controller
      */
     public function index()
     {
-        //
+        $data = City::all();
+
+        return $this->showAll($data);
     }
 
     /**

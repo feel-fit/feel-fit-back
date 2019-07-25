@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers\Api\Sliders;
 
+use App\Http\Controllers\ApiController;
 use App\Models\Slider;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class SliderController extends Controller
+class SliderController extends ApiController
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +16,9 @@ class SliderController extends Controller
      */
     public function index()
     {
-        //
+        $data = Slider::all();
+
+        return $this->showAll($data);
     }
 
     /**

@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers\Api\Shoppings;
 
+use App\Http\Controllers\ApiController;
 use App\Models\Shopping;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class ShoppingController extends Controller
+class ShoppingController extends ApiController
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +16,9 @@ class ShoppingController extends Controller
      */
     public function index()
     {
-        //
+        $data = Shopping::all();
+
+        return $this->showAll($data);
     }
 
     /**

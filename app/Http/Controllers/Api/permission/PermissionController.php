@@ -32,7 +32,7 @@ class PermissionController extends ApiController
     /**
      * Store a newly created resource in storage.
      *
-     * @param Request $request
+     * @param  Request  $request
      *
      * @return JsonResponse
      * @throws ValidationException
@@ -51,7 +51,7 @@ class PermissionController extends ApiController
     /**
      * Display the specified resource.
      *
-     * @param Permission $permission
+     * @param  Permission  $permission
      * @return JsonResponse
      */
     public function show(Permission $permission)
@@ -62,8 +62,8 @@ class PermissionController extends ApiController
     /**
      * Update the specified resource in storage.
      *
-     * @param Request $request
-     * @param Permission $permission
+     * @param  Request  $request
+     * @param  Permission  $permission
      * @return JsonResponse
      */
     public function update(Request $request, Permission $permission)
@@ -81,7 +81,7 @@ class PermissionController extends ApiController
     /**
      * Remove the specified resource from storage.
      *
-     * @param Permission $permission
+     * @param  Permission  $permission
      * @return JsonResponse
      * @throws Exception
      */

@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers\Api\Categories;
 
+use App\Http\Controllers\ApiController;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class CategoryController extends Controller
+class CategoryController extends ApiController
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +16,9 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        //
+        $data = Category::all();
+
+        return $this->showAll($data);
     }
 
     /**

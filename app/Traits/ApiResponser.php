@@ -23,8 +23,8 @@ trait ApiResponser
     use FilterQuery;
 
     /**
-     * @param Collection $collection
-     * @param int $code
+     * @param  Collection  $collection
+     * @param  int  $code
      * @return JsonResponse
      */
     protected function showAll(Collection $collection, $code = 200)
@@ -49,7 +49,7 @@ trait ApiResponser
 
     /**
      * @param     $data
-     * @param int $code
+     * @param  int  $code
      *
      * @return JsonResponse
      */
@@ -73,7 +73,7 @@ trait ApiResponser
     }
 
     /**
-     * @param Collection $collection
+     * @param  Collection  $collection
      *
      * @return Collection|static
      */
@@ -85,15 +85,15 @@ trait ApiResponser
     }
 
     /**
-     * @param Collection $collection
+     * @param  Collection  $collection
      * @return Collection|static
      */
     public function loadRelations(Collection $collection)
     {
-        if (! $collection->isEmpty()) {
+        if (!$collection->isEmpty()) {
             $relations = $collection->first()->relationships ?: null;
 
-            if ($relations && ! request()->relationships) {
+            if ($relations && !request()->relationships) {
                 return $collection->load($relations)->values();
             }
         }
@@ -102,7 +102,7 @@ trait ApiResponser
     }
 
     /**
-     * @param Collection $collection
+     * @param  Collection  $collection
      *
      * @return Collection|static
      */
@@ -114,7 +114,7 @@ trait ApiResponser
     }
 
     /**
-     * @param Collection $collection
+     * @param  Collection  $collection
      * @return ApiResponser|Collection|LengthAwarePaginator
      */
     protected function paginate(Collection $collection)
@@ -138,11 +138,12 @@ trait ApiResponser
 
         $results = $collection->slice(($page - 1) * $perPage, $perPage)->values();
 
-        if (! request()->has('relationships') or 'false' != request()->relationships) {
+        if (!request()->has('relationships') or 'false' != request()->relationships) {
             $results = $this->loadRelations($results);
         }
 
-        $paginated = new LengthAwarePaginator($results, $collection->count(), $perPage, $page, ['path' => LengthAwarePaginator::resolveCurrentPath()]);
+        $paginated = new LengthAwarePaginator($results, $collection->count(), $perPage, $page,
+            ['path' => LengthAwarePaginator::resolveCurrentPath()]);
         $paginated->appends(request()->all());
 
         return $paginated;
@@ -154,7 +155,7 @@ trait ApiResponser
      */
     public function resource_all($collection)
     {
-        if (! $collection->isEmpty()) {
+        if (!$collection->isEmpty()) {
             $resource = $collection->first()->resourceCollection;
 
             if ($resource) {
@@ -218,7 +219,7 @@ trait ApiResponser
 
     /**
      * @param     $message
-     * @param int $code
+     * @param  int  $code
      *
      * @return JsonResponse
      */
