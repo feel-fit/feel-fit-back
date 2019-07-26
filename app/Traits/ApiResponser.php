@@ -227,4 +227,12 @@ trait ApiResponser
     {
         return $this->successResponse(['data' => $message], $code);
     }
+
+    /**
+     * @return JsonResponse
+     */
+    protected function errorNoClean()
+    {
+        return $this->errorResponse('At least one different value must be specified to update', 422);
+    }
 }

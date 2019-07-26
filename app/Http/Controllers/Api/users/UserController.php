@@ -14,7 +14,7 @@ class UserController extends ApiController
 {
     public function __construct()
     {
-        $this->middleware('auth:api')->only(['me', 'store', 'delete']);
+        /* $this->middleware('auth:api')->only(['me', 'store', 'delete']);*/
         $this->middleware('client.credentials');
         //parent::__construct();
     }
@@ -41,11 +41,13 @@ class UserController extends ApiController
             'name' => 'required',
             'email' => 'required|unique:users',
             'password' => 'required',
+            'phone' => 'numeric',
+            'status' => 'boolean'
         ];
         $this->validate($request, $rules);
         $user = User::create($request->all());
 
-        return $this->successResponse(['data' => $user->refresh(), 'message' => 'User Created'], 201);
+        return $this->showOne($user, 201);
     }
 
     /**
@@ -90,11 +92,11 @@ class UserController extends ApiController
     {
         $user->fill($request->all());
         if ($user->isClean()) {
-            return $this->errorResponse('At least one different value must be specified to update', 422);
+            return $this->errorNoClean();
         }
         $user->save();
 
-        return $this->successResponse(['data' => $user->refresh(), 'message' => 'User Updated']);
+        return $this->showOne($user);
     }
 
     /**
@@ -107,6 +109,6 @@ class UserController extends ApiController
     {
         $user->delete();
 
-        return $this->successResponse(['data' => $user->refresh(), 'message' => 'User Deleted']);
+        return $this->showOne($user);
     }
 }
