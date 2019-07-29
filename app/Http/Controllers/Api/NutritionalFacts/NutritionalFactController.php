@@ -3,16 +3,20 @@
 namespace App\Http\Controllers\Api\NutritionalFacts;
 
 use App\Http\Controllers\ApiController;
+use Exception;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use App\Models\NutritionalFact;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Response;
+use Illuminate\Validation\ValidationException;
 
 class NutritionalFactController extends ApiController
 {
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return JsonResponse
      */
     public function index()
     {
@@ -24,45 +28,67 @@ class NutritionalFactController extends ApiController
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param  Request  $request
+     * @return JsonResponse
+     * @throws ValidationException
      */
     public function store(Request $request)
     {
-        //
+        $rules = [
+            'name' => 'required',
+            'quantity' => 'numeric|nullable',
+            'percentage' => 'numeric|nullable',
+            'product_id' => 'required|numeric',
+            'parent_id' => 'numeric|nullable',
+            'position_fact' => 'string|required',
+        ];
+
+        $this->validate($request, $rules);
+        $data = NutritionalFact::create($request->all());
+
+        return $this->showOne($data, 201);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\NutritionalFact  $nutritionalFact
-     * @return \Illuminate\Http\Response
+     * @param  NutritionalFact  $nutritionalFact
+     * @return JsonResponse
      */
     public function show(NutritionalFact $nutritionalFact)
     {
-        //
+        return $this->showOne($nutritionalFact);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\NutritionalFact  $nutritionalFact
-     * @return \Illuminate\Http\Response
+     * @param  Request  $request
+     * @param  NutritionalFact  $nutritionalFact
+     * @return JsonResponse
      */
     public function update(Request $request, NutritionalFact $nutritionalFact)
     {
-        //
+        $nutritionalFact->fill($request->all());
+        if ($nutritionalFact->isClean()) {
+            return $this->errorNoClean();
+        }
+        $nutritionalFact->save();
+
+        return $this->showOne($nutritionalFact);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\NutritionalFact  $nutritionalFact
-     * @return \Illuminate\Http\Response
+     * @param  NutritionalFact  $nutritionalFact
+     * @return JsonResponse
+     * @throws Exception
      */
     public function destroy(NutritionalFact $nutritionalFact)
     {
-        //
+        $nutritionalFact->delete();
+
+        return $this->showOne($nutritionalFact);
     }
 }

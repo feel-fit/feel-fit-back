@@ -3,9 +3,12 @@
 namespace App\Http\Controllers\Api\DetailShoppings;
 
 use App\Http\Controllers\ApiController;
+use Exception;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use App\Models\DetailShopping;
 use App\Http\Controllers\Controller;
+use Illuminate\Validation\ValidationException;
 
 class DetailShoppingController extends ApiController
 {
@@ -24,45 +27,64 @@ class DetailShoppingController extends ApiController
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param  Request  $request
+     * @return JsonResponse
+     * @throws ValidationException
      */
     public function store(Request $request)
     {
-        //
+        $rules = [
+            'shopping_id' => 'required|numeric',
+            'product_id' => 'required|numeric',
+            'value' => 'required|numeric',
+            'quantity' => 'required|numeric',
+        ];
+        $this->validate($request, $rules);
+        $data = DetailShopping::create($request->all());
+
+        return $this->showOne($data, 201);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\DetailShopping  $detailShopping
-     * @return \Illuminate\Http\Response
+     * @param  DetailShopping  $detailShopping
+     * @return JsonResponse
      */
     public function show(DetailShopping $detailShopping)
     {
-        //
+        return $this->showOne($detailShopping);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\DetailShopping  $detailShopping
-     * @return \Illuminate\Http\Response
+     * @param  Request  $request
+     * @param  DetailShopping  $detailShopping
+     * @return JsonResponse
      */
     public function update(Request $request, DetailShopping $detailShopping)
     {
-        //
+        $detailShopping->fill($request->all());
+        if ($detailShopping->isClean()) {
+            return $this->errorNoClean();
+        }
+        $detailShopping->save();
+
+        return $this->showOne($detailShopping);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\DetailShopping  $detailShopping
-     * @return \Illuminate\Http\Response
+     * @param  DetailShopping  $detailShopping
+     * @return JsonResponse
+     * @throws Exception
      */
     public function destroy(DetailShopping $detailShopping)
     {
-        //
+        $detailShopping->delete();
+
+        return $this->showOne($detailShopping);
     }
 }
