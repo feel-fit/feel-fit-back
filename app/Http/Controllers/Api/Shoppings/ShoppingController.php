@@ -4,15 +4,19 @@ namespace App\Http\Controllers\Api\Shoppings;
 
 use App\Http\Controllers\ApiController;
 use App\Models\Shopping;
+use Exception;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Response;
+use Illuminate\Validation\ValidationException;
 
 class ShoppingController extends ApiController
 {
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return JsonResponse
      */
     public function index()
     {
@@ -24,45 +28,68 @@ class ShoppingController extends ApiController
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param  Request  $request
+     * @return JsonResponse
+     * @throws ValidationException
      */
     public function store(Request $request)
     {
-        //
+        $rules = [
+            'status_order_id' => 'numeric|nullable',
+            'user_id' => 'numeric|required',
+            'discount_id' => 'numeric|nullable',
+            'address_id' => 'nullable|numeric',
+            'shipping_id' => 'numeric|nullable',
+            'payment_id' => 'numeric|nullable',
+            'total' => 'numeric|required',
+        ];
+
+        $this->validate($request, $rules);
+        $data = Shopping::create($request->all());
+
+        return $this->showOne($data, 201);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Shopping  $shopping
-     * @return \Illuminate\Http\Response
+     * @param  Shopping  $shopping
+     * @return JsonResponse
      */
     public function show(Shopping $shopping)
     {
-        //
+        return $this->showOne($shopping);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Shopping  $shopping
-     * @return \Illuminate\Http\Response
+     * @param  Request  $request
+     * @param  Shopping  $shopping
+     * @return JsonResponse
      */
     public function update(Request $request, Shopping $shopping)
     {
-        //
+        $shopping->fill($request->all());
+        if ($shopping->isClean()) {
+            return $this->errorNoClean();
+        }
+        $shopping->save();
+
+        return $this->showOne($shopping);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Shopping  $shopping
-     * @return \Illuminate\Http\Response
+     * @param  Shopping  $shopping
+     * @return JsonResponse
+     * @throws Exception
      */
     public function destroy(Shopping $shopping)
     {
-        //
+        $shopping->delete();
+
+        return $this->showOne($shopping);
     }
 }

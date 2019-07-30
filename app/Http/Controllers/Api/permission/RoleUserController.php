@@ -38,7 +38,7 @@ class RoleUserController extends ApiController
         }
         $user->syncRoles($role);
 
-        return $this->successResponse(['data' => $user->refresh(), 'message' => 'Role Updated']);
+        return $this->showOne($user->refresh());
     }
 
     /**
@@ -55,6 +55,6 @@ class RoleUserController extends ApiController
         }
         $user->removeRole($role);
 
-        return $this->successResponse(['data' => $user->refresh(), 'message' => 'User Deleted']);
+        return $this->showOne($user->refresh());
     }
 }

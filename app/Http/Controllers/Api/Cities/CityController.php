@@ -4,15 +4,18 @@ namespace App\Http\Controllers\Api\Cities;
 
 use App\Http\Controllers\ApiController;
 use App\Models\City;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Response;
+use Illuminate\Validation\ValidationException;
 
 class CityController extends ApiController
 {
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return JsonResponse
      */
     public function index()
     {
@@ -24,45 +27,62 @@ class CityController extends ApiController
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param  Request  $request
+     * @return JsonResponse
+     * @throws ValidationException
      */
     public function store(Request $request)
     {
-        //
+        $rules = [
+            'name' => 'required',
+            'department_id' => 'required|numeric',
+        ];
+        $this->validate($request, $rules);
+        $data = City::create($request->all());
+
+        return $this->showOne($data, 201);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\City  $city
-     * @return \Illuminate\Http\Response
+     * @param  City  $city
+     * @return JsonResponse
      */
     public function show(City $city)
     {
-        //
+        return $this->showOne($city);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\City  $city
-     * @return \Illuminate\Http\Response
+     * @param  Request  $request
+     * @param  City  $city
+     * @return JsonResponse
      */
     public function update(Request $request, City $city)
     {
-        //
+        $city->fill($request->all());
+        if ($city->isClean()) {
+            return $this->errorNoClean();
+        }
+        $city->save();
+
+        return $this->showOne($city);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\City  $city
-     * @return \Illuminate\Http\Response
+     * @param  City  $city
+     * @return JsonResponse
+     * @throws \Exception
      */
     public function destroy(City $city)
     {
-        //
+        $city->delete();
+
+        return $this->showOne($city);
     }
 }

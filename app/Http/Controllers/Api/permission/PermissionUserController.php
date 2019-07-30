@@ -38,7 +38,7 @@ class PermissionUserController extends ApiController
 
         $user->givePermissionTo($permission);
 
-        return $this->successResponse(['data' => $permission->refresh(), 'message' => 'User Updated']);
+        return $this->showOne($permission->refresh());
     }
 
     /**
@@ -56,6 +56,6 @@ class PermissionUserController extends ApiController
 
         $user->revokePermissionTo($permission);
 
-        return $this->successResponse(['data' => $user->refresh(), 'message' => 'User Delete']);
+        return $this->showOne($user->refresh());
     }
 }

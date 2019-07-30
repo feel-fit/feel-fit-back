@@ -109,6 +109,6 @@ class UserController extends ApiController
     {
         $user->delete();
 
-        return $this->showOne($user);
+        return $this->showOne($user->refresh());
     }
 }

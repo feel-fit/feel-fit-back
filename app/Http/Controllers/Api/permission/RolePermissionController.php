@@ -39,7 +39,7 @@ class RolePermissionController extends ApiController
 
         $role->givePermissionTo($permission);
 
-        return $this->successResponse(['data' => $permission->refresh(), 'message' => 'Role Updated']);
+        return $this->showOne($permission->refresh());
     }
 
     /**
@@ -57,6 +57,6 @@ class RolePermissionController extends ApiController
 
         $role->revokePermissionTo($permission);
 
-        return $this->successResponse(['data' => $permission->refresh(), 'message' => 'Permission Deleted']);
+        return $this->showOne($permission->refresh());
     }
 }
