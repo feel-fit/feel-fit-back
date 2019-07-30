@@ -35,7 +35,7 @@ class ShippingController extends ApiController
     {
         $rules = [
             'value' => 'required|numeric',
-            'trsnaporter' => 'required|string',
+            'transporter' => 'required|string',
             'track' => 'string|nullable',
         ];
 

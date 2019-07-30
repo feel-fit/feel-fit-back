@@ -14,6 +14,7 @@ class PermissionRoleController extends ApiController
     /**
      * Display a listing of the resource.
      *
+     * @param  Permission  $permission
      * @return JsonResponse
      */
     public function index(Permission $permission)
@@ -39,7 +40,7 @@ class PermissionRoleController extends ApiController
 
         $role->givePermissionTo($permission);
 
-        return $this->successResponse(['data' => $permission->refresh(), 'message' => 'Role Updated']);
+        return $this->showOne($permission->refresh());
     }
 
     /**

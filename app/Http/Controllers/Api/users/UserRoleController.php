@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Api\users;
 
-use App\User;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
 use Spatie\Permission\Models\Role;
@@ -24,13 +24,14 @@ class UserRoleController extends ApiController
     /**
      * @param  Request  $request
      * @param  User  $user
+     * @param  Role  $role
      * @return JsonResponse
      */
     public function update(Request $request, User $user, Role $role)
     {
         $user->roles()->syncWithoutDetaching([$role->id]);
 
-        return $this->successResponse(['data' => $role->refresh(), 'message' => 'User Updated']);
+        return $this->showOne($role->refresh());
     }
 
     /**
@@ -42,6 +43,6 @@ class UserRoleController extends ApiController
     {
         $user->roles()->detach($role->id);
 
-        return $this->successResponse(['data' => $role->refresh(), 'message' => 'Role Deleted']);
+        return $this->showOne($role->refresh());
     }
 }
