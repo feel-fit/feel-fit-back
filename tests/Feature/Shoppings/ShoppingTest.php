@@ -2,9 +2,9 @@
 
 namespace Tests\Feature\Shoppings;
 
+use Tests\TestCase;
 use App\Models\Shipping;
 use App\Models\Shopping;
-use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
@@ -20,7 +20,6 @@ class ShoppingTest extends TestCase
         $this->get($this->url, $this->headers())
             ->assertStatus(200)->assertJsonFragment($data->toarray());
     }
-
 
     public function testCreate()
     {

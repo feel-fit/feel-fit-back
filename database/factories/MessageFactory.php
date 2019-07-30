@@ -10,6 +10,6 @@ $factory->define(Message::class, function (Faker $faker) {
         'user_id' => \App\Models\User::inRandomOrder()->first()->id,
         'name' => $faker->name,
         'email' => $faker->email,
-        'description' => $faker->sentence
+        'description' => $faker->sentence,
     ];
 });

@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers\Api\Categories;
 
-use App\Http\Controllers\ApiController;
 use App\Models\Category;
-use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Http\JsonResponse;
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\ApiController;
 use Illuminate\Validation\ValidationException;
 
 class CategoryController extends ApiController

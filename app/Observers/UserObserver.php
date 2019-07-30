@@ -14,7 +14,7 @@ class UserObserver
 {
     public function creating(User $user)
     {
-        if (!$user->password) {
+        if (! $user->password) {
             $user->password = bcrypt(str_random(10));
         } else {
             $user->password = bcrypt($user->password);

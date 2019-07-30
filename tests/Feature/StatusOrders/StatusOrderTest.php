@@ -2,8 +2,8 @@
 
 namespace Tests\Feature\StatusOrders;
 
-use App\Models\StatusOrder;
 use Tests\TestCase;
+use App\Models\StatusOrder;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
@@ -19,7 +19,6 @@ class StatusOrderTest extends TestCase
         $this->get($this->url, $this->headers())
             ->assertStatus(200)->assertJsonFragment($data->toarray());
     }
-
 
     public function testCreate()
     {

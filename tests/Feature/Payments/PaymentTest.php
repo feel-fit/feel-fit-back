@@ -2,8 +2,8 @@
 
 namespace Tests\Feature\Payments;
 
-use App\Models\Payment;
 use Tests\TestCase;
+use App\Models\Payment;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
@@ -13,14 +13,12 @@ class PaymentTest extends TestCase
     protected $table = 'payments';
     protected $model = Payment::class;
 
-
     public function testList()
     {
         $data = $this->model::find(1);
         $this->get($this->url, $this->headers())
             ->assertStatus(200)->assertJsonFragment($data->toarray());
     }
-
 
     public function testCreate()
     {

@@ -13,6 +13,6 @@ $factory->define(Shopping::class, function (Faker $faker) {
         'address_id' => $faker->randomElement([\App\Models\Address::all()->random()->first()->id, null]),
         'shipping_id' => $faker->randomElement([\App\Models\Shipping::all()->random()->first()->id, null]),
         'payment_id' => $faker->randomElement([\App\Models\Payment::all()->random()->first()->id, null]),
-        'total' => $faker->numberBetween(100000, 300000)
+        'total' => $faker->numberBetween(100000, 300000),
     ];
 });

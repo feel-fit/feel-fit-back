@@ -20,7 +20,6 @@ class TagTest extends TestCase
             ->assertStatus(200)->assertJsonFragment($data->toarray());
     }
 
-
     public function testCreate()
     {
         $data = factory($this->model)->make()->toarray();
