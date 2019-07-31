@@ -95,6 +95,7 @@ class Handler extends ExceptionHandler
         if ($error) {
             return $error;
         }
+
         return $this->errorResponse('Unexpected Failure', 500);
     }
 

@@ -48,7 +48,6 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-
     /**
      * @param $value
      */
@@ -64,7 +63,7 @@ class User extends Authenticatable
      */
     public static function fillPassword($request)
     {
-        if (!$request->password) {
+        if (! $request->password) {
             $request->merge(['password' => bcrypt(str_random(10))]);
         } else {
             $request->merge(['password' => bcrypt($request->password)]);

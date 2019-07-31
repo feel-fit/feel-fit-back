@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers\Api\Cities;
 
-use App\Http\Controllers\ApiController;
 use App\Models\City;
-use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Response;
+use Illuminate\Http\JsonResponse;
+use App\Http\Controllers\Controller;
+use App\Http\Controllers\ApiController;
 use Illuminate\Validation\ValidationException;
 
 class CityController extends ApiController

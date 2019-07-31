@@ -14,6 +14,5 @@ class UsersTableSeeder extends Seeder
         factory(User::class, 100)->create()->each(function ($user) {
             $user->syncRoles('client');
         });
-
     }
 }

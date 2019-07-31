@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers\Api\Products;
 
-use App\Http\Controllers\ApiController;
-use App\Models\Product;
 use Exception;
-use Illuminate\Http\JsonResponse;
+use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Http\JsonResponse;
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\ApiController;
 use Illuminate\Validation\ValidationException;
 
 class ProductController extends ApiController

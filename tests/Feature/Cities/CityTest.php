@@ -2,8 +2,8 @@
 
 namespace Tests\Feature\Cities;
 
-use App\Models\City;
 use Tests\TestCase;
+use App\Models\City;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
@@ -13,14 +13,12 @@ class CityTest extends TestCase
     protected $table = 'cities';
     protected $model = City::class;
 
-
     public function testList()
     {
         $data = $this->model::find(1);
         $this->get($this->url, $this->headers())
             ->assertStatus(200)->assertJsonFragment($data->toarray());
     }
-
 
     public function testCreate()
     {

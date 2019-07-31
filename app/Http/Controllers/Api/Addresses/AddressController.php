@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers\Api\Addresses;
 
-use App\Http\Controllers\ApiController;
-use App\Models\Address;
 use Exception;
-use Illuminate\Http\JsonResponse;
+use App\Models\Address;
 use Illuminate\Http\Request;
+use Illuminate\Http\JsonResponse;
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\ApiController;
 
 class AddressController extends ApiController
 {

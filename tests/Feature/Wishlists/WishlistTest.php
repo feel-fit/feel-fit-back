@@ -2,8 +2,8 @@
 
 namespace Tests\Feature\Wishlists;
 
-use App\Models\Wishlist;
 use Tests\TestCase;
+use App\Models\Wishlist;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
@@ -19,7 +19,6 @@ class WishlistTest extends TestCase
         $this->get($this->url, $this->headers())
             ->assertStatus(200)->assertJsonFragment($data->toarray());
     }
-
 
     public function testCreate()
     {

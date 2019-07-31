@@ -12,12 +12,10 @@ class PermissionUserTest extends TestCase
     protected $table = 'permissions';
     protected $model = Permission::class;
 
-
-
     public function test_permission_user_list()
     {
         $permission = factory($this->model)->create();
-        $user       = factory(User::class)->create();
+        $user = factory(User::class)->create();
         $user->givePermissionTo($permission);
         $response = $this->get($this->url.$permission->id.'/users', $this->headers());
         $response->assertStatus(200);
@@ -26,15 +24,15 @@ class PermissionUserTest extends TestCase
     public function test_permission_user_attach()
     {
         $permission = factory($this->model)->create();
-        $user       = factory(User::class)->create();
-        $response   = $this->put($this->url.$permission->id.'/users/'.$user->id, [], $this->headers());
+        $user = factory(User::class)->create();
+        $response = $this->put($this->url.$permission->id.'/users/'.$user->id, [], $this->headers());
         $response->assertStatus(200);
     }
 
     public function test_permission_user_dettach()
     {
         $permission = factory($this->model)->create();
-        $user       = factory(User::class)->create();
+        $user = factory(User::class)->create();
         $user->givePermissionTo($permission);
         $response = $this->delete($this->url.$permission->id.'/users/'.$user->id, [], $this->headers());
         $response->assertStatus(200);

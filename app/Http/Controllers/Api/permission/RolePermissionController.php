@@ -51,7 +51,7 @@ class RolePermissionController extends ApiController
      */
     public function destroy(Role $role, Permission $permission)
     {
-        if (!$role->hasPermissionTo($permission)) {
+        if (! $role->hasPermissionTo($permission)) {
             return $this->errorResponse('Role don`t have this permission', 422);
         }
 

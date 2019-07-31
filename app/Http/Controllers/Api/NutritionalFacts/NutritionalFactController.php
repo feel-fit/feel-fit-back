@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers\Api\NutritionalFacts;
 
-use App\Http\Controllers\ApiController;
 use Exception;
-use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
-use App\Models\NutritionalFact;
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Response;
+use App\Models\NutritionalFact;
+use Illuminate\Http\JsonResponse;
+use App\Http\Controllers\Controller;
+use App\Http\Controllers\ApiController;
 use Illuminate\Validation\ValidationException;
 
 class NutritionalFactController extends ApiController

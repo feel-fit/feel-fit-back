@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers\Api\Tags;
 
-use App\Http\Controllers\ApiController;
-use App\Models\Tag;
 use Exception;
-use Illuminate\Http\JsonResponse;
+use App\Models\Tag;
 use Illuminate\Http\Request;
+use Illuminate\Http\JsonResponse;
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\ApiController;
 use Illuminate\Validation\ValidationException;
 
 class TagController extends ApiController

@@ -24,6 +24,5 @@ class UserRolesSeeder extends Seeder
         $user_admin = factory(User::class)->create();
 
         $user_admin->syncRoles('admin');
-
     }
 }
