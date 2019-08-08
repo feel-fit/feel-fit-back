@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api\Images;
 
 use App\Http\Controllers\ApiController;
+use App\Http\Resources\Images\ImageCollection;
 use App\Models\Image;
 use Exception;
 use Illuminate\Http\JsonResponse;
@@ -21,7 +22,7 @@ class ImageController extends ApiController
     {
         $data = Image::all();
 
-        return $this->showAll($data);
+        return $this->showAll($data, 200, ImageCollection::class);
     }
 
     /**

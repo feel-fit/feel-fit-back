@@ -19,7 +19,7 @@ class CreateProductsTable extends Migration
             $table->string('name');
             $table->longText('description');
             $table->unsignedInteger('price');
-            $table->boolean('surprise_box');
+            $table->boolean('surprise_box')->default(0);
             $table->timestamps();
             $table->softDeletes();
         });

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api\Shoppings;
 
 use App\Http\Controllers\ApiController;
+use App\Http\Resources\Shoppings\ShoppingCollection;
 use App\Models\Shopping;
 use Exception;
 use Illuminate\Http\JsonResponse;
@@ -22,7 +23,7 @@ class ShoppingController extends ApiController
     {
         $data = Shopping::all();
 
-        return $this->showAll($data);
+        return $this->showAll($data,200,ShoppingCollection::class);
     }
 
     /**

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api\Sliders;
 
 use App\Http\Controllers\ApiController;
+use App\Http\Resources\Sliders\SliderCollection;
 use App\Models\Slider;
 use Exception;
 use Illuminate\Http\JsonResponse;
@@ -21,7 +22,7 @@ class SliderController extends ApiController
     {
         $data = Slider::all();
 
-        return $this->showAll($data);
+        return $this->showAll($data,200,SliderCollection::class);
     }
 
     /**

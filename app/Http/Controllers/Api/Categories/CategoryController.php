@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api\Categories;
 
 use App\Http\Controllers\ApiController;
+use App\Http\Resources\Categories\CategoryCollection;
 use App\Models\Category;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -20,7 +21,7 @@ class CategoryController extends ApiController
     {
         $data = Category::all();
 
-        return $this->showAll($data);
+        return $this->showAll($data,200,CategoryCollection::class);
     }
 
     /**

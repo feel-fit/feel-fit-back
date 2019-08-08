@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api\Wishlists;
 
 use App\Http\Controllers\ApiController;
+use App\Http\Resources\Wishlists\WishlistCollection;
 use App\Models\Wishlist;
 use Exception;
 use Illuminate\Http\JsonResponse;
@@ -21,7 +22,7 @@ class WishlistController extends ApiController
     {
         $data = Wishlist::all();
 
-        return $this->showAll($data);
+        return $this->showAll($data,200,WishlistCollection::class);
     }
 
     /**

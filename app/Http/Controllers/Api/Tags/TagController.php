@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api\Tags;
 
 use App\Http\Controllers\ApiController;
+use App\Http\Resources\Tags\TagCollection;
 use App\Models\Tag;
 use Exception;
 use Illuminate\Http\JsonResponse;
@@ -21,7 +22,7 @@ class TagController extends ApiController
     {
         $data = Tag::all();
 
-        return $this->showAll($data);
+        return $this->showAll($data,200,TagCollection::class);
     }
 
     /**

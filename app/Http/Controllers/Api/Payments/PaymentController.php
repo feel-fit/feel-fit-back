@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api\Payments;
 
 use App\Http\Controllers\ApiController;
+use App\Http\Resources\Payments\PaymentCollection;
 use App\Models\Payment;
 use Exception;
 use Illuminate\Http\JsonResponse;
@@ -21,7 +22,7 @@ class PaymentController extends ApiController
     {
         $data = Payment::all();
 
-        return $this->showAll($data);
+        return $this->showAll($data,200,PaymentCollection::class);
     }
 
     /**

@@ -64,6 +64,8 @@ Route::group(['prefix' => 'v1'], function () {
 
     //Products ===========================================================================================================.
     Route::apiResource('products', 'Api\Products\ProductController');
+    Route::apiResource('products.categories', 'Api\Products\ProductCategoryController');
+    Route::apiResource('products.tags', 'Api\Products\ProductTagController');
 
     //Roles ===========================================================================================================.
     Route::apiResource('roles', 'Api\permission\RoleController');
@@ -90,6 +92,8 @@ Route::group(['prefix' => 'v1'], function () {
     Route::get('users/me', 'Api\users\UserController@me'); //No Order
     Route::apiResource('users', 'Api\users\UserController')->except(['me', 'checkEmail']);
     Route::apiResource('users.roles', 'Api\users\UserRoleController');
+    Route::apiResource('users.discounts', 'Api\users\UserDiscountController');
+    Route::apiResource('users.wishlists', 'Api\users\UserWishlistController');
 
     //Wishlists ===========================================================================================================.
     Route::apiResource('wishlists', 'Api\Wishlists\WishlistController');

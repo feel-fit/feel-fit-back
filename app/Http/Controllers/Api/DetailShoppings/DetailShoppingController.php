@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api\DetailShoppings;
 
 use App\Http\Controllers\ApiController;
+use App\Http\Resources\DetailShoppings\DetailShoppingCollection;
 use Exception;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -15,13 +16,13 @@ class DetailShoppingController extends ApiController
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return JsonResponse
      */
     public function index()
     {
         $data = DetailShopping::all();
 
-        return $this->showAll($data);
+        return $this->showAll($data,200,DetailShoppingCollection::class);
     }
 
     /**
