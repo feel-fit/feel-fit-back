@@ -66,7 +66,7 @@ trait FilterQuery
             $collection->load([
                 $this->include => function ($query) {
                     $this->setQuery($query);
-                }
+                },
             ])->values();
 
             return $collection->filter(function ($item) {

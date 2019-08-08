@@ -6,9 +6,11 @@ use App\Http\Controllers\ApiController;
 use App\Http\Resources\Messages\MessageCollection;
 use App\Models\Message;
 use Exception;
-use Illuminate\Http\JsonResponse;
+use App\Models\Message;
 use Illuminate\Http\Request;
+use Illuminate\Http\JsonResponse;
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\ApiController;
 use Illuminate\Validation\ValidationException;
 
 class MessageController extends ApiController

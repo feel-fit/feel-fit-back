@@ -42,7 +42,6 @@ Route::group(['prefix' => 'v1'], function () {
     //NutritionalFacts ===========================================================================================================.
     Route::apiResource('nutritional-facts', 'Api\NutritionalFacts\NutritionalFactController');
 
-
     // Passport ===========================================================================================================.
     Route::post('oauth/login', 'Api\passport\PassportController@login');
     Route::post('oauth/register', 'Api\passport\PassportController@register');

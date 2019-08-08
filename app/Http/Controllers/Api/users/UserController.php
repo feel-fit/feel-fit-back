@@ -43,7 +43,7 @@ class UserController extends ApiController
             'email' => 'required|unique:users',
             'password' => 'required',
             'phone' => 'numeric',
-            'status' => 'boolean'
+            'status' => 'boolean',
         ];
         $this->validate($request, $rules);
         $user = User::create($request->all());

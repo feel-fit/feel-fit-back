@@ -6,10 +6,12 @@ use App\Http\Controllers\ApiController;
 use App\Http\Resources\Discounts\DiscountCollection;
 use App\Models\Discount;
 use Exception;
-use Illuminate\Http\JsonResponse;
+use App\Models\Discount;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Response;
+use Illuminate\Http\JsonResponse;
+use App\Http\Controllers\Controller;
+use App\Http\Controllers\ApiController;
 use Illuminate\Validation\ValidationException;
 
 class DiscountController extends ApiController
@@ -83,7 +85,7 @@ class DiscountController extends ApiController
      */
     public function destroy(Discount $discount)
     {
-         $discount->delete();
+        $discount->delete();
 
         return $this->showOne($discount);
     }

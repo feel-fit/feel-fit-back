@@ -6,9 +6,11 @@ use App\Http\Controllers\ApiController;
 use App\Http\Resources\StatusOrders\StatusOrderCollection;
 use App\Models\StatusOrder;
 use Exception;
-use Illuminate\Http\JsonResponse;
+use App\Models\StatusOrder;
 use Illuminate\Http\Request;
+use Illuminate\Http\JsonResponse;
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\ApiController;
 use Illuminate\Validation\ValidationException;
 
 class StatusOrderController extends ApiController

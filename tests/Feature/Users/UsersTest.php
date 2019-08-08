@@ -2,9 +2,9 @@
 
 namespace Tests\Feature\Users;
 
-use Spatie\Permission\Models\Role;
 use Tests\TestCase;
 use App\Models\User;
+use Spatie\Permission\Models\Role;
 
 class UsersTest extends TestCase
 {
@@ -30,19 +30,17 @@ class UsersTest extends TestCase
         $this->assertDatabaseHas($this->table, $data);
     }
 
-
-
     public function testUsuariosShow()
     {
         $user = factory($this->model)->create();
-        $this->get($this->url . $user->id, $this->headers())
+        $this->get($this->url.$user->id, $this->headers())
             ->assertStatus(200);
     }
 
     public function testUsuariosDelete()
     {
         $user = factory($this->model)->create();
-        $this->delete($this->url . $user->id, [], $this->headers())
+        $this->delete($this->url.$user->id, [], $this->headers())
              ->assertStatus(200);
         $this->assertSoftDeleted($this->table, collect($user)->forget('roles')->toarray());
     }
@@ -51,7 +49,7 @@ class UsersTest extends TestCase
     {
         $user = factory($this->model)->create();
         $data = factory($this->model)->make()->toarray();
-        $this->put($this->url . $user->id, $data, $this->headers())->assertStatus(200);
+        $this->put($this->url.$user->id, $data, $this->headers())->assertStatus(200);
         $this->assertDatabaseHas($this->table, $data);
     }
 
@@ -59,22 +57,22 @@ class UsersTest extends TestCase
     public function test_usuarios_roles_list()
     {
         $user = factory($this->model)->create();
-        $this->get($this->url . $user->id . '/roles', $this->headers())->assertStatus(200);
+        $this->get($this->url.$user->id.'/roles', $this->headers())->assertStatus(200);
     }
 
     public function test_usuarios_roles_attach()
     {
         $role = factory(Role::class)->create();
         $user = factory($this->model)->create();
-        $this->put($this->url . $user->id . '/roles/' . $role->id, $this->headers())->assertStatus(200);
+        $this->put($this->url.$user->id.'/roles/'.$role->id, $this->headers())->assertStatus(200);
     }
 
     public function test_usuarios_roles_dettach()
     {
         $role = factory(Role::class)->create();
         $user = factory($this->model)->create();
-        $this->put($this->url . $user->id . '/roles/' . $role->id, $this->headers())->assertStatus(200);
-        $this->delete($this->url . $user->id . '/roles/' . $role->id, $this->headers())
+        $this->put($this->url.$user->id.'/roles/'.$role->id, $this->headers())->assertStatus(200);
+        $this->delete($this->url.$user->id.'/roles/'.$role->id, $this->headers())
              ->assertStatus(200);
     }
 }

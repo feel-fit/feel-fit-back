@@ -2,8 +2,8 @@
 
 namespace Tests\Feature\Addresses;
 
-use App\Models\Address;
 use Tests\TestCase;
+use App\Models\Address;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
@@ -13,14 +13,12 @@ class AddressTest extends TestCase
     protected $table = 'addresses';
     protected $model = Address::class;
 
-
     public function testList()
     {
         $data = $this->model::find(1);
         $this->get($this->url, $this->headers())
             ->assertStatus(200)->assertJsonFragment($data->toarray());
     }
-
 
     public function testCreate()
     {
@@ -53,6 +51,4 @@ class AddressTest extends TestCase
             ->assertStatus(200);
         $this->assertSoftDeleted($this->table, $data->toarray());
     }
-
-
 }

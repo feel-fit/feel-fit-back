@@ -2,8 +2,8 @@
 
 namespace Tests\Feature\Departments;
 
-use App\Models\Department;
 use Tests\TestCase;
+use App\Models\Department;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
@@ -19,7 +19,6 @@ class DepartmentTest extends TestCase
         $this->get($this->url, $this->headers())
             ->assertStatus(200)->assertJsonFragment($data->toarray());
     }
-
 
     public function testCreate()
     {

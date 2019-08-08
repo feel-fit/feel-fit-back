@@ -91,10 +91,10 @@ trait ApiResponser
      */
     public function loadRelations(Collection $collection)
     {
-        if (!$collection->isEmpty()) {
+        if (! $collection->isEmpty()) {
             $relations = $collection->first()->relationships ?: null;
 
-            if ($relations && !request()->relationships) {
+            if ($relations && ! request()->relationships) {
                 return $collection->load($relations)->values();
             }
         }
@@ -139,7 +139,7 @@ trait ApiResponser
 
         $results = $collection->slice(($page - 1) * $perPage, $perPage)->values();
 
-        if (!request()->has('relationships') or 'false' != request()->relationships) {
+        if (! request()->has('relationships') or 'false' != request()->relationships) {
             $results = $this->loadRelations($results);
         }
 

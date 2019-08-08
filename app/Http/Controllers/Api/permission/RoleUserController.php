@@ -51,7 +51,7 @@ class RoleUserController extends ApiController
      */
     public function destroy(Role $role, User $user)
     {
-        if (!$user->hasRole($role)) {
+        if (! $user->hasRole($role)) {
             return $this->errorResponse('Role don`t have this User', 422);
         }
         $user->removeRole($role);

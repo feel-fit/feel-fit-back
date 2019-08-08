@@ -11,6 +11,6 @@ $factory->define(Product::class, function (Faker $faker) {
         'name' => $faker->word,
         'description' => $faker->paragraph,
         'price' => $faker->numberBetween(10000, 200000),
-        'surprise_box' => $faker->boolean
+        'surprise_box' => $faker->boolean,
     ];
 });

@@ -51,7 +51,7 @@ class PermissionUserController extends ApiController
      */
     public function destroy(Permission $permission, User $user)
     {
-        if (!$user->hasPermissionTo($permission)) {
+        if (! $user->hasPermissionTo($permission)) {
             return $this->errorResponse('permission don`t have this User', 422);
         }
 
