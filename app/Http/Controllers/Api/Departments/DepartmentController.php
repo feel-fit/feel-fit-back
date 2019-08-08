@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api\Departments;
 
 use App\Http\Controllers\ApiController;
+use App\Http\Resources\Departments\DepartmentCollection;
 use App\Models\Department;
 use Exception;
 use Illuminate\Http\JsonResponse;
@@ -21,7 +22,7 @@ class DepartmentController extends ApiController
     {
         $data = Department::all();
 
-        return $this->showAll($data);
+        return $this->showAll($data,200,DepartmentCollection::class);
     }
 
     /**

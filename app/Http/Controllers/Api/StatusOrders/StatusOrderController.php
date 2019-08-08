@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api\StatusOrders;
 
 use App\Http\Controllers\ApiController;
+use App\Http\Resources\StatusOrders\StatusOrderCollection;
 use App\Models\StatusOrder;
 use Exception;
 use Illuminate\Http\JsonResponse;
@@ -21,7 +22,7 @@ class StatusOrderController extends ApiController
     {
         $data = StatusOrder::all();
 
-        return $this->showAll($data);
+        return $this->showAll($data,200,StatusOrderCollection::class);
     }
 
     /**

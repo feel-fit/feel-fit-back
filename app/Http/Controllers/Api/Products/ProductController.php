@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api\Products;
 
 use App\Http\Controllers\ApiController;
+use App\Http\Resources\Products\ProductCollection;
 use App\Models\Product;
 use Exception;
 use Illuminate\Http\JsonResponse;
@@ -21,7 +22,7 @@ class ProductController extends ApiController
     {
         $data = Product::all();
 
-        return $this->showAll($data);
+        return $this->showAll($data,200,ProductCollection::collection());
     }
 
     /**
@@ -36,7 +37,7 @@ class ProductController extends ApiController
         $rules = [
             'name' => 'required',
             'category_id' => 'numeric|required',
-            'description' => 'string|nullable',
+            'description' => 'string|required',
             'price' => 'required|numeric',
             'surprise_box' => 'boolean',
         ];

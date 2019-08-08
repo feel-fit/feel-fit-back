@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api\permission;
 
+use App\Http\Resources\UserCollection;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
@@ -19,7 +20,7 @@ class PermissionUserController extends ApiController
     {
         $users = $permission->users;
 
-        return $this->showAll($users);
+        return $this->showAll($users,200,UserCollection::class);
     }
 
     /**

@@ -8,6 +8,7 @@
 
 namespace App\Traits;
 
+use App\Http\Resources\Categories\CategoryCollection;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Database\Eloquent\Model;
@@ -27,7 +28,7 @@ trait ApiResponser
      * @param  int  $code
      * @return JsonResponse
      */
-    protected function showAll(Collection $collection, $code = 200)
+    protected function showAll(Collection $collection, $code = 200, $resourceCollection = null)
     {
         if (Cache::has($this->orderQueryCache())) {
             $collection = Cache::get($this->orderQueryCache());
@@ -36,7 +37,7 @@ trait ApiResponser
             $collection = $this->filterData($collection);
             $collection = $this->sortData($collection);
             $collection = $this->paginate($collection);
-            $collection = $this->resource_all($collection);
+            $collection = $this->resource_all($collection, $resourceCollection);
             $collection = $this->cacheResponse($collection);
         }
 
@@ -153,15 +154,22 @@ trait ApiResponser
      * @param $collection
      * @return mixed
      */
-    public function resource_all($collection)
+    public function resource_all($collection, $resource)
     {
+
         if (!$collection->isEmpty()) {
             $resource = $collection->first()->resourceCollection;
 
             if ($resource) {
                 $collection = new $resource($collection);
             }
+        }elseif($resource){
+
+            $collection =  new $resource($collection);
         }
+
+
+
 
         return $collection;
     }

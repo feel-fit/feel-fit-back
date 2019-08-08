@@ -3,11 +3,13 @@
 namespace App\Http\Controllers\Api\Addresses;
 
 use App\Http\Controllers\ApiController;
+use App\Http\Resources\Addresses\AddressCollection;
 use App\Models\Address;
 use Exception;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Validation\ValidationException;
 
 class AddressController extends ApiController
 {
@@ -20,7 +22,7 @@ class AddressController extends ApiController
     {
         $data = Address::all();
 
-        return $this->showAll($data);
+        return $this->showAll($data,200,AddressCollection::class);
     }
 
     /**
@@ -28,6 +30,7 @@ class AddressController extends ApiController
      *
      * @param  Request  $request
      * @return JsonResponse
+     * @throws ValidationException
      */
     public function store(Request $request)
     {

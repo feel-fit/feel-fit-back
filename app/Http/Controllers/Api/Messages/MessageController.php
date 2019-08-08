@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api\Messages;
 
 use App\Http\Controllers\ApiController;
+use App\Http\Resources\Messages\MessageCollection;
 use App\Models\Message;
 use Exception;
 use Illuminate\Http\JsonResponse;
@@ -21,7 +22,7 @@ class MessageController extends ApiController
     {
         $data = Message::all();
 
-        return $this->showAll($data);
+        return $this->showAll($data, 200, MessageCollection::class);
     }
 
     /**

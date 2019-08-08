@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api\Shippings;
 
 use App\Http\Controllers\ApiController;
+use App\Http\Resources\Shippings\ShippingCollection;
 use App\Models\Shipping;
 use Exception;
 use Illuminate\Http\JsonResponse;
@@ -21,7 +22,7 @@ class ShippingController extends ApiController
     {
         $data = Shipping::all();
 
-        return $this->showAll($data);
+        return $this->showAll($data,200,ShippingCollection::class);
     }
 
     /**

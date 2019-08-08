@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api\Cities;
 
 use App\Http\Controllers\ApiController;
+use App\Http\Resources\Cities\CityCollection;
 use App\Models\City;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -21,7 +22,7 @@ class CityController extends ApiController
     {
         $data = City::all();
 
-        return $this->showAll($data);
+        return $this->showAll($data,200,CityCollection::class);
     }
 
     /**

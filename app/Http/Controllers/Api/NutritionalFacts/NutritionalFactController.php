@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api\NutritionalFacts;
 
 use App\Http\Controllers\ApiController;
+use App\Http\Resources\NutritionalFacts\NutritionalFactCollection;
 use Exception;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -22,7 +23,7 @@ class NutritionalFactController extends ApiController
     {
         $data = NutritionalFact::all();
 
-        return $this->showAll($data);
+        return $this->showAll($data,200,NutritionalFactCollection::class);
     }
 
     /**
