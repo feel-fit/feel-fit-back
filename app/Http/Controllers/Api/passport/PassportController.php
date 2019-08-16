@@ -35,10 +35,14 @@ class PassportController extends ApiController
         $this->validate($request, $rules);
 
         if (Auth::attempt(['email' => $request->email, 'password' => $request->password, 'status' => true], true)) {
-            return $this->showOne($this->ObtenerToken($request));
-        } else {
-            return $this->errorResponse('Unauthorized: Access is denied due to invalid credentials.', 401);
+            $token = $this->ObtenerToken($request);
+            if (!isset($token->error)) {
+                return $this->showOne($token);
+            }
         }
+
+        return $this->errorResponse('Unauthorized: Access is denied due to invalid credentials.', 401);
+
     }
 
     public function register(Request $request)
@@ -77,6 +81,7 @@ class PassportController extends ApiController
         }
 
         $token = $user->createToken($user->email)->accessToken;
+
 
         return $this->successResponse(['data' => ['access_token' => $token]]);
     }
