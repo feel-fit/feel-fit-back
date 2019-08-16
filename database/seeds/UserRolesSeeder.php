@@ -19,7 +19,7 @@ class UserRolesSeeder extends Seeder
             'password' => 'caremico',
         ]);
 
-        $user_super_admin->syncRoles('superadmin');
+        $user_super_admin->syncRoles('admin');
 
         $user_admin = factory(User::class)->create();
 
