@@ -20,6 +20,7 @@ Route::group(['prefix' => 'v1'], function () {
 
     //Categories ===========================================================================================================.
     Route::apiResource('categories', 'Api\Categories\CategoryController');
+    Route::apiResource('categories.products', 'Api\Categories\CategoryProductController');
 
     //Cities ===========================================================================================================.
     Route::apiResource('cities', 'Api\Cities\CityController');

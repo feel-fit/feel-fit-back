@@ -1,5 +1,8 @@
 <?php
 
+use App\Models\Category;
+use App\Models\Product;
+use App\Models\Tag;
 use Illuminate\Database\Seeder;
 
 class ProductsTableSeeder extends Seeder
@@ -11,9 +14,9 @@ class ProductsTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(\App\Models\Product::class, 10)->create()->each(function ($product) {
-            $product->categories()->attach(\App\Models\Category::all()->random(2));
-            $product->tags()->attach(\App\Models\Tag::all()->random(2));
+        factory(Product::class, 100)->create()->each(function ($product) {
+            $product->categories()->attach(Category::all()->random(3));
+            $product->tags()->attach(Tag::all()->random(2));
         });
     }
 }
