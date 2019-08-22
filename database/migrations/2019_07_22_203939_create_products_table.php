@@ -19,6 +19,10 @@ class CreateProductsTable extends Migration
             $table->longText('description');
             $table->unsignedInteger('price');
             $table->boolean('surprise_box')->default(0);
+            $table->boolean('status')->default(1);
+            $table->boolean('in_stock')->default(1);
+            $table->unsignedInteger('brand_id');
+            $table->unsignedInteger('quantity');
             $table->timestamps();
             $table->softDeletes();
         });

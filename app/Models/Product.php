@@ -12,13 +12,26 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 class Product extends Model
 {
     use SoftDeletes;
+    const ACTIVO        = 1;
+    const DISPONIBLE    = 1;
 
-    //protected $table = '';
     protected $dates = ['created_at', 'updated_at', 'deleted_at'];
-    //protected $relationships = [''];
     public $resource = ProductResource::class;
     public $resourceCollection = ProductCollection::class;
-    protected $fillable = ['name', 'description', 'price', 'surprise_box'];
+    protected $fillable = ['name', 'description', 'price', 'surprise_box','in_stock','status','quantity','brand_id'];
+
+    public function in_stock()
+    {
+        return self::DISPONIBLE == $this->in_stock;
+    }
+
+    /**
+     * @return bool
+     */
+    public function active()
+    {
+        return self::ACTIVO == $this->status;
+    }
     /*
     |--------------------------------------------------------------------------
     | Relations database
@@ -40,6 +53,14 @@ class Product extends Model
     public function nutritionalFacts()
     {
         return $this->hasMany(NutritionalFact::class);
+    }
+
+    /**
+     * @return BelongsToMany
+     */
+    public function brand()
+    {
+        return $this->belongsTo(Brand::class);
     }
 
     /**
