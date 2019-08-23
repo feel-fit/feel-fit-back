@@ -6,11 +6,9 @@ use App\Http\Controllers\ApiController;
 use App\Http\Resources\Products\ProductCollection;
 use App\Models\Product;
 use Exception;
-use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
 use App\Http\Controllers\Controller;
-use App\Http\Controllers\ApiController;
 use Illuminate\Validation\ValidationException;
 
 class ProductController extends ApiController
@@ -24,7 +22,7 @@ class ProductController extends ApiController
     {
         $data = Product::all();
 
-        return $this->showAll($data,200,ProductCollection::collection());
+        return $this->showAll($data, 200, ProductCollection::class);
     }
 
     /**
