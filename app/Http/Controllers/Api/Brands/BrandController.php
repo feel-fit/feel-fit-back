@@ -39,6 +39,7 @@ class BrandController extends ApiController
     {
         $rules = [
             'name' => 'required',
+            'url' => 'required',
         ];
         $this->validate($request, $rules);
         $data = Brand::create($request->all());

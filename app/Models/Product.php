@@ -18,7 +18,7 @@ class Product extends Model
     protected $dates = ['created_at', 'updated_at', 'deleted_at'];
     public $resource = ProductResource::class;
     public $resourceCollection = ProductCollection::class;
-    protected $fillable = ['name', 'description', 'price', 'surprise_box','in_stock','status','quantity','brand_id'];
+    protected $fillable = ['name', 'description', 'price','in_stock','status','quantity','brand_id'];
 
     public function in_stock()
     {

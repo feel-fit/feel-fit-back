@@ -16,6 +16,6 @@ class Brand extends Model
     protected $dates = ['created_at', 'updated_at', 'deleted_at'];
     public $resource = BrandResource::class;
     public $resourceCollection = BrandCollection::class;
-    protected $fillable = ['name'];
+    protected $fillable = ['name','url'];
 
 }

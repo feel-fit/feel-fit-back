@@ -34,6 +34,7 @@ class CategoryController extends ApiController
     {
         $rules = [
             'name' => 'required',
+            'url' => 'required',
         ];
         $this->validate($request, $rules);
         $data = Category::create($request->all());
