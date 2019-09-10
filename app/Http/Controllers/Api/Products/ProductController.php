@@ -6,6 +6,7 @@ use App\Http\Controllers\ApiController;
 use App\Http\Resources\Products\ProductCollection;
 use App\Models\Product;
 use Exception;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
 use App\Http\Controllers\Controller;
@@ -89,5 +90,11 @@ class ProductController extends ApiController
         $product->delete();
 
         return $this->showOne($product);
+    }
+
+    public function search(Request $request)
+    {
+        $data = Product::search($request->search)->get();
+        return $this->showAll($data,200, ProductCollection::class);
     }
 }
