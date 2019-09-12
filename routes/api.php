@@ -63,7 +63,8 @@ Route::group(['prefix' => 'v1'], function () {
     Route::apiResource('permissions.users', 'Api\permission\PermissionUserController');
 
     //Products ===========================================================================================================.
-    Route::apiResource('products', 'Api\Products\ProductController');
+    Route::post('products/search', 'Api\Products\ProductController@search');
+    Route::apiResource('products', 'Api\Products\ProductController')->except('search');
     Route::apiResource('products.categories', 'Api\Products\ProductCategoryController');
     Route::apiResource('products.tags', 'Api\Products\ProductTagController');
 
