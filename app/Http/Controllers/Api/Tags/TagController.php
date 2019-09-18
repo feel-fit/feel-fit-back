@@ -6,11 +6,9 @@ use App\Http\Controllers\ApiController;
 use App\Http\Resources\Tags\TagCollection;
 use App\Models\Tag;
 use Exception;
-use App\Models\Tag;
 use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
 use App\Http\Controllers\Controller;
-use App\Http\Controllers\ApiController;
 use Illuminate\Validation\ValidationException;
 
 class TagController extends ApiController

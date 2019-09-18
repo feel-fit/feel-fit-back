@@ -9,7 +9,6 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Http\JsonResponse;
 use App\Http\Controllers\Controller;
-use App\Http\Controllers\ApiController;
 use Illuminate\Validation\ValidationException;
 
 class CityController extends ApiController

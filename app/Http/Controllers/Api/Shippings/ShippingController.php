@@ -6,11 +6,9 @@ use App\Http\Controllers\ApiController;
 use App\Http\Resources\Shippings\ShippingCollection;
 use App\Models\Shipping;
 use Exception;
-use App\Models\Shipping;
 use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
 use App\Http\Controllers\Controller;
-use App\Http\Controllers\ApiController;
 use Illuminate\Validation\ValidationException;
 
 class ShippingController extends ApiController

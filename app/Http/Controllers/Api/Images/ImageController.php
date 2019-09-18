@@ -6,11 +6,9 @@ use App\Http\Controllers\ApiController;
 use App\Http\Resources\Images\ImageCollection;
 use App\Models\Image;
 use Exception;
-use App\Models\Image;
 use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
 use App\Http\Controllers\Controller;
-use App\Http\Controllers\ApiController;
 use Illuminate\Validation\ValidationException;
 
 class ImageController extends ApiController

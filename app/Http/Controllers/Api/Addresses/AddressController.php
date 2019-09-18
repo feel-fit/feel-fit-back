@@ -6,7 +6,6 @@ use App\Http\Controllers\ApiController;
 use App\Http\Resources\Addresses\AddressCollection;
 use App\Models\Address;
 use Exception;
-use App\Models\Address;
 use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
 use App\Http\Controllers\Controller;

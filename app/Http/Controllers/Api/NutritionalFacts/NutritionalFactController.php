@@ -10,7 +10,6 @@ use Illuminate\Http\Response;
 use App\Models\NutritionalFact;
 use Illuminate\Http\JsonResponse;
 use App\Http\Controllers\Controller;
-use App\Http\Controllers\ApiController;
 use Illuminate\Validation\ValidationException;
 
 class NutritionalFactController extends ApiController

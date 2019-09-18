@@ -9,7 +9,6 @@ use Illuminate\Http\Request;
 use App\Models\DetailShopping;
 use Illuminate\Http\JsonResponse;
 use App\Http\Controllers\Controller;
-use App\Http\Controllers\ApiController;
 use Illuminate\Validation\ValidationException;
 
 class DetailShoppingController extends ApiController

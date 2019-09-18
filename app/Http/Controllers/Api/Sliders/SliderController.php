@@ -6,11 +6,9 @@ use App\Http\Controllers\ApiController;
 use App\Http\Resources\Sliders\SliderCollection;
 use App\Models\Slider;
 use Exception;
-use App\Models\Slider;
 use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
 use App\Http\Controllers\Controller;
-use App\Http\Controllers\ApiController;
 use Illuminate\Validation\ValidationException;
 
 class SliderController extends ApiController
