@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Payment;
 use Illuminate\Database\Seeder;
 
 class PaymentsTableSeeder extends Seeder
@@ -11,6 +12,8 @@ class PaymentsTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(\App\Models\Payment::class, 10)->create();
+        Payment::create(['name'=>'contraentrega']);
+        Payment::create(['name'=>'pse']);
+        Payment::create(['name'=>'tarjeta crédito']);
     }
 }

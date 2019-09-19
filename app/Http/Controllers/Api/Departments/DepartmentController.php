@@ -8,7 +8,6 @@ use App\Models\Department;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
-use App\Http\Controllers\Controller;
 use Illuminate\Validation\ValidationException;
 
 class DepartmentController extends ApiController

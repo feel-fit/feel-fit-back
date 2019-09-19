@@ -16,7 +16,7 @@ class UserController extends ApiController
     public function __construct()
     {
         $this->middleware('auth:api')->only(['me']);
-        $this->middleware('client.credentials');
+        //$this->middleware('client.credentials');
         //parent::__construct();
     }
 
@@ -41,7 +41,6 @@ class UserController extends ApiController
         $rules = [
             'name' => 'required',
             'email' => 'required|unique:users',
-            'password' => 'required',
             'phone' => 'numeric',
             'status' => 'boolean',
         ];

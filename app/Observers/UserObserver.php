@@ -23,6 +23,7 @@ class UserObserver
 
     public function created(User $user)
     {
+        //TODO enviar correo de bienvenida
         $user->createToken($user->email)->accessToken;
         $user->syncRoles('admin');
     }
