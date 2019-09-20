@@ -21,71 +21,77 @@ class DetailShoppingController extends ApiController
     public function index()
     {
         $data = DetailShopping::all();
-
-        return $this->showAll($data,200,DetailShoppingCollection::class);
+        
+        return $this->showAll($data, 200, DetailShoppingCollection::class);
     }
-
+    
     /**
      * Store a newly created resource in storage.
      *
-     * @param  Request  $request
+     * @param Request $request
+     *
      * @return JsonResponse
      * @throws ValidationException
      */
     public function store(Request $request)
     {
-        $rules = [
-            'shopping_id' => 'required|numeric',
-            'product_id' => 'required|numeric',
-            'value' => 'required|numeric',
-            'quantity' => 'required|numeric',
-        ];
+        $rules = ['items.*.shopping_id' => 'required|numeric',
+                  'items.*.product_id'  => 'required|numeric',
+                  'items.*.value'       => 'required|numeric',
+                  'items.*.quantity'    => 'required|numeric',];
+        
         $this->validate($request, $rules);
-        $data = DetailShopping::create($request->all());
-
-        return $this->showOne($data, 201);
+        $data = collect($request->items);
+        $data->each(function ($item) {
+            DetailShopping::create($item);
+        });
+        
+        return $this->successResponse($data, 201);
     }
-
+    
     /**
      * Display the specified resource.
      *
-     * @param  DetailShopping  $detailShopping
+     * @param DetailShopping $detailShopping
+     *
      * @return JsonResponse
      */
     public function show(DetailShopping $detailShopping)
     {
         return $this->showOne($detailShopping);
     }
-
+    
     /**
      * Update the specified resource in storage.
      *
-     * @param  Request  $request
-     * @param  DetailShopping  $detailShopping
+     * @param Request        $request
+     * @param DetailShopping $detailShopping
+     *
      * @return JsonResponse
      */
     public function update(Request $request, DetailShopping $detailShopping)
     {
         $detailShopping->fill($request->all());
-        if ($detailShopping->isClean()) {
+        if($detailShopping->isClean()){
             return $this->errorNoClean();
         }
         $detailShopping->save();
-
+        
         return $this->showOne($detailShopping);
     }
-
+    
     /**
      * Remove the specified resource from storage.
      *
-     * @param  DetailShopping  $detailShopping
+     * @param DetailShopping $detailShopping
+     *
      * @return JsonResponse
      * @throws Exception
      */
     public function destroy(DetailShopping $detailShopping)
     {
         $detailShopping->delete();
-
+        
         return $this->showOne($detailShopping);
     }
 }
