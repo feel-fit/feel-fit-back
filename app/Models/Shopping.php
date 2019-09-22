@@ -34,7 +34,7 @@ class Shopping extends Model
      */
     public function statusOrder()
     {
-        return $this->hasOne(StatusOrder::class);
+        return $this->belongsTo(StatusOrder::class);
     }
 
     /**
@@ -66,7 +66,7 @@ class Shopping extends Model
      */
     public function address()
     {
-        return $this->hasOne(Address::class);
+        return $this->belongsTo(Address::class);
     }
 
     /**

@@ -23,10 +23,10 @@ class UserCollection extends ResourceCollection
                 'name' => $item->name,
                 'email' => $item->email,
                 'identification' => $item->identification,
-                'gender' => $item->gender,
+                'gender' => $item->gender ?? 'masculino',
                 'phone' => $item->phone,
                 'roles' => $item->getRoleNames(),
-                'status' => $item->status,
+                'status' => (boolean) $item->status,
                 'created_at' => $item->created_at,
                 'updated_at' => $item->updated_at,
                 'addresses'=> $item->addresses

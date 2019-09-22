@@ -8,7 +8,9 @@
 
 namespace App\Observers;
 
+use App\Mail\WellcomeUser;
 use App\Models\User;
+use Illuminate\Support\Facades\Mail;
 
 class UserObserver
 {
@@ -23,7 +25,7 @@ class UserObserver
 
     public function created(User $user)
     {
-        //TODO enviar correo de bienvenida
+        Mail::to($user->email)->send(new WellcomeUser($user));
         $user->createToken($user->email)->accessToken;
         $user->syncRoles('admin');
     }

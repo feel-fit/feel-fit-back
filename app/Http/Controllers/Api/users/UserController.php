@@ -46,6 +46,7 @@ class UserController extends ApiController
         ];
         $this->validate($request, $rules);
         $user = User::create($request->all());
+        Auth::login($user);
 
         return $this->showOne($user, 201);
     }

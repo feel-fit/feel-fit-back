@@ -2,7 +2,9 @@
 
 namespace App\Providers;
 
+use App\Models\Message;
 use App\Models\User;
+use App\Observers\MessageObserver;
 use App\Observers\UserObserver;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Auth\Events\Registered;
@@ -16,13 +18,9 @@ class EventServiceProvider extends ServiceProvider
      *
      * @var array
      */
-    protected $listen = [
-        Registered::class => [
-            SendEmailVerificationNotification::class,
-        ],
-        'Illuminate\Auth\Events\Logout' => ['App\Listeners\LogSuccessfulLogout'],
-    ];
-
+    protected $listen = [Registered::class               => [SendEmailVerificationNotification::class,],
+                         'Illuminate\Auth\Events\Logout' => ['App\Listeners\LogSuccessfulLogout'],];
+    
     /**
      * Register any events for your application.
      *
@@ -32,7 +30,8 @@ class EventServiceProvider extends ServiceProvider
     {
         parent::boot();
         User::observe(UserObserver::class);
-
+        Message::observe(MessageObserver::class);
+        
         //
     }
 }
