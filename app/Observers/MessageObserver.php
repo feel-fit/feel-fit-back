@@ -10,7 +10,7 @@ class MessageObserver
 {
     public function created(Message $message)
     {
-        Mail::to($message->email)->send(new MessageMail($message));
+        //Mail::to($message->email)->send(new MessageMail($message));
         
     }
 }

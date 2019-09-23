@@ -19,6 +19,7 @@ class CreateNutritionalFactsTable extends Migration
             $table->string('quantity');
             $table->string('percentage');
             $table->unsignedInteger('product_id');
+            $table->unsignedInteger('order')->default(0);
             $table->unsignedInteger('parent_id')->nullable();
             $table->enum('position_fact', ['superior', 'medio', 'inferior'])->default('inferior');
             $table->timestamps();

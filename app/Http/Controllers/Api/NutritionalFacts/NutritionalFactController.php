@@ -37,8 +37,8 @@ class NutritionalFactController extends ApiController
     {
         $rules = [
             'name' => 'required',
-            'quantity' => 'numeric|nullable',
-            'percentage' => 'numeric|nullable',
+            'quantity' => 'nullable',
+            'percentage' => 'nullable',
             'product_id' => 'required|numeric',
             'parent_id' => 'numeric|nullable',
             'position_fact' => 'string|required',
@@ -70,6 +70,7 @@ class NutritionalFactController extends ApiController
      */
     public function update(Request $request, NutritionalFact $nutritionalFact)
     {
+       
         $nutritionalFact->fill($request->all());
         if ($nutritionalFact->isClean()) {
             return $this->errorNoClean();

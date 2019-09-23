@@ -23,6 +23,7 @@ class ProductResource extends JsonResource
             'description' => (string) $this->description,
             'surprise_box' => (boolean) $this->surprise_box,
             'status' => (boolean) $this->status,
+            'facts'=> $this->nutritionalFacts,
             'stock' => [
                 'in_stock' => (boolean) $this->in_stock,
                 'quantity' => (int) $this->quantity,

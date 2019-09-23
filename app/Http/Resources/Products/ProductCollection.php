@@ -27,6 +27,7 @@ class ProductCollection extends ResourceCollection
                 'price' => (int) $item->price,
                 'surprise_box' => (boolean) $item->surprise_box,
                 'status' => (boolean) $item->status,
+                'facts'=> $item->nutritionalFacts,
                 'stock' => [
                     'in_stock' => (boolean) $item->in_stock,
                     'quantity' => (int) $item->quantity,

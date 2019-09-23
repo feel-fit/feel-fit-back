@@ -60,7 +60,9 @@ class Product extends Model
      */
     public function nutritionalFacts()
     {
-        return $this->hasMany(NutritionalFact::class);
+        return $this->hasMany(NutritionalFact::class)
+                    ->with('children')
+                    ->whereNull('parent_id')->orderBy('order');
     }
     
     /**
