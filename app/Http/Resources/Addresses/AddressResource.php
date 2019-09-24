@@ -2,6 +2,8 @@
 
 namespace App\Http\Resources\Addresses;
 
+use App\Http\Resources\Cities\CityCollection;
+use App\Http\Resources\Cities\CityResource;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class AddressResource extends JsonResource
@@ -14,6 +16,11 @@ class AddressResource extends JsonResource
      */
     public function toArray($request)
     {
-        return parent::toArray($request);
+        return ['id'      => (int)$this->id,
+                'name'    => $this->name,
+                'address' => $this->address,
+                'user'    => $this->user,
+                'city' => new CityResource($this->city),
+                'created_at' => $this->created_at,];
     }
 }

@@ -44,21 +44,21 @@ class Shopping extends Model
     {
         return $this->hasMany(DetailShopping::class);
     }
-
+    
     /**
-     * @return HasOne
+     * @return BelongsTo
      */
     public function shipping()
     {
-        return $this->hasOne(Shipping::class);
+        return $this->belongsTo(Shipping::class);
     }
-
+    
     /**
-     * @return HasOne
+     * @return BelongsTo
      */
     public function payment()
     {
-        return $this->hasOne(Payment::class);
+        return $this->belongsTo(Payment::class);
     }
 
     /**
