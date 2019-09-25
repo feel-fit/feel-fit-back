@@ -21,6 +21,6 @@ class AddressResource extends JsonResource
                 'address' => $this->address,
                 'user'    => $this->user,
                 'city' => new CityResource($this->city),
-                'created_at' => $this->created_at,];
+                'created_at' => (string) $this->created_at,];
     }
 }

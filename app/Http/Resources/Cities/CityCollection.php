@@ -20,7 +20,7 @@ class CityCollection extends ResourceCollection
                     'name'          => $item->name,
                     'department'    => $item->department,
                     'department_id' => $item->department_id,
-                    'created_at'    => $item->created_at,];
+                    'created_at'    => (string) $item->created_at,];
         });
     }
 }

@@ -27,7 +27,7 @@ class ShoppingCollection extends ResourceCollection
                     'address'    => new AddressResource($item->address),
                     'discount'   => $item->discount,
                     'total'      => (int)$item->total,
-                    'created_at' => $item->created_at,];
+                    'created_at' => (string) $item->created_at,];
         });
     }
 }

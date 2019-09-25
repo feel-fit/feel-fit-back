@@ -17,6 +17,9 @@ Route::group(['prefix' => 'v1'], function () {
 
     //Addresses ===========================================================================================================.
     Route::apiResource('addresses', 'Api\Addresses\AddressController');
+    
+    //Brands ===========================================================================================================.
+    Route::apiResource('brands', 'Api\Brands\BrandController');
 
     //Categories ===========================================================================================================.
     Route::apiResource('categories', 'Api\Categories\CategoryController');

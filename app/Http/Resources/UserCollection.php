@@ -27,8 +27,8 @@ class UserCollection extends ResourceCollection
                 'phone' => $item->phone,
                 'roles' => $item->getRoleNames(),
                 'status' => (boolean) $item->status,
-                'created_at' => $item->created_at,
-                'updated_at' => $item->updated_at,
+                'created_at' => (string) $item->created_at,
+                'updated_at' => (string) $item->updated_at,
                 'addresses'=> $item->addresses
             ];
         

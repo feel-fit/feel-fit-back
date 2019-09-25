@@ -19,6 +19,6 @@ class CityResource extends JsonResource
                 'name'       => $this->name,
                 'department'       => $this->department,
                 'department_id'       => $this->department_id,
-                'created_at' => $this->created_at,];
+                'created_at' => (string) $this->created_at,];
     }
 }

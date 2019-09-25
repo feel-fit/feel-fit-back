@@ -21,8 +21,8 @@ class TagCollection extends ResourceCollection
             return [
                 'id' => $item->id,
                 'name' => $item->name,
-                'created_at' => $item->created_at,
-                'updated_at' => $item->updated_at,
+                'created_at' => (string) $item->created_at,
+                'updated_at' => (string) $item->updated_at,
             ];
         
         });

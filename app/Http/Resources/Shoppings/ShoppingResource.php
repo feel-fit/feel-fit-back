@@ -25,6 +25,6 @@ class ShoppingResource extends JsonResource
                 'address'    => new AddressResource($this->address),
                 'discount'   => $this->discount,
                 'total'      => (int)$this->total,
-                'created_at' => $this->created_at,];
+                'created_at' => (string) $this->created_at,];
     }
 }

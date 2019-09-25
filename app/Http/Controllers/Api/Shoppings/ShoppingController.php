@@ -89,6 +89,8 @@ class ShoppingController extends ApiController
      */
     public function destroy(Shopping $shopping)
     {
+        
+        //eliminar relaciones
         $shopping->delete();
         
         return $this->showOne($shopping);
