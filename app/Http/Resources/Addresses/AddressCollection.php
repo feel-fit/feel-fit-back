@@ -3,6 +3,7 @@
 namespace App\Http\Resources\Addresses;
 
 use App\Http\Resources\Cities\CityCollection;
+use App\Http\Resources\Cities\CityResource;
 use Illuminate\Http\Resources\Json\ResourceCollection;
 
 class AddressCollection extends ResourceCollection
@@ -21,7 +22,7 @@ class AddressCollection extends ResourceCollection
                     'name'    => $item->name,
                     'address' => $item->address,
                     'user'    => $item->user,
-                    'city' => new CityCollection($item->city),
+                    'city' => new CityResource($item->city),
                     'created_at' => (string) $item->created_at,];
         });
     }

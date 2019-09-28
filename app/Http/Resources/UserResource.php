@@ -26,6 +26,6 @@ class UserResource extends JsonResource
                 'status'         => (boolean)$this->status,
                 'created_at'     => (string) $this->created_at,
                 'updated_at'     => (string) $this->updated_at,
-                'addresses'      => $this->addresses];
+                'addresses'      => new AddressCollection($this->addresses)];
     }
 }
