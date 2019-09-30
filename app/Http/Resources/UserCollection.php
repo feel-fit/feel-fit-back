@@ -11,27 +11,26 @@ class UserCollection extends ResourceCollection
     /**
      * Transform the resource collection into an array.
      *
-     * @param  Request  $request
+     * @param Request $request
      *
      * @return Collection
      */
     public function toArray($request)
     {
         return $this->collection->transform(function ($item) {
-            return [
-                'id' => $item->id,
-                'name' => $item->name,
-                'email' => $item->email,
-                'identification' => $item->identification,
-                'gender' => $item->gender ?? 'masculino',
-                'phone' => $item->phone,
-                'roles' => $item->getRoleNames(),
-                'status' => (boolean) $item->status,
-                'created_at' => (string) $item->created_at,
-                'updated_at' => (string) $item->updated_at,
-                'addresses'=> $item->addresses
-            ];
-        
+            return ['id'             => $item->id,
+                    'name'           => $item->name,
+                    'email'          => $item->email,
+                    'identification' => $item->identification,
+                    'gender'         => $item->gender ?? 'masculino',
+                    'phone'          => $item->phone,
+                    'roles'          => $item->getRoleNames(),
+                    'discounts'      => $item->discounts,
+                    'status'         => (boolean)$item->status,
+                    'created_at'     => (string)$item->created_at,
+                    'updated_at'     => (string)$item->updated_at,
+                    'addresses'      => $item->addresses];
+            
         });
     }
 }

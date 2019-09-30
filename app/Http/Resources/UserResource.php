@@ -23,9 +23,10 @@ class UserResource extends JsonResource
                 'gender'         => $this->gender ?? 'masculino',
                 'phone'          => $this->phone,
                 'roles'          => $this->getRoleNames(),
+                'discounts'      => $this->discounts,
                 'status'         => (boolean)$this->status,
-                'created_at'     => (string) $this->created_at,
-                'updated_at'     => (string) $this->updated_at,
+                'created_at'     => (string)$this->created_at,
+                'updated_at'     => (string)$this->updated_at,
                 'addresses'      => new AddressCollection($this->addresses)];
     }
 }
