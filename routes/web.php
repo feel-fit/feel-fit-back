@@ -10,3 +10,7 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+route::get('/',function(){
+   return view('emails.users.wellcome');
+});
