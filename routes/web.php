@@ -11,6 +11,3 @@
 |
 */
 
-route::get('/',function(){
-   return view('emails.users.wellcome');
-});

@@ -1,5 +1,9 @@
 <html>
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Feel Fit</title>
     <style>
         .caja{
@@ -23,8 +27,9 @@
         }
         .body{
             margin-top: 5%;
-            margin-left: 10%;
-            margin-right: 10%;
+            margin-left: 20%;
+            margin-right: 20%;
+            margin-bottom: 10%;
         }
         .texto-center{
             text-align: center;
@@ -36,8 +41,12 @@
         }
 
         .footer{
+            position: absolute;
+            bottom: 0;
+            width: 100%;
             text-align: center;
             padding: 5px;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
         }
 
         #fresa1{
@@ -75,6 +84,31 @@
             position: absolute;
             bottom: 20%;
         }
+
+        @media (max-width: 770px){
+            #fresa1{
+                display: none;
+            }
+            #fresa2{
+                display: none;
+            }
+            #fresa3{
+                display: none;
+            }
+            #fresa4{
+                display: none;
+            }
+            #fresa5{
+                display: none;
+            }
+            #fresa6{
+                display: none;
+            }
+            #fresa7{
+                display: none;
+            }
+        }
+
     </style>
 </head>
 <body>
