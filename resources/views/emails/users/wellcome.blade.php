@@ -10,6 +10,7 @@
             border:2px red solid;
         }
         body{
+            font-family: "Arial", serif;
             margin: 0;
         }
         .header{
