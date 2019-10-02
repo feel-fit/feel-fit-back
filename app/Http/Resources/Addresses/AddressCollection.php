@@ -23,6 +23,7 @@ class AddressCollection extends ResourceCollection
                     'address' => $item->address,
                     'user'    => $item->user,
                     'city' => new CityResource($item->city),
+                    'city_id' => $item->city->id,
                     'created_at' => (string) $item->created_at,];
         });
     }
