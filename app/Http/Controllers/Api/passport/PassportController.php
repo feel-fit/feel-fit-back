@@ -40,7 +40,7 @@ class PassportController extends ApiController
                 return $this->showOne($token);
             }
         }
-
+        
         return $this->errorResponse('Unauthorized: Access is denied due to invalid credentials.', 401);
 
     }

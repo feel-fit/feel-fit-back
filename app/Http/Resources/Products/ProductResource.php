@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources\Products;
 
+use App\Http\Resources\Brands\BrandResource;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class ProductResource extends JsonResource
@@ -18,7 +19,7 @@ class ProductResource extends JsonResource
             'id' => (int) $this->id,
             'slug' => (string) $this->slug,
             'name' => (string) $this->name,
-            'brand' => (string) $this->brand->name,
+            'brand' =>  new BrandResource($this->brand),
             'price' => (int) $this->price,
             'description' => (string) $this->description,
             'surprise_box' => (boolean) $this->surprise_box,

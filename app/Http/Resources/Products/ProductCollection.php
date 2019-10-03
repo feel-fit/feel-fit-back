@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources\Products;
 
+use App\Http\Resources\Brands\BrandResource;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\ResourceCollection;
 use Illuminate\Support\Collection;
@@ -22,7 +23,7 @@ class ProductCollection extends ResourceCollection
                 'id' => (int) $item->id,
                 'slug' => (string) $item->slug,
                 'name' => (string) $item->name,
-                'brand' => (string) $item->brand->name,
+                'brand' =>  new BrandResource($item->brand),
                 'description' => (string) $item->description,
                 'price' => (int) $item->price,
                 'surprise_box' => (boolean) $item->surprise_box,
