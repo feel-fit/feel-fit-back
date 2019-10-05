@@ -22,8 +22,6 @@ class CategoryCollection extends ResourceCollection
                 'id' => $item->id,
                 'name' => $item->name,
                 'url' => $item->url,
-                'created_at' => (string) $item->created_at,
-                'updated_at' => (string) $item->updated_at,
             ];
         
         });

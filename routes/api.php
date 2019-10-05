@@ -70,6 +70,7 @@ Route::group(['prefix' => 'v1'], function () {
     Route::apiResource('products', 'Api\Products\ProductController')->except('search');
     Route::apiResource('products.categories', 'Api\Products\ProductCategoryController');
     Route::apiResource('products.tags', 'Api\Products\ProductTagController');
+    Route::apiResource('products.nutritional-facts', 'Api\Products\ProductNutritionalFactController');
 
     //Roles ===========================================================================================================.
     Route::apiResource('roles', 'Api\permission\RoleController');

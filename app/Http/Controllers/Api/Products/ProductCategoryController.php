@@ -8,6 +8,7 @@ use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use function GuzzleHttp\Promise\all;
 
 class ProductCategoryController extends ApiController
 {
@@ -22,19 +23,12 @@ class ProductCategoryController extends ApiController
         return $this->showAll($data, 200 ,CategoryCollection::class);
     }
 
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  Request  $request
-     * @param  Product  $product
-     * @param  Category  $category
-     * @return JsonResponse
-     */
-    public function update(Request $request, Product $product, Category $category)
+    
+    
+    public function update(Product $product,Category $category)
     {
-        $product->categories()->syncWithoutDetaching([$category->id]);
-
+        $product->categories()->syncWithoutDetaching($category);
+        
         return $this->showOne($category);
     }
 
@@ -45,11 +39,10 @@ class ProductCategoryController extends ApiController
      * @param  Category  $category
      * @return JsonResponse
      */
-    public function destroy(Product $product, Category $category)
+    public function destroy(Product $product,Category $category)
     {
-        $product->categories()->findOrFail($category->id);
-        $product->categories()->detach([$category->id]);
-
-        return $this->showOne($category->refresh());
+        $product->categories()->detach($category);
+        
+        return $this->showOne($category);
     }
 }

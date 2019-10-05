@@ -65,6 +65,11 @@ class Product extends Model
                     ->whereNull('parent_id')->orderBy('order');
     }
     
+    public function facts()
+    {
+        return $this->hasMany(NutritionalFact::class);
+    }
+    
     /**
      * @return BelongsToMany
      */
