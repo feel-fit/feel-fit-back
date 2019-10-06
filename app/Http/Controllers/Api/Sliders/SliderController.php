@@ -4,11 +4,13 @@ namespace App\Http\Controllers\Api\Sliders;
 
 use App\Http\Controllers\ApiController;
 use App\Http\Resources\Sliders\SliderCollection;
+use App\Models\Image;
 use App\Models\Slider;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\ValidationException;
 
 class SliderController extends ApiController
@@ -37,13 +39,27 @@ class SliderController extends ApiController
         $rules = [
             'name' => 'required',
             'position' => 'numeric|nullable',
-
+            'file'=>'required|image'
         ];
 
         $this->validate($request, $rules);
-        $data = Slider::create($request->all());
-
+        $data = new Slider($request->all());
+        $data->url = $this->storeImage($request);
+        $data->save();
         return $this->showOne($data, 201);
+    }
+
+    /**
+     * Metodo para guardar la  imagen del slider
+     * @param Request $request
+     * @return mixed
+     */
+    private function storeImage(Request $request){
+        $file  = $request->file('file');
+        $image = \Intervention\Image\Facades\Image::make($file)->fit(2000)->encode('png');
+        $path  = $file->hashName('public/sliders');
+        Storage::put($path, (string)$image);
+        return  Storage::url($path);
     }
 
     /**
@@ -66,10 +82,22 @@ class SliderController extends ApiController
      */
     public function update(Request $request, Slider $slider)
     {
+        $rules = [
+            'name' => '',
+            'position' => 'numeric|nullable',
+            'file'=>'required|image'
+        ];
+
+        $this->validate($request, $rules);
+
         $slider->fill($request->all());
-        if ($slider->isClean()) {
-            return $this->errorNoClean();
+
+
+        if($request->has('file')){
+            Storage::delete($slider->url);
+            $slider->url = $this->storeImage($request);
         }
+
         $slider->save();
 
         return $this->showOne($slider);
@@ -84,6 +112,7 @@ class SliderController extends ApiController
      */
     public function destroy(Slider $slider)
     {
+        Storage::delete($slider->url);
         $slider->delete();
 
         return $this->showOne($slider);
