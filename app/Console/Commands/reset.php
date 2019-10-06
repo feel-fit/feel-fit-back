@@ -38,6 +38,8 @@ class reset extends Command
         $this->call('migrate:refresh');
         $this->call('passport:install');
         $this->call('db:seed');
+        $this->call('storage:link');
+        
         
     }
 }

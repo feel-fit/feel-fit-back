@@ -3,6 +3,7 @@
 namespace App\Http\Resources\Products;
 
 use App\Http\Resources\Brands\BrandResource;
+use App\Http\Resources\Images\ImageCollection;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\ResourceCollection;
 use Illuminate\Support\Collection;
@@ -34,7 +35,7 @@ class ProductCollection extends ResourceCollection
                     'quantity' => (int) $item->quantity,
                 ],
                 'categories' => $item->categories,
-                'images' => $item->images,
+                'images' => new ImageCollection($item->images),
                 'tags' => $item->tags,
             ];
 

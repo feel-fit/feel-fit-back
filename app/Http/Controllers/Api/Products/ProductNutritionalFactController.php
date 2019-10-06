@@ -33,7 +33,7 @@ class ProductNutritionalFactController extends ApiController
             if($fact){
                 $fact->update($item);
             }else {
-                NutritionalFact::create(item);
+                NutritionalFact::create($item);
             }
         }
         

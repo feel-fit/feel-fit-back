@@ -3,6 +3,7 @@
 namespace App\Http\Resources\Products;
 
 use App\Http\Resources\Brands\BrandResource;
+use App\Http\Resources\Images\ImageCollection;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class ProductResource extends JsonResource
@@ -30,7 +31,7 @@ class ProductResource extends JsonResource
                 'quantity' => (int) $this->quantity,
             ],
             'categories' => $this->categories,
-            'images' => $this->images,
+            'images' => new ImageCollection($this->images),
             'tags' => $this->tags,
         ];
     }

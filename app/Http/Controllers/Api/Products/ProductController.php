@@ -39,10 +39,7 @@ class ProductController extends ApiController
     public function store(Request $request)
     {
         $rules = ['name'         => 'required',
-                  'category_id'  => 'numeric|required',
-                  'description'  => 'string|required',
-                  'price'        => 'required|numeric',
-                  'surprise_box' => 'boolean',];
+                  'price'        => 'required|numeric',];
         
         $this->validate($request, $rules);
         $product = Product::create($request->all());
