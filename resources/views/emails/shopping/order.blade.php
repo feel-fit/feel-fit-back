@@ -74,7 +74,7 @@
     <div class="contenido">
         <img src="{{asset('img/solicitud/Group3.svg')}}" class="imagen"/>
         <div class="content-text">
-            <h1 class="titulo">¡Hola {{$name}}!</h1>
+            <h1 class="titulo">¡Hola {{$shopping->user->name}}!</h1>
             <p class="texto-left">
                 Solicitud de producto:
             </p>

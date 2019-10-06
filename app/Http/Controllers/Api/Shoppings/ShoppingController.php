@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api\Shoppings;
 
 use App\Http\Controllers\ApiController;
 use App\Http\Resources\Shoppings\ShoppingCollection;
+use App\Models\Shipping;
 use App\Models\Shopping;
 use Exception;
 use Illuminate\Http\Request;
@@ -71,9 +72,8 @@ class ShoppingController extends ApiController
     public function update(Request $request, Shopping $shopping)
     {
         $shopping->fill($request->all());
-        if($shopping->isClean()){
-            return $this->errorNoClean();
-        }
+        $shipping = Shipping::updateOrCreate($request->shipping);
+        $shopping->shipping()->associate($shipping);
         $shopping->save();
         
         return $this->showOne($shopping);

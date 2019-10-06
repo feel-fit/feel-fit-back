@@ -3,6 +3,7 @@
 namespace App\Http\Resources\Shoppings;
 
 use App\Http\Resources\Addresses\AddressResource;
+use App\Http\Resources\DetailShoppings\DetailShoppingCollection;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class ShoppingResource extends JsonResource
@@ -16,15 +17,17 @@ class ShoppingResource extends JsonResource
      */
     public function toArray($request)
     {
-        return ['id'         => (int)$this->id,
-                'user'       => $this->user,
-                'status'     => $this->statusOrder,
-                'details'    => $this->details,
-                'shipping'   => $this->shipping,
-                'payment'    => $this->payment,
-                'address'    => new AddressResource($this->address),
-                'discount'   => $this->discount,
-                'total'      => (int)$this->total,
-                'created_at' => (string) $this->created_at,];
+        return ['id'              => (int)$this->id,
+                'user'            => $this->user,
+                'status'          => $this->statusOrder,
+                'status_order_id' => $this->statusOrder->id,
+                'details'         => new DetailShoppingCollection($this->details),
+                'shipping'        => $this->shipping,
+                'shipping_id'        => $this->shipping,
+                'payment'         => $this->payment,
+                'address'         => new AddressResource($this->address),
+                'discount'        => $this->discount,
+                'total'           => (int)$this->total,
+                'created_at'      => (string)$this->created_at,];
     }
 }

@@ -11,7 +11,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 class ShoppingMail extends Mailable
 {
     use Queueable, SerializesModels;
-
+    
     /**
      * Create a new message instance.
      *
@@ -21,7 +21,7 @@ class ShoppingMail extends Mailable
     {
         $this->shopping = $shopping;
     }
-
+    
     /**
      * Build the message.
      *
@@ -29,6 +29,6 @@ class ShoppingMail extends Mailable
      */
     public function build()
     {
-        return $this->markdown('emails.shopping.order');
+        return $this->markdown('emails.shopping.order')->with(['shopping' => $this->shopping,]);
     }
 }

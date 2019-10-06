@@ -29,9 +29,9 @@ class DetailShopping extends Model
     /**
      * @return HasMany
      */
-    public function products()
+    public function product()
     {
-        return $this->hasMany(Product::class);
+        return $this->belongsTo(Product::class);
     }
 
     /**
