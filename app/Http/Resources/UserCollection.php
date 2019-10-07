@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources;
 
+use App\Http\Resources\Shoppings\ShoppingCollection;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\ResourceCollection;
 use Illuminate\Support\Collection;
@@ -25,6 +26,7 @@ class UserCollection extends ResourceCollection
                     'gender'         => $item->gender ?? 'masculino',
                     'phone'          => $item->phone,
                     'roles'          => $item->getRoleNames(),
+                    'shoppings'      => new ShoppingCollection($item->shoppings),
                     'discounts'      => $item->discounts,
                     'status'         => (boolean)$item->status,
                     'created_at'     => (string)$item->created_at,

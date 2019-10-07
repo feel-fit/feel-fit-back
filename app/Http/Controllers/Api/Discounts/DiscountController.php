@@ -66,9 +66,6 @@ class DiscountController extends ApiController
     public function update(Request $request, Discount $discount)
     {
         $discount->fill($request->all());
-        if ($discount->isClean()) {
-            return $this->errorNoClean();
-        }
         $discount->save();
 
         return $this->showOne($discount);

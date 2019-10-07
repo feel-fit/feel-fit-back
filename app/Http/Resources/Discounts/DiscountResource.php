@@ -18,6 +18,7 @@ class DiscountResource extends JsonResource
             'id' => $this->id,
             'name' => $this->name,
             'value' => $this->value,
+            'users' => $this->users,
             'created_at' => (string) $this->created_at,
             'updated_at' => (string) $this->updated_at,
         ];

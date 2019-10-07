@@ -36,6 +36,7 @@ Route::group(['prefix' => 'v1'], function () {
 
     //Discounts ===========================================================================================================.
     Route::apiResource('discounts', 'Api\Discounts\DiscountController');
+    Route::apiResource('discounts.users', 'Api\Discounts\DiscountUserController');
 
     //Images ===========================================================================================================.
     Route::apiResource('images', 'Api\Images\ImageController');

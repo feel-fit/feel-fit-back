@@ -98,7 +98,7 @@ class User extends Authenticatable
      */
     public function discounts()
     {
-        return $this->belongsToMany(Discount::class);
+        return $this->belongsToMany(Discount::class)->orderBy('updated_at');
     }
 
     /**

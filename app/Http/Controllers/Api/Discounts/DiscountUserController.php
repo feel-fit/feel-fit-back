@@ -32,11 +32,11 @@ class DiscountUserController extends ApiController
      * @param  User  $user
      * @return JsonResponse
      */
-    public function update(Request $request,  Discount $discount,User $user)
+    public function store(Request $request,  Discount $discount)
     {
-        $discount->users()->syncWithoutDetaching([$user->id]);
+        $discount->users()->sync(collect($request->all())->pluck('id'));
 
-        return $this->showOne($user);
+        return $this->showOne($discount);
     }
 
     /**

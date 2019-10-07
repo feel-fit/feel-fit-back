@@ -3,6 +3,7 @@
 namespace App\Http\Resources;
 
 use App\Http\Resources\Addresses\AddressCollection;
+use App\Http\Resources\Shoppings\ShoppingCollection;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class UserResource extends JsonResource
@@ -23,6 +24,7 @@ class UserResource extends JsonResource
                 'gender'         => $this->gender ?? 'masculino',
                 'phone'          => $this->phone,
                 'roles'          => $this->getRoleNames(),
+                'shoppings'          => new ShoppingCollection($this->shoppings),
                 'discounts'      => $this->discounts,
                 'status'         => (boolean)$this->status,
                 'created_at'     => (string)$this->created_at,
