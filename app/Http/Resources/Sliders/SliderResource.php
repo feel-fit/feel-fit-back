@@ -18,7 +18,7 @@ class SliderResource extends JsonResource
         return [
             'id' => $this->id,
             'name' => $this->name,
-            'url' => $this->url,
+            'url' => secure_url($this->url),
             'position' => $this->position,
             'created_at' => (string) $this->created_at,
             'updated_at' => (string) $this->updated_at,

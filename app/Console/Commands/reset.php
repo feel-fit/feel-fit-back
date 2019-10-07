@@ -35,6 +35,7 @@ class reset extends Command
      */
     public function handle()
     {
+        $this->call('key:generate');
         $this->call('migrate:refresh');
         $this->call('passport:install');
         $this->call('db:seed');
