@@ -50,7 +50,7 @@ class ImageController extends ApiController
             $imagen = Image::find($request->id);
            if($imagen){
                Storage::delete($imagen->url);
-               $imagen->url = env('APP_URL').$url;
+               $imagen->url = $url;
                $imagen->save();
            }else{
                $request->merge(['url' => $url]);
