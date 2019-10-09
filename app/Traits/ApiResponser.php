@@ -134,7 +134,7 @@ trait ApiResponser
         if (request()->has('per_page')) {
             $perPage = request()->per_page;
         } else {
-            $perPage = 15;
+            $perPage = 16;
         }
 
         $results = $collection->slice(($page - 1) * $perPage, $perPage)->values();
