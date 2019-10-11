@@ -18,7 +18,7 @@ class SliderCollection extends ResourceCollection
         return $this->collection->transform(function ($item) {
             return ['id'         => $item->id,
                     'name'       => $item->name,
-                    'url'        => secure_url($item->url),
+                    'url'        => url($item->url),
                     'position'   => $item->position,
                     'created_at' => (string) $item->created_at,
                     'updated_at' => (string) $item->updated_at,];

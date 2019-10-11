@@ -19,7 +19,7 @@ class ImageCollection extends ResourceCollection
             return [
                 'id' => $item->id,
                 'name' => $item->name,
-                'url' => secure_url($item->url),
+                'url' => url($item->url),
                 'position' => $item->position,
                 'product_id' => $item->product_id,
             ];

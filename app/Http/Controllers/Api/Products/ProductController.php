@@ -24,10 +24,10 @@ class ProductController extends ApiController
     public function index()
     {
         $data = Product::all();
-        
+
         return $this->showAll($data, 200, ProductCollection::class);
     }
-    
+
     /**
      * Store a newly created resource in storage.
      *
@@ -38,19 +38,24 @@ class ProductController extends ApiController
      */
     public function store(Request $request)
     {
-        $rules = ['name'         => 'required',
-                  'price'        => 'required|numeric',];
-        
+        $rules = ['name' => 'required',
+            'price' => 'required|numeric',
+            'categories'=>'required|array',
+            'tags'=>'required|array',
+            'facts.name'=>'required',
+            'brand_id'=>'required|exists:brands,id'
+        ];
+
         $this->validate($request, $rules);
         $product = Product::create($request->all());
         $product->categories()->sync(collect($request->categories)->pluck('id'));
         $product->tags()->sync(collect($request->tags)->pluck('id'));
         $product->nutritionalFacts()->createMany($request->facts);
         $product = $product->fresh();
-        
+
         return $this->showOne($product, 201);
     }
-    
+
     /**
      * Display the specified resource.
      *
@@ -62,7 +67,7 @@ class ProductController extends ApiController
     {
         return $this->showOne($product);
     }
-    
+
     /**
      * Update the specified resource in storage.
      *
@@ -80,13 +85,13 @@ class ProductController extends ApiController
         $product->save();
         $product->categories()->sync(collect($request->categories)->pluck('id'));
         $product->tags()->sync(collect($request->tags)->pluck('id'));
-        
-        
+
+
         $product = $product->fresh();
-        
+
         return $this->showOne($product);
     }
-    
+
     /**
      * Remove the specified resource from storage.
      *
@@ -98,14 +103,14 @@ class ProductController extends ApiController
     public function destroy(Product $product)
     {
         $product->delete();
-        
+
         return $this->showOne($product);
     }
-    
+
     public function search(Request $request)
     {
         $data = Product::search($request->search)->get();
-        
+
         return $this->showAll($data, 200, ProductCollection::class);
     }
 }
