@@ -15,6 +15,6 @@ class CategoriesTableSeeder extends Seeder
         Category::create(['name'=>'productos nuevos','url'=>'productos-nuevos']);
         Category::create(['name'=>'productos destacados','url'=>'productos-destacados']);
         Category::create(['name'=>'caja sorpresa','url'=>'cajas-sorpresa']);
-        factory(\App\Models\Category::class, 10)->create();
+        //factory(\App\Models\Category::class, 10)->create();
     }
 }

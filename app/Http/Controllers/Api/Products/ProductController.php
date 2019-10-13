@@ -40,9 +40,6 @@ class ProductController extends ApiController
     {
         $rules = ['name' => 'required',
             'price' => 'required|numeric',
-            'categories'=>'required|array',
-            'tags'=>'required|array',
-            'facts.name'=>'required',
             'brand_id'=>'required|exists:brands,id'
         ];
 
