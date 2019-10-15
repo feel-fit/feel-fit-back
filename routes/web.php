@@ -11,3 +11,8 @@
 |
 */
 
+Route::get('mailable', function () {
+    $invoice = \App\Models\User::find(1);
+
+    return new \App\Mail\WellcomeUser($invoice);
+});
