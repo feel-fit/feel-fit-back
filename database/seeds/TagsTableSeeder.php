@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Tag;
 use Illuminate\Database\Seeder;
 
 class TagsTableSeeder extends Seeder
@@ -11,6 +12,11 @@ class TagsTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(\App\Models\Tag::class, 10)->create();
+
+        Tag::create(['name'=>'yogurt']);
+        Tag::create(['name'=>'colour greek']);
+        Tag::create(['name'=>'litro']);
+        Tag::create(['name'=>'dulce sin sabor']);
+        Tag::create(['name'=>'yogurt griego']);
     }
 }

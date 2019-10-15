@@ -11,6 +11,6 @@ class SlidersTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(\App\Models\Slider::class, 10)->create();
+        //factory(\App\Models\Slider::class, 10)->create();
     }
 }

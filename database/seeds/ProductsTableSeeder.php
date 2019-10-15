@@ -15,19 +15,16 @@ class ProductsTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(Product::class, 100)->create()->each(function ($product) {
-            $product->categories()->attach(Category::all()->random(3));
-            $product->tags()->attach(Tag::all()->random(2));
-            NutritionalFact::create(['name'          => 'Serving Size',
-                                     'position_fact' => 'top',
-                                     'quantity'      => '1/2 cup (about 82g)',
-                                     'product_id'    => $product->id,
-                                     'order'         => 0]);
-            NutritionalFact::create(['name'          => 'Serving Per Container',
-                                     'position_fact' => 'top',
-                                     'quantity'      => '8',
-                                     'product_id'    => $product->id,
-                                     'order'         => 0]);
-        });
+
+        Product::create([
+            'name' => 'YOGURT GRIEGO 1000 Gr. DULCE SIN SABOR - COLOUR GREEK',
+            'description' => 'El yogurt griego dulce sin sabor es un alimento perfecto para con-sumir con tus frutas, vegetales y cereales preferidos, con su sabor dulce y natural sentirás cada gota de sabor.
+
+                                El yogurt griego ayuda a fortalecer el sistema digestivo en general, es rico en bacilos los cuales intervienen en la función de mejorar el sistema inmunológico y al mismo tiempo tienen función reparadora de la flora intestinal, el yogurt griego Color Greek es una fuente alta en proteínas ideal para personas de todas las edades que deseen aumentar su masa muscular.
+                                
+                                Ingredientes: Leche entera, adicionada con vitaminas A y D3, culti-vos lácteos (streptococcus salibarius subsp. thermophilus bulgari-cus), azucar, sin sabor.',
+            'price'=>'17500',
+            'slug'=>'yogurt-griego-1000gr-dulce-sin-sabor-colour-greek',
+        ]);
     }
 }

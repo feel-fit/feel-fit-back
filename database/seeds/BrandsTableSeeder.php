@@ -11,6 +11,6 @@ class BrandsTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(\App\Models\Brand::class, 10)->create();
+        \App\Models\Brand::create(['name'=>'gato','url'=>'gato']);
     }
 }

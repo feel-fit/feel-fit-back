@@ -15,7 +15,7 @@ class Product extends Model
     use SoftDeletes, Searchable;
     const ACTIVO     = 1;
     const DISPONIBLE = 1;
-    
+
     protected $dates              = ['created_at', 'updated_at', 'deleted_at'];
     public    $resource           = ProductResource::class;
     public    $resourceCollection = ProductCollection::class;
@@ -27,12 +27,12 @@ class Product extends Model
                                      'quantity',
                                      'brand_id',
                                      'slug'];
-    
+
     public function in_stock()
     {
         return self::DISPONIBLE == $this->in_stock;
     }
-    
+
     /**
      * @return bool
      */
@@ -46,7 +46,7 @@ class Product extends Model
     |--------------------------------------------------------------------------
     |
     */
-    
+
     /**
      * @return HasMany
      */
@@ -54,7 +54,7 @@ class Product extends Model
     {
         return $this->hasMany(DetailShopping::class);
     }
-    
+
     /**
      * @return HasMany
      */
@@ -64,12 +64,12 @@ class Product extends Model
                     ->with('children')
                     ->whereNull('parent_id')->orderBy('order');
     }
-    
+
     public function facts()
     {
         return $this->hasMany(NutritionalFact::class);
     }
-    
+
     /**
      * @return BelongsToMany
      */
@@ -77,7 +77,7 @@ class Product extends Model
     {
         return $this->belongsTo(Brand::class);
     }
-    
+
     /**
      * @return BelongsToMany
      */
@@ -85,7 +85,7 @@ class Product extends Model
     {
         return $this->belongsToMany(Category::class);
     }
-    
+
     /**
      * @return BelongsToMany
      */
@@ -93,7 +93,7 @@ class Product extends Model
     {
         return $this->belongsToMany(Tag::class);
     }
-    
+
     /**
      * @return HasMany
      */
@@ -101,7 +101,7 @@ class Product extends Model
     {
         return $this->hasMany(Image::class);
     }
-    
+
     /**
      * @return HasMany
      */
@@ -109,7 +109,7 @@ class Product extends Model
     {
         return $this->hasMany(Wishlist::class);
     }
-    
+
     /**
      * @return string
      */
@@ -117,7 +117,7 @@ class Product extends Model
     {
         return config('scout.prefix') . '_products';
     }
-    
+
     /**
      * @return array
      */
@@ -127,14 +127,14 @@ class Product extends Model
         $array['id']          = (int)$this->id;
         $array['slug']        = (string)$this->slug;
         $array['name']        = (string)$this->name;
-        $array['brand']       = (string)$this->brand->name;
+        $array['brand']       = $this->brand ? (string)$this->brand->name:  '';
         $array['price']       = (int)$this->price;
         $array['description'] = (string)$this->description;
         $array['categories']  = $this->categories;
         $array['tags']        = $this->tags;
-        
+
         // Customize array...
-        
+
         return $array;
     }
 }
