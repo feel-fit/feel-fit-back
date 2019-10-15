@@ -70,7 +70,7 @@
         <div class="contenido">
             <img src="{{asset('img/contacto/Group3.svg')}}" class="imagen"/>
             <div class="content-text">
-                <h1 class="titulo">¡Hola {{$name}}!</h1>
+                <h1 class="titulo">¡Hola {{$message->name}}!</h1>
                 <p class="texto">
                     Gracias por contactarnos, nos comunicaremos contigo en el menor tiempo posible
                     para atender tu solicitud.

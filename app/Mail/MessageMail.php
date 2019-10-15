@@ -11,7 +11,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 class MessageMail extends Mailable
 {
     use Queueable, SerializesModels;
-    
+
     /**
      * Create a new message instance.
      *
@@ -21,7 +21,7 @@ class MessageMail extends Mailable
     {
         $this->message = $message;
     }
-    
+
     /**
      * Build the message.
      *
@@ -29,6 +29,6 @@ class MessageMail extends Mailable
      */
     public function build()
     {
-        return $this->markdown('emails.message.contact');
+        return $this->markdown('emails.message.contact')->with(['message' => $this->message]);
     }
 }
