@@ -21,7 +21,19 @@ class UserRolesSeeder extends Seeder
 
         $user_super_admin->syncRoles('admin');
 
-        $user_admin = factory(User::class)->create();
+        $user_admin = User::create([
+            'name' => 'Estefania Cañon arenas',
+            'email' => 'estefa_caar@hotmail.com',
+            'password' => 'Vainilla1a',
+        ]);
+
+        $user_admin->syncRoles('admin');
+
+        $user_admin = User::create([
+            'name' => 'Mauricio Franco Rojas',
+            'email' => 'maurof85@hotmail.com',
+            'password' => 'Vainilla1a',
+        ]);
 
         $user_admin->syncRoles('admin');
     }
