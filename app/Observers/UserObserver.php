@@ -27,6 +27,6 @@ class UserObserver
     {
         Mail::to($user->email)->send(new WellcomeUser($user));
         $user->createToken($user->email)->accessToken;
-        $user->syncRoles('admin');
+        $user->syncRoles('client');
     }
 }
