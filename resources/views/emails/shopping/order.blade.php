@@ -12,7 +12,12 @@
     @slot('subcopy')
         <h1 class="titulo">¡Hola {{$shopping->user->name}}!</h1>
         <p class="texto-left">
-            Gracias por comprar en FeelFit. Esperamos que hayas disfrutado de tu experiencia de compra con nostros.<br>
+            Gracias por tu compra. Estamos preprando tu pedido para que sea enviado a tu direcci&oacute;n.<br>
+            A continuacion puedes revisar los detalles de tu orden. <br><br>
+            Esperamos volver a verte pronto
+        </p>
+        <p class="texto-rigth">
+            Equipo Feel Fit Market
         </p>
 
         <table class="table table-bordered mx-5">
@@ -37,7 +42,7 @@
             </tr>
             </tbody>
         </table>
-        
+
     @endslot
 
     {{-- Footer --}}
