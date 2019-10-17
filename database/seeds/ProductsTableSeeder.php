@@ -28,7 +28,7 @@ class ProductsTableSeeder extends Seeder
         ]);
 
         Product::create([
-            "name"=>"-	YOGURT GRIEGO 1000 Gr. AREQUIPE - COLOUR GREEK",
+            "name"=>"YOGURT GRIEGO 1000 Gr. AREQUIPE - COLOUR GREEK",
             "description"=>"El yogurt griego de Arequipe es un alimento perfecto para consumir con tus frutas, vegetales y cereales preferidos, contiene menos del 3% en carbohidratos y azúcar ademas de 24 gramos de proteína por cada 300 gramos de yogurt, es 95% libre de grasa.
                             El yogurt griego ayuda a fortalecer el sistema digestivo en general, es rico en bacilos los cuales intervienen en la función de mejorar el sistema inmunológico y al mismo tiempo tienen función reparadora de la flora intestinal, el yogurt griego Color Greek 
                             es una fuente alta en proteínas ideal para personas de todas las edades que deseen aumentar su masa muscular.",
