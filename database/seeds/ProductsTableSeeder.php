@@ -26,5 +26,56 @@ class ProductsTableSeeder extends Seeder
             'price'=>'17500',
             'slug'=>'yogurt-griego-1000gr-dulce-sin-sabor-colour-greek',
         ]);
+
+        Product::create([
+            "name"=>"Leche",
+            "description"=>"Es una leche de calidad",
+            "price"=>"2000",
+            "slug" => "leche-calidad"
+        ]);
+
+        Product::create([
+            "name"=>"Leche",
+            "description"=>"Es una leche de calidad",
+            "price"=>"2000",
+            "slug" => "leche-calidad"
+        ]);
+
+        Product::create([
+            "name"=>"Dulce de leche",
+            "description"=>"El dulce de leche o manjar es un dulce 
+            tradicional latinoamericano, que corresponde 
+            a una variante caramelizada de la leche.",
+            "price"=>"4000",
+            "slug" => "dulce-de-leche"
+        ]);
+
+        Product::create([
+            "name"=>"Queso",
+            "description"=>"El queso es un alimento sólido que se obtiene por 
+            maduración de la cuajada de la leche una vez eliminado el suero; sus diferentes variedades dependen del 
+            origen de la leche empleada, de los métodos de elaboración seguidos y del grado de madurez alcanzada",
+            "price"=>"5000",
+            "slug" => "queso"
+        ]);
+
+        Product::create([
+            "name"=>"Queso",
+            "description"=>"El queso es un alimento sólido que se obtiene por 
+            maduración de la cuajada de la leche una vez eliminado el suero; sus diferentes variedades dependen del 
+            origen de la leche empleada, de los métodos de elaboración seguidos y del grado de madurez alcanzada",
+            "price"=>"5000",
+            "slug" => "queso"
+        ]);
+
+        Product::create([
+            "name"=>"Mora",
+            "description"=>"Mora es el nombre que reciben diversos frutos comestibles de 
+            distintas especies. Las moras son frutas o bayas que, a pesar de proceder de especies 
+            vegetales que son completamente diferentes, poseen aspecto similar y características comunes",
+            "price"=>"3000",
+            "slug" => "mora"
+        ]);
+
     }
 }
