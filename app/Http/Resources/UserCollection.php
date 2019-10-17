@@ -19,20 +19,22 @@ class UserCollection extends ResourceCollection
     public function toArray($request)
     {
         return $this->collection->transform(function ($item) {
-            return ['id'             => $item->id,
-                    'name'           => $item->name,
-                    'email'          => $item->email,
-                    'identification' => $item->identification,
-                    'gender'         => $item->gender ?? 'masculino',
-                    'phone'          => $item->phone,
-                    'roles'          => $item->getRoleNames(),
-                    'shoppings'      => new ShoppingCollection($item->shoppings),
-                    'discounts'      => $item->discounts,
-                    'status'         => (boolean)$item->status,
-                    'created_at'     => (string)$item->created_at,
-                    'updated_at'     => (string)$item->updated_at,
-                    'addresses'      => $item->addresses];
-            
+            return ['id' => $item->id,
+                'name' => $item->name,
+                'email' => $item->email,
+                'identification' => $item->identification,
+                'gender' => $item->gender ?? 'masculino',
+                'phone' => $item->phone,
+                'roles' => $item->getRoleNames(),
+                'shoppings' => new ShoppingCollection($item->shoppings),
+                'discounts' => $item->discounts,
+                'status' => (boolean)$item->status,
+                'email_verified_at' => (string)$item->email_verified_at ? $item->email_verified_at : null,
+                'created_at' => (string)$item->created_at,
+                'updated_at' => (string)$item->updated_at,
+                'deleted_at' => (string)$item->deleted_at ? $item->deleted_at : null,
+                'addresses' => $item->addresses];
+
         });
     }
 }

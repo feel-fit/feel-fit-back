@@ -24,10 +24,10 @@ class DetailShoppingController extends ApiController
     public function index()
     {
         $data = DetailShopping::all();
-        
+
         return $this->showAll($data, 200, DetailShoppingCollection::class);
     }
-    
+
     /**
      * Store a newly created resource in storage.
      *
@@ -38,25 +38,33 @@ class DetailShoppingController extends ApiController
      */
     public function store(Request $request)
     {
-        
+
         $rules = ['items.*.shopping_id' => 'required|numeric',
-                  'items.*.product_id'  => 'required|numeric',
-                  'items.*.value'       => 'required|numeric',
-                  'items.*.quantity'    => 'required|numeric',];
-        
+            'items.*.product_id' => 'required|numeric',
+            'items.*.value' => 'required|numeric',
+            'items.*.quantity' => 'required|numeric',];
+
         $this->validate($request, $rules);
-        $data = collect($request->items);
+
+        if ($request->items) {
+            $data = collect($request->items);
+        } else {
+            $data = collect([$request->all()]);
+        }
+
         $data->each(function ($item) {
             DetailShopping::create($item);
         });
-        
+
+
         $shopping = Shopping::with('details', 'user', 'address', 'statusOrder')->find($data->first()['shopping_id']);
-        
+
+
         Mail::to($shopping->user->email)->send(new ShoppingMail($shopping));
-        
+
         return $this->successResponse($data, 201);
     }
-    
+
     /**
      * Display the specified resource.
      *
@@ -68,11 +76,11 @@ class DetailShoppingController extends ApiController
     {
         return $this->showOne($detailShopping);
     }
-    
+
     /**
      * Update the specified resource in storage.
      *
-     * @param Request        $request
+     * @param Request $request
      * @param DetailShopping $detailShopping
      *
      * @return JsonResponse
@@ -80,14 +88,14 @@ class DetailShoppingController extends ApiController
     public function update(Request $request, DetailShopping $detailShopping)
     {
         $detailShopping->fill($request->all());
-        if($detailShopping->isClean()){
+        if ($detailShopping->isClean()) {
             return $this->errorNoClean();
         }
         $detailShopping->save();
-        
+
         return $this->showOne($detailShopping);
     }
-    
+
     /**
      * Remove the specified resource from storage.
      *
@@ -99,7 +107,7 @@ class DetailShoppingController extends ApiController
     public function destroy(DetailShopping $detailShopping)
     {
         $detailShopping->delete();
-        
+
         return $this->showOne($detailShopping);
     }
 }

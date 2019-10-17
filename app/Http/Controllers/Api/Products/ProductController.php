@@ -47,7 +47,8 @@ class ProductController extends ApiController
         $product = Product::create($request->all());
         $product->categories()->sync(collect($request->categories)->pluck('id'));
         $product->tags()->sync(collect($request->tags)->pluck('id'));
-        $product->nutritionalFacts()->createMany($request->facts);
+        if ($request->facts)  $product->nutritionalFacts()->createMany($request->facts);
+
         $product = $product->fresh();
 
         return $this->showOne($product, 201);

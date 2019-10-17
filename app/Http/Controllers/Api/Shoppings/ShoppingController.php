@@ -21,10 +21,10 @@ class ShoppingController extends ApiController
     public function index()
     {
         $data = Shopping::all();
-        
+
         return $this->showAll($data, 200, ShoppingCollection::class);
     }
-    
+
     /**
      * Store a newly created resource in storage.
      *
@@ -42,13 +42,13 @@ class ShoppingController extends ApiController
                   'shipping_id'     => 'numeric|nullable',
                   'payment_id'      => 'numeric|nullable',
                   'total'           => 'numeric|required',];
-        
+
         $this->validate($request, $rules);
         $data = Shopping::create($request->all());
-        
+
         return $this->showOne($data, 201);
     }
-    
+
     /**
      * Display the specified resource.
      *
@@ -60,7 +60,7 @@ class ShoppingController extends ApiController
     {
         return $this->showOne($shopping);
     }
-    
+
     /**
      * Update the specified resource in storage.
      *
@@ -72,13 +72,16 @@ class ShoppingController extends ApiController
     public function update(Request $request, Shopping $shopping)
     {
         $shopping->fill($request->all());
-        $shipping = Shipping::updateOrCreate($request->shipping);
-        $shopping->shipping()->associate($shipping);
+        if ($request->shipping){
+            $shipping = Shipping::updateOrCreate($request->shipping);
+            $shopping->shipping()->associate($shipping);
+        }
+
         $shopping->save();
-        
+
         return $this->showOne($shopping);
     }
-    
+
     /**
      * Remove the specified resource from storage.
      *
@@ -89,10 +92,10 @@ class ShoppingController extends ApiController
      */
     public function destroy(Shopping $shopping)
     {
-        
+
         //eliminar relaciones
         $shopping->delete();
-        
+
         return $this->showOne($shopping);
     }
 }

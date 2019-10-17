@@ -37,26 +37,27 @@ class ImageController extends ApiController
     public function store(Request $request)
     {
         $rules = ['product_id' => 'required|numeric',
-                  'position'   => 'numeric|nullable',];
+            'file' => 'file|max:300',
+            'position' => 'numeric|nullable',];
         $this->validate($request, $rules);
-        $file  = $request->file('file');
+        $file = $request->file('file');
         $image = \Intervention\Image\Facades\Image::make($file)->fit(600)->encode('png');
-        $path  = $file->hashName('public/productos');
+        $path = $file->hashName('public/productos');
 
         Storage::put($path, (string)$image);
         $url = Storage::url($path);
 
-        if($request->id){
+        if ($request->id) {
             $imagen = Image::find($request->id);
-           if($imagen){
-               Storage::delete($imagen->url);
-               $imagen->url = $url;
-               $imagen->save();
-           }else{
-               $request->merge(['url' => $url]);
-               $imagen = Image::create($request->all());
-           }
-        }else {
+            if ($imagen) {
+                Storage::delete($imagen->url);
+                $imagen->url = $url;
+                $imagen->save();
+            } else {
+                $request->merge(['url' => $url]);
+                $imagen = Image::create($request->all());
+            }
+        } else {
             $request->merge(['url' => $url]);
             $imagen = Image::create($request->all());
         }
@@ -80,19 +81,26 @@ class ImageController extends ApiController
      * Update the specified resource in storage.
      *
      * @param Request $request
-     * @param Image   $image
+     * @param Image $image
      *
      * @return JsonResponse
      */
     public function update(Request $request, Image $image)
     {
+        $rules = [
+            'file' => 'file|max:300',
+        ];
+
+        $this->validate($request, $rules);
+
         Storage::delete($image->url);
 
-        $file   = $request->file('file');
+        $file = $request->file('file');
         $imagen = \Intervention\Image\Facades\Image::make($file)->fit(600)->encode('png');
-        $path   = $file->hashName('public/productos');
+        $path = $file->hashName('public/productos');
         Storage::put($path, (string)$imagen);
         $image->url = Storage::url($path);
+
         $image->save();
 
         return $this->showOne($image);

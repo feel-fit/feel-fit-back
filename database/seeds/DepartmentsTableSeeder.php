@@ -24,7 +24,11 @@ class DepartmentsTableSeeder extends Seeder
             ['name' => "CAUCA"],
             ['name' => "CESAR"],
             ['name' => "CHOCÓ"],
-            ['name' => "CÓRDOBA"],
+            ['name' => "CÓRDOBA"]
+
+        ]);
+
+        DB::table('departments')->insert([
             ['name' => "CUNDINAMARCA"],
             ['name' => "GUAINÍA"],
             ['name' => "GUAVIARE"],

@@ -25,6 +25,7 @@ class ProductCollection extends ResourceCollection
                 'slug' => (string) $item->slug,
                 'name' => (string) $item->name,
                 'brand' =>  new BrandResource($item->brand),
+                'brand_id' =>  $item->brand?$item->brand->id : null,
                 'description' => (string) $item->description,
                 'price' => (int) $item->price,
                 'surprise_box' => (boolean) $item->surprise_box,
@@ -37,6 +38,9 @@ class ProductCollection extends ResourceCollection
                 'categories' => $item->categories,
                 'images' => new ImageCollection($item->images),
                 'tags' => $item->tags,
+                'created_at' => (string)$item->created_at,
+                'updated_at' => (string)$item->updated_at,
+                'deleted_at' => (string)$item->deleted_at ? $item->deleted_at : null,
             ];
 
         });

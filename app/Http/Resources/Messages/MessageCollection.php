@@ -16,14 +16,15 @@ class MessageCollection extends ResourceCollection
     public function toArray($request)
     {
         return $this->collection->transform(function ($item) {
-            return ['id'          => $item->id,
-                    'user_id'     => $item->user_id,
-                    'name'        => $item->name,
-                    'email'       => $item->email,
-                    'description' => $item->description,
-                    'created_at'  => (string)$item->created_at,
-                    'updated_at'  => (string)$item->updated_at,];
-            
+            return ['id' => $item->id,
+                'user_id' => $item->user_id,
+                'name' => $item->name,
+                'email' => $item->email,
+                'description' => $item->description,
+                'created_at' => (string)$item->created_at,
+                'updated_at' => (string)$item->updated_at,
+                'deleted_at' => (string)$item->deleted_at ? $item->deleted_at : null,];
+
         });
     }
 }

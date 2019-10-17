@@ -15,6 +15,7 @@ class NutritionalFactTest extends TestCase
 
     public function testList()
     {
+        factory($this->model)->create();
         $data = $this->model::find(1);
         $this->get($this->url, $this->headers())
             ->assertStatus(200)->assertJsonFragment($data->toarray());

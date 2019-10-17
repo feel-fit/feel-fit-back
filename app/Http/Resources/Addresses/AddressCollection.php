@@ -18,13 +18,15 @@ class AddressCollection extends ResourceCollection
     public function toArray($request)
     {
         return $this->collection->transform(function ($item) {
-            return ['id'      => (int)$item->id,
-                    'name'    => $item->name,
-                    'address' => $item->address,
-                    'user'    => $item->user,
-                    'city' => new CityResource($item->city),
-                    'city_id' => $item->city->id,
-                    'created_at' => (string) $item->created_at,];
+            return ['id' => (int)$item->id,
+                'name' => $item->name,
+                'address' => $item->address,
+                'user' => $item->user,
+                'city' => new CityResource($item->city),
+                'city_id' => (int)$item->city->id,
+                'created_at' => (string)$item->created_at,
+                'updated_at' => (string)$item->updated_at,
+                'deleted_at' => (string)$item->deleted_at ? $item->deleted_at : null,];
         });
     }
 }

@@ -16,12 +16,13 @@ class SliderCollection extends ResourceCollection
     public function toArray($request)
     {
         return $this->collection->transform(function ($item) {
-            return ['id'         => $item->id,
-                    'name'       => $item->name,
-                    'url'        => url($item->url),
-                    'position'   => $item->position,
-                    'created_at' => (string) $item->created_at,
-                    'updated_at' => (string) $item->updated_at,];
+            return ['id' => $item->id,
+                'name' => $item->name,
+                'url' => url($item->url),
+                'position' => $item->position,
+                'created_at' => (string)$item->created_at,
+                'updated_at' => (string)$item->updated_at,
+                'deleted_at' => (string)$item->deleted_at ? $item->deleted_at : null,];
         });
     }
 }

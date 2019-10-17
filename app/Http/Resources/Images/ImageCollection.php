@@ -22,6 +22,9 @@ class ImageCollection extends ResourceCollection
                 'url' => url($item->url),
                 'position' => $item->position,
                 'product_id' => $item->product_id,
+                'created_at' => (string)$item->created_at,
+                'updated_at' => (string)$item->updated_at,
+                'deleted_at' => (string)$item->deleted_at ? $item->deleted_at : null,
             ];
 
         });
