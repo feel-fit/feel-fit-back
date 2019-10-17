@@ -19,8 +19,6 @@ class Department extends Model
     public $resourceCollection = DepartmentCollection::class;
     protected $fillable = ['name'];
 
-
-
     /*
     |--------------------------------------------------------------------------
     | Relations database

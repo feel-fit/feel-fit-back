@@ -17,7 +17,7 @@ class Category extends Model
     //protected $relationships = [''];
     public $resource = CategoryResource::class;
     public $resourceCollection = CategoryCollection::class;
-    protected $fillable = ['name','url'];
+    protected $fillable = ['name', 'url'];
     /*
     |--------------------------------------------------------------------------
     | Relations database
@@ -30,6 +30,6 @@ class Category extends Model
      */
     public function products()
     {
-        return $this->belongsToMany(Product::class)->where('quantity','>',0);
+        return $this->belongsToMany(Product::class)->where('quantity', '>', 0);
     }
 }

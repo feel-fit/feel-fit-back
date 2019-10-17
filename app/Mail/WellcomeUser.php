@@ -11,7 +11,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 class WellcomeUser extends Mailable
 {
     use Queueable, SerializesModels;
-    
+
     /**
      * Create a new message instance.
      *
@@ -21,7 +21,7 @@ class WellcomeUser extends Mailable
     {
         $this->user = $user;
     }
-    
+
     /**
      * Build the message.
      *

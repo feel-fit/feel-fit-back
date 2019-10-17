@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers\Api\users;
 
-use App\Http\Resources\UserCollection;
 use Exception;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Resources\UserCollection;
 use App\Http\Controllers\ApiController;
 use Illuminate\Validation\ValidationException;
 
@@ -27,7 +27,7 @@ class UserController extends ApiController
     {
         $users = User::all();
 
-        return $this->showAll($users,200,UserCollection::class);
+        return $this->showAll($users, 200, UserCollection::class);
     }
 
     /**

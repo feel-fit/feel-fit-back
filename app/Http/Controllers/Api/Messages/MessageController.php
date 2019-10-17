@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers\Api\Messages;
 
-use App\Http\Controllers\ApiController;
-use App\Http\Resources\Messages\MessageCollection;
-use App\Models\Message;
 use Exception;
+use App\Models\Message;
 use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\ApiController;
 use Illuminate\Validation\ValidationException;
+use App\Http\Resources\Messages\MessageCollection;
 
 class MessageController extends ApiController
 {
@@ -21,10 +21,10 @@ class MessageController extends ApiController
     public function index()
     {
         $data = Message::all();
-        
+
         return $this->showAll($data, 200, MessageCollection::class);
     }
-    
+
     /**
      * Store a newly created resource in storage.
      *
@@ -38,13 +38,13 @@ class MessageController extends ApiController
         $rules = ['name'        => 'required|string',
                   'email'       => 'required|email',
                   'description' => 'required|string',
-                  'user_id'     => 'nullable|numeric',];
+                  'user_id'     => 'nullable|numeric', ];
         $this->validate($request, $rules);
         $data = Message::create($request->all());
-        
+
         return $this->showOne($data, 201);
     }
-    
+
     /**
      * Display the specified resource.
      *
@@ -56,7 +56,7 @@ class MessageController extends ApiController
     {
         return $this->showOne($message);
     }
-    
+
     /**
      * Update the specified resource in storage.
      *
@@ -68,14 +68,14 @@ class MessageController extends ApiController
     public function update(Request $request, Message $message)
     {
         $message->fill($request->all());
-        if($message->isClean()){
+        if ($message->isClean()) {
             return $this->errorNoClean();
         }
         $message->save();
-        
+
         return $this->showOne($message);
     }
-    
+
     /**
      * Remove the specified resource from storage.
      *
@@ -87,7 +87,7 @@ class MessageController extends ApiController
     public function destroy(Message $message)
     {
         $message->delete();
-        
+
         return $this->showOne($message);
     }
 }

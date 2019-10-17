@@ -3,8 +3,8 @@
 namespace App\Http\Resources\Tags;
 
 use Illuminate\Http\Request;
-use Illuminate\Http\Resources\Json\ResourceCollection;
 use Illuminate\Support\Collection;
+use Illuminate\Http\Resources\Json\ResourceCollection;
 
 class TagCollection extends ResourceCollection
 {
@@ -21,11 +21,10 @@ class TagCollection extends ResourceCollection
             return [
                 'id' => $item->id,
                 'name' => $item->name,
-                'created_at' => (string)$item->created_at,
-                'updated_at' => (string)$item->updated_at,
-                'deleted_at' => (string)$item->deleted_at ? $item->deleted_at : null,
+                'created_at' => (string) $item->created_at,
+                'updated_at' => (string) $item->updated_at,
+                'deleted_at' => (string) $item->deleted_at ? $item->deleted_at : null,
             ];
-
         });
     }
 }

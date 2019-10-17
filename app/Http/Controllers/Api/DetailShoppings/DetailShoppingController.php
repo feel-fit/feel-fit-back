@@ -2,17 +2,17 @@
 
 namespace App\Http\Controllers\Api\DetailShoppings;
 
-use App\Http\Controllers\ApiController;
-use App\Http\Resources\DetailShoppings\DetailShoppingCollection;
-use App\Mail\ShoppingMail;
-use App\Models\Shopping;
 use Exception;
+use App\Models\Shopping;
+use App\Mail\ShoppingMail;
 use Illuminate\Http\Request;
 use App\Models\DetailShopping;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
+use App\Http\Controllers\ApiController;
 use Illuminate\Validation\ValidationException;
+use App\Http\Resources\DetailShoppings\DetailShoppingCollection;
 
 class DetailShoppingController extends ApiController
 {
@@ -38,11 +38,10 @@ class DetailShoppingController extends ApiController
      */
     public function store(Request $request)
     {
-
         $rules = ['items.*.shopping_id' => 'required|numeric',
             'items.*.product_id' => 'required|numeric',
             'items.*.value' => 'required|numeric',
-            'items.*.quantity' => 'required|numeric',];
+            'items.*.quantity' => 'required|numeric', ];
 
         $this->validate($request, $rules);
 
@@ -56,9 +55,7 @@ class DetailShoppingController extends ApiController
             DetailShopping::create($item);
         });
 
-
         $shopping = Shopping::with('details', 'user', 'address', 'statusOrder')->find($data->first()['shopping_id']);
-
 
         Mail::to($shopping->user->email)->send(new ShoppingMail($shopping));
 

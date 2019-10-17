@@ -44,7 +44,7 @@ class Shopping extends Model
     {
         return $this->hasMany(DetailShopping::class);
     }
-    
+
     /**
      * @return BelongsTo
      */
@@ -52,7 +52,7 @@ class Shopping extends Model
     {
         return $this->belongsTo(Shipping::class);
     }
-    
+
     /**
      * @return BelongsTo
      */

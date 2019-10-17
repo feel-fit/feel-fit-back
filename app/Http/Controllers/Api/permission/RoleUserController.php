@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers\Api\permission;
 
-use App\Http\Resources\UserCollection;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Http\JsonResponse;
 use Spatie\Permission\Models\Role;
+use App\Http\Resources\UserCollection;
 use App\Http\Controllers\ApiController;
 
 class RoleUserController extends ApiController
@@ -21,7 +21,7 @@ class RoleUserController extends ApiController
     {
         $users = $role->users;
 
-        return $this->showAll($users,200,UserCollection::class);
+        return $this->showAll($users, 200, UserCollection::class);
     }
 
     /**

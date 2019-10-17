@@ -2,9 +2,9 @@
 
 namespace Tests\Feature\Shoppings;
 
+use Tests\TestCase;
 use App\Models\Address;
 use App\Models\Discount;
-use Tests\TestCase;
 use App\Models\Shipping;
 use App\Models\Shopping;
 use Illuminate\Foundation\Testing\WithFaker;
@@ -25,7 +25,7 @@ class ShoppingTest extends TestCase
         $data = $this->model::find(1);
         $this->get($this->url, $this->headers())
             ->assertStatus(200);
-            //->assertJsonFragment($data->toarray());
+        //->assertJsonFragment($data->toarray());
     }
 
     public function testCreate()
@@ -45,7 +45,7 @@ class ShoppingTest extends TestCase
         factory(Address::class)->create();
         factory(Shipping::class)->create();
         $data = factory($this->model)->create();
-        $this->get($this->url . $data->id, $this->headers())
+        $this->get($this->url.$data->id, $this->headers())
             ->assertStatus(200);
     }
 
@@ -56,7 +56,7 @@ class ShoppingTest extends TestCase
         factory(Shipping::class)->create();
         $data_new = factory($this->model)->make()->toarray();
         $data_old = factory($this->model)->create();
-        $this->put($this->url . $data_old->id, $data_new, $this->headers())->assertStatus(200);
+        $this->put($this->url.$data_old->id, $data_new, $this->headers())->assertStatus(200);
         $this->assertDatabaseHas($this->table, $data_new);
     }
 
@@ -66,7 +66,7 @@ class ShoppingTest extends TestCase
         factory(Address::class)->create();
         factory(Shipping::class)->create();
         $data = factory($this->model)->create();
-        $this->delete($this->url . $data->id, [], $this->headers())
+        $this->delete($this->url.$data->id, [], $this->headers())
             ->assertStatus(200);
         //$this->assertSoftDeleted($this->table, $data->toarray());
     }

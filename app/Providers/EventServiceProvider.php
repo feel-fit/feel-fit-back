@@ -2,14 +2,14 @@
 
 namespace App\Providers;
 
-use App\Models\DetailShopping;
-use App\Models\Message;
 use App\Models\User;
-use App\Observers\DetailShoppingObserver;
-use App\Observers\MessageObserver;
+use App\Models\Message;
+use App\Models\DetailShopping;
 use App\Observers\UserObserver;
+use App\Observers\MessageObserver;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Auth\Events\Registered;
+use App\Observers\DetailShoppingObserver;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 
@@ -20,9 +20,9 @@ class EventServiceProvider extends ServiceProvider
      *
      * @var array
      */
-    protected $listen = [Registered::class               => [SendEmailVerificationNotification::class,],
-                         'Illuminate\Auth\Events\Logout' => ['App\Listeners\LogSuccessfulLogout'],];
-    
+    protected $listen = [Registered::class               => [SendEmailVerificationNotification::class],
+                         'Illuminate\Auth\Events\Logout' => ['App\Listeners\LogSuccessfulLogout'], ];
+
     /**
      * Register any events for your application.
      *
@@ -34,7 +34,7 @@ class EventServiceProvider extends ServiceProvider
         User::observe(UserObserver::class);
         Message::observe(MessageObserver::class);
         DetailShopping::observe(DetailShoppingObserver::class);
-        
+
         //
     }
 }

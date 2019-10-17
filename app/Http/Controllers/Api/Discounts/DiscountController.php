@@ -2,15 +2,15 @@
 
 namespace App\Http\Controllers\Api\Discounts;
 
-use App\Http\Controllers\ApiController;
-use App\Http\Resources\Discounts\DiscountCollection;
-use App\Models\Discount;
 use Exception;
+use App\Models\Discount;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Http\JsonResponse;
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\ApiController;
 use Illuminate\Validation\ValidationException;
+use App\Http\Resources\Discounts\DiscountCollection;
 
 class DiscountController extends ApiController
 {
@@ -23,7 +23,7 @@ class DiscountController extends ApiController
     {
         $data = Discount::all();
 
-        return $this->showAll($data,200,DiscountCollection::class);
+        return $this->showAll($data, 200, DiscountCollection::class);
     }
 
     /**

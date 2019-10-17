@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers\Api\Categories;
 
+use App\Models\Product;
+use App\Models\Category;
+use Illuminate\Http\Request;
+use Illuminate\Http\JsonResponse;
 use App\Http\Controllers\ApiController;
 use App\Http\Resources\Products\ProductCollection;
-use App\Models\Category;
-use App\Models\Product;
-use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
 
 class CategoryProductController extends ApiController
 {
@@ -19,9 +19,9 @@ class CategoryProductController extends ApiController
     public function index(Category $category)
     {
         $data = $category->products;
-        return $this->showAll($data, 200 ,ProductCollection::class);
-    }
 
+        return $this->showAll($data, 200, ProductCollection::class);
+    }
 
     /**
      * Update the specified resource in storage.

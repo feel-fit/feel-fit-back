@@ -21,7 +21,7 @@ class CreateNutritionalFactsTable extends Migration
             $table->unsignedInteger('product_id');
             $table->unsignedInteger('order')->default(0);
             $table->unsignedInteger('parent_id')->nullable();
-            $table->enum('position_fact', ['top','superior', 'medio', 'inferior'])->default('inferior');
+            $table->enum('position_fact', ['top', 'superior', 'medio', 'inferior'])->default('inferior');
             $table->timestamps();
             $table->softDeletes();
         });

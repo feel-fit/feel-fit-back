@@ -40,8 +40,6 @@ class ImageTest extends TestCase
             ->assertStatus(200);
     }
 
-
-
     public function testDelete()
     {
         $data = factory($this->model)->make()->toarray();

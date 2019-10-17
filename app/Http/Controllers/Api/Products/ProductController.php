@@ -2,17 +2,17 @@
 
 namespace App\Http\Controllers\Api\Products;
 
-use App\Http\Controllers\ApiController;
-use App\Http\Resources\Categories\CategoryCollection;
-use App\Http\Resources\Products\ProductCollection;
-use App\Models\NutritionalFact;
-use App\Models\Product;
 use Exception;
-use Illuminate\Database\Eloquent\Collection;
+use App\Models\Product;
 use Illuminate\Http\Request;
+use App\Models\NutritionalFact;
 use Illuminate\Http\JsonResponse;
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\ApiController;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Validation\ValidationException;
+use App\Http\Resources\Products\ProductCollection;
+use App\Http\Resources\Categories\CategoryCollection;
 
 class ProductController extends ApiController
 {
@@ -40,14 +40,16 @@ class ProductController extends ApiController
     {
         $rules = ['name' => 'required',
             'price' => 'required|numeric',
-            'brand_id'=>'required|exists:brands,id'
+            'brand_id'=>'required|exists:brands,id',
         ];
 
         $this->validate($request, $rules);
         $product = Product::create($request->all());
         $product->categories()->sync(collect($request->categories)->pluck('id'));
         $product->tags()->sync(collect($request->tags)->pluck('id'));
-        if ($request->facts)  $product->nutritionalFacts()->createMany($request->facts);
+        if ($request->facts) {
+            $product->nutritionalFacts()->createMany($request->facts);
+        }
 
         $product = $product->fresh();
 
@@ -77,13 +79,12 @@ class ProductController extends ApiController
     public function update(Request $request, Product $product)
     {
         $product->fill($request->all());
-        if($product->isClean()){
+        if ($product->isClean()) {
             return $this->errorNoClean();
         }
         $product->save();
         $product->categories()->sync(collect($request->categories)->pluck('id'));
         $product->tags()->sync(collect($request->tags)->pluck('id'));
-
 
         $product = $product->fresh();
 

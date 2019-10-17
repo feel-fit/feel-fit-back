@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers\Api\Addresses;
 
-use App\Http\Controllers\ApiController;
-use App\Http\Resources\Addresses\AddressCollection;
-use App\Models\Address;
 use Exception;
+use App\Models\Address;
 use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
+use App\Http\Controllers\ApiController;
 use Illuminate\Validation\ValidationException;
+use App\Http\Resources\Addresses\AddressCollection;
 
 class AddressController extends ApiController
 {
@@ -20,10 +20,10 @@ class AddressController extends ApiController
     public function index()
     {
         $data = Address::all();
-        
+
         return $this->showAll($data, 200, AddressCollection::class);
     }
-    
+
     /**
      * Store a newly created resource in storage.
      *
@@ -37,13 +37,13 @@ class AddressController extends ApiController
         $rules = ['name'    => 'required',
                   'address' => 'required',
                   'user_id' => 'numeric',
-                  'city_id' => 'numeric',];
+                  'city_id' => 'numeric', ];
         $this->validate($request, $rules);
         $data = Address::create($request->all());
-        
+
         return $this->showOne($data, 201);
     }
-    
+
     /**
      * Display the specified resource.
      *
@@ -55,7 +55,7 @@ class AddressController extends ApiController
     {
         return $this->showOne($address);
     }
-    
+
     /**
      * Update the specified resource in storage.
      *
@@ -67,14 +67,14 @@ class AddressController extends ApiController
     public function update(Request $request, Address $address)
     {
         $address->fill($request->all());
-        if($address->isClean()){
+        if ($address->isClean()) {
             return $this->errorNoClean();
         }
         $address->save();
-        
+
         return $this->showOne($address);
     }
-    
+
     /**
      * Remove the specified resource from storage.
      *
@@ -86,7 +86,7 @@ class AddressController extends ApiController
     public function destroy(Address $address)
     {
         $address->delete();
-        
+
         return $this->showOne($address);
     }
 }

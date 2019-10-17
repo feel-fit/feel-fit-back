@@ -2,17 +2,17 @@
 
 namespace App\Http\Controllers\Api\Brands;
 
-use App\Http\Controllers\ApiController;
-use App\Http\Resources\Brands\BrandCollection;
-use App\Http\Resources\Categories\CategoryCollection;
+use Exception;
 use App\Models\Brand;
 use App\Models\Category;
-use Exception;
-use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Response;
+use Illuminate\Http\JsonResponse;
+use App\Http\Controllers\Controller;
+use App\Http\Controllers\ApiController;
+use App\Http\Resources\Brands\BrandCollection;
 use Illuminate\Validation\ValidationException;
+use App\Http\Resources\Categories\CategoryCollection;
 
 class BrandController extends ApiController
 {
@@ -25,7 +25,7 @@ class BrandController extends ApiController
     {
         $data = Brand::all();
 
-        return $this->showAll($data,200,BrandCollection::class);
+        return $this->showAll($data, 200, BrandCollection::class);
     }
 
     /**

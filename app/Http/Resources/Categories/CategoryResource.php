@@ -19,9 +19,9 @@ class CategoryResource extends JsonResource
             'id' => $this->id,
             'name' => $this->name,
             'url' => $this->url,
-            'created_at' => (string)$this->created_at,
-            'updated_at' => (string)$this->updated_at,
-            'deleted_at' => (string)$this->deleted_at ? $this->deleted_at : null,
+            'created_at' => (string) $this->created_at,
+            'updated_at' => (string) $this->updated_at,
+            'deleted_at' => (string) $this->deleted_at ? $this->deleted_at : null,
         ];
     }
 }

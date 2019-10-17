@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers\Api\Shoppings;
 
-use App\Http\Controllers\ApiController;
-use App\Http\Resources\Shoppings\ShoppingCollection;
+use Exception;
 use App\Models\Shipping;
 use App\Models\Shopping;
-use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
+use App\Http\Controllers\ApiController;
 use Illuminate\Validation\ValidationException;
+use App\Http\Resources\Shoppings\ShoppingCollection;
 
 class ShoppingController extends ApiController
 {
@@ -41,7 +41,7 @@ class ShoppingController extends ApiController
                   'address_id'      => 'nullable|numeric',
                   'shipping_id'     => 'numeric|nullable',
                   'payment_id'      => 'numeric|nullable',
-                  'total'           => 'numeric|required',];
+                  'total'           => 'numeric|required', ];
 
         $this->validate($request, $rules);
         $data = Shopping::create($request->all());
@@ -72,7 +72,7 @@ class ShoppingController extends ApiController
     public function update(Request $request, Shopping $shopping)
     {
         $shopping->fill($request->all());
-        if ($request->shipping){
+        if ($request->shipping) {
             $shipping = Shipping::updateOrCreate($request->shipping);
             $shopping->shipping()->associate($shipping);
         }
