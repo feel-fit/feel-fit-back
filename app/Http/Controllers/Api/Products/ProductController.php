@@ -23,7 +23,7 @@ class ProductController extends ApiController
      */
     public function index()
     {
-        $data = Product::where('quantity','>',0)->get();
+        $data = Product::all();
 
         return $this->showAll($data, 200, ProductCollection::class);
     }
