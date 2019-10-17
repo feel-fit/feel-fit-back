@@ -5,12 +5,8 @@
     @endslot
 
 
-    @slot('imag')
-
-    @endslot
-
     @slot('subcopy')
-        <h1 class="titulo">¡Hola {{$shopping->user->name}}!</h1>
+        <h1 class="titulo-contacto">¡Hola {{$shopping->user->name}}!</h1>
         <p class="texto-left">
             Gracias por tu compra. Estamos preprando tu pedido para que sea enviado a tu direcci&oacute;n.<br>
             A continuacion puedes revisar los detalles de tu orden. <br><br>
