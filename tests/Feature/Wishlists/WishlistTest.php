@@ -40,7 +40,7 @@ class WishlistTest extends TestCase
     {
         $data_new = factory($this->model)->make()->toarray();
         $data_old = factory($this->model)->create();
-        $this->put($this->url.$data_old->id, $data_new, $this->headers())
+        $this->put($this->url.$data_old->id, $data_new, $this->headers())->dump()
             ->assertStatus(200);
         $this->assertDatabaseHas($this->table, $data_new);
     }
