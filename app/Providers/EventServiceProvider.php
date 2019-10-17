@@ -2,8 +2,10 @@
 
 namespace App\Providers;
 
+use App\Models\DetailShopping;
 use App\Models\Message;
 use App\Models\User;
+use App\Observers\DetailShoppingObserver;
 use App\Observers\MessageObserver;
 use App\Observers\UserObserver;
 use Illuminate\Support\Facades\Event;
@@ -31,6 +33,7 @@ class EventServiceProvider extends ServiceProvider
         parent::boot();
         User::observe(UserObserver::class);
         Message::observe(MessageObserver::class);
+        DetailShopping::observe(DetailShoppingObserver::class);
         
         //
     }
