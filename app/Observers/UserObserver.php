@@ -8,8 +8,8 @@
 
 namespace App\Observers;
 
-use App\Mail\WellcomeUser;
 use App\Models\User;
+use App\Mail\WellcomeUser;
 use Illuminate\Support\Facades\Mail;
 
 class UserObserver

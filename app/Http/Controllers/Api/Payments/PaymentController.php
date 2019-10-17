@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers\Api\Payments;
 
-use App\Http\Controllers\ApiController;
-use App\Http\Resources\Payments\PaymentCollection;
-use App\Models\Payment;
 use Exception;
+use App\Models\Payment;
 use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\ApiController;
 use Illuminate\Validation\ValidationException;
+use App\Http\Resources\Payments\PaymentCollection;
 
 class PaymentController extends ApiController
 {
@@ -22,7 +22,7 @@ class PaymentController extends ApiController
     {
         $data = Payment::all();
 
-        return $this->showAll($data,200,PaymentCollection::class);
+        return $this->showAll($data, 200, PaymentCollection::class);
     }
 
     /**

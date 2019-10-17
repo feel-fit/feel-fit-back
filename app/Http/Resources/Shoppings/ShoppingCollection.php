@@ -2,8 +2,8 @@
 
 namespace App\Http\Resources\Shoppings;
 
-use App\Http\Resources\Addresses\AddressCollection;
 use App\Http\Resources\Addresses\AddressResource;
+use App\Http\Resources\Addresses\AddressCollection;
 use Illuminate\Http\Resources\Json\ResourceCollection;
 
 class ShoppingCollection extends ResourceCollection
@@ -18,7 +18,7 @@ class ShoppingCollection extends ResourceCollection
     public function toArray($request)
     {
         return $this->collection->transform(function ($item) {
-            return ['id' => (int)$item->id,
+            return ['id' => (int) $item->id,
                 'user' => $item->user,
                 'status' => $item->statusOrder,
                 'details' => $item->details,
@@ -29,10 +29,10 @@ class ShoppingCollection extends ResourceCollection
                 'address_id' => $item->address ? $item->address->id : null,
                 'discount' => $item->discount,
                 'discount_id' => $item->discount ? $item->discount->id : null,
-                'total' => (int)$item->total,
-                'created_at' => (string)$item->created_at,
-                'updated_at' => (string)$item->updated_at,
-                'deleted_at' => (string)$item->deleted_at ? $item->deleted_at : null,];
+                'total' => (int) $item->total,
+                'created_at' => (string) $item->created_at,
+                'updated_at' => (string) $item->updated_at,
+                'deleted_at' => (string) $item->deleted_at ? $item->deleted_at : null, ];
         });
     }
 }

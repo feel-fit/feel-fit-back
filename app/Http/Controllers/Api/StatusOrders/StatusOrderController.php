@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers\Api\StatusOrders;
 
-use App\Http\Controllers\ApiController;
-use App\Http\Resources\StatusOrders\StatusOrderCollection;
-use App\Models\StatusOrder;
 use Exception;
+use App\Models\StatusOrder;
 use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\ApiController;
 use Illuminate\Validation\ValidationException;
+use App\Http\Resources\StatusOrders\StatusOrderCollection;
 
 class StatusOrderController extends ApiController
 {
@@ -22,7 +22,7 @@ class StatusOrderController extends ApiController
     {
         $data = StatusOrder::all();
 
-        return $this->showAll($data,200,StatusOrderCollection::class);
+        return $this->showAll($data, 200, StatusOrderCollection::class);
     }
 
     /**

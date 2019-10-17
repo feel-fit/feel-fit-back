@@ -2,16 +2,16 @@
 
 namespace App\Http\Controllers\Api\Sliders;
 
-use App\Http\Controllers\ApiController;
-use App\Http\Resources\Sliders\SliderCollection;
+use Exception;
 use App\Models\Image;
 use App\Models\Slider;
-use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\ApiController;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\ValidationException;
+use App\Http\Resources\Sliders\SliderCollection;
 
 class SliderController extends ApiController
 {
@@ -24,7 +24,7 @@ class SliderController extends ApiController
     {
         $data = Slider::all();
 
-        return $this->showAll($data,200,SliderCollection::class);
+        return $this->showAll($data, 200, SliderCollection::class);
     }
 
     /**
@@ -42,25 +42,26 @@ class SliderController extends ApiController
             'file' => 'required|image',
         ];
 
-
-
         $this->validate($request, $rules);
         $data = new Slider($request->all());
         $data->url = $this->storeImage($request);
         $data->save();
+
         return $this->showOne($data, 201);
     }
 
     /**
-     * Metodo para guardar la  imagen del slider
+     * Metodo para guardar la  imagen del slider.
      * @param Request $request
      * @return mixed
      */
-    private function storeImage(Request $request){
-        $file  = $request->file('file');
+    private function storeImage(Request $request)
+    {
+        $file = $request->file('file');
         $image = \Intervention\Image\Facades\Image::make($file)->fit(2000)->encode('png');
-        $path  = $file->hashName('public/sliders');
-        Storage::put($path, (string)$image);
+        $path = $file->hashName('public/sliders');
+        Storage::put($path, (string) $image);
+
         return  Storage::url($path);
     }
 
@@ -90,13 +91,11 @@ class SliderController extends ApiController
             'file' => 'required|image',
         ];
 
-
         $this->validate($request, $rules);
 
         $slider->fill($request->all());
 
-
-        if($request->has('file')){
+        if ($request->has('file')) {
             dd($slider->url);
             Storage::delete($slider->url);
             $slider->url = $this->storeImage($request);

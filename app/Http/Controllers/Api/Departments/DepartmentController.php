@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers\Api\Departments;
 
-use App\Http\Controllers\ApiController;
-use App\Http\Resources\Departments\DepartmentCollection;
-use App\Models\Department;
 use Exception;
+use App\Models\Department;
 use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
+use App\Http\Controllers\ApiController;
 use Illuminate\Validation\ValidationException;
+use App\Http\Resources\Departments\DepartmentCollection;
 
 class DepartmentController extends ApiController
 {
@@ -21,7 +21,7 @@ class DepartmentController extends ApiController
     {
         $data = Department::all();
 
-        return $this->showAll($data,200,DepartmentCollection::class);
+        return $this->showAll($data, 200, DepartmentCollection::class);
     }
 
     /**

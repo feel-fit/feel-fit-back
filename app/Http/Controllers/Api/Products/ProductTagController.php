@@ -2,13 +2,12 @@
 
 namespace App\Http\Controllers\Api\Products;
 
+use App\Models\Tag;
+use App\Models\Product;
+use Illuminate\Http\Request;
+use Illuminate\Http\JsonResponse;
 use App\Http\Controllers\ApiController;
 use App\Http\Resources\Tags\TagCollection;
-use App\Models\Product;
-use App\Models\Tag;
-use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
-
 
 class ProductTagController extends ApiController
 {
@@ -20,9 +19,9 @@ class ProductTagController extends ApiController
     public function index(Product $product)
     {
         $data = $product->tags;
-        return $this->showAll($data, 200 ,TagCollection::class);
-    }
 
+        return $this->showAll($data, 200, TagCollection::class);
+    }
 
     /**
      * Update the specified resource in storage.
@@ -32,7 +31,7 @@ class ProductTagController extends ApiController
      * @param  Tag  $tag
      * @return JsonResponse
      */
-    public function update(Request $request, Product $product,Tag $tag)
+    public function update(Request $request, Product $product, Tag $tag)
     {
         $product->categories()->syncWithoutDetaching([$tag->id]);
 

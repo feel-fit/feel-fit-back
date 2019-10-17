@@ -20,9 +20,9 @@ class SliderCollection extends ResourceCollection
                 'name' => $item->name,
                 'url' => url($item->url),
                 'position' => $item->position,
-                'created_at' => (string)$item->created_at,
-                'updated_at' => (string)$item->updated_at,
-                'deleted_at' => (string)$item->deleted_at ? $item->deleted_at : null,];
+                'created_at' => (string) $item->created_at,
+                'updated_at' => (string) $item->updated_at,
+                'deleted_at' => (string) $item->deleted_at ? $item->deleted_at : null, ];
         });
     }
 }

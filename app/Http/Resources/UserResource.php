@@ -2,9 +2,9 @@
 
 namespace App\Http\Resources;
 
+use Illuminate\Http\Resources\Json\JsonResource;
 use App\Http\Resources\Addresses\AddressCollection;
 use App\Http\Resources\Shoppings\ShoppingCollection;
-use Illuminate\Http\Resources\Json\JsonResource;
 
 class UserResource extends JsonResource
 {
@@ -26,10 +26,10 @@ class UserResource extends JsonResource
                 'roles'          => $this->getRoleNames(),
                 'shoppings'          => new ShoppingCollection($this->shoppings),
                 'discounts'      => $this->discounts,
-                'status'         => (boolean)$this->status,
-            'created_at' => (string)$this->created_at,
-            'updated_at' => (string)$this->updated_at,
-            'deleted_at' => (string)$this->deleted_at ? $this->deleted_at : null,
-                'addresses'      => new AddressCollection($this->addresses)];
+                'status'         => (bool) $this->status,
+            'created_at' => (string) $this->created_at,
+            'updated_at' => (string) $this->updated_at,
+            'deleted_at' => (string) $this->deleted_at ? $this->deleted_at : null,
+                'addresses'      => new AddressCollection($this->addresses), ];
     }
 }

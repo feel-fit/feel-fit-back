@@ -19,7 +19,7 @@ class NutritionalFact extends Model
     //protected $relationships = [''];
     public $resource = NutritionalFactResource::class;
     public $resourceCollection = NutritionalFactCollection::class;
-    protected $fillable = ['name', 'quantity', 'percentage','order', 'product_id', 'parent_id', 'position_fact'];
+    protected $fillable = ['name', 'quantity', 'percentage', 'order', 'product_id', 'parent_id', 'position_fact'];
     /*
     |--------------------------------------------------------------------------
     | Relations database

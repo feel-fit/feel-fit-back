@@ -11,22 +11,20 @@
 |
 */
 
-
 Route::get('/', function () {
 
     /**
-    $user = \App\Models\User::find(1);
-    return new \App\Mail\WellcomeUser($user);
-    **/
+     * $user = \App\Models\User::find(1);
+     * return new \App\Mail\WellcomeUser($user);
+     **/
 
     /**
-    $message = new App\Models\Message();
-    $message->name="juan";
-    $message->email="jcperdomoq@uqvirtual.edu.co";
-    return new  App\Mail\WellcomeUser();
-    **/
-
+     * $message = new App\Models\Message();
+     * $message->name="juan";
+     * $message->email="jcperdomoq@uqvirtual.edu.co";
+     * return new  App\Mail\WellcomeUser();
+     **/
     $shopping = App\Models\Shopping::find(1);
-    return new \App\Mail\ShoppingMail($shopping);
 
+    return new \App\Mail\ShoppingMail($shopping);
 });
