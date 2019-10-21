@@ -88,7 +88,7 @@ class ImageController extends ApiController
     public function update(Request $request, Image $image)
     {
         $rules = [
-            'file' => 'file|max:300',
+            'file' => 'file|max:500',
         ];
 
         $this->validate($request, $rules);
