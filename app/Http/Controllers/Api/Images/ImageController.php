@@ -37,7 +37,7 @@ class ImageController extends ApiController
     public function store(Request $request)
     {
         $rules = ['product_id' => 'required|numeric',
-            'file' => 'file|max:700',
+            'file' => 'file|max:500',
             'position' => 'numeric|nullable', ];
         $this->validate($request, $rules);
         $file = $request->file('file');
@@ -88,7 +88,7 @@ class ImageController extends ApiController
     public function update(Request $request, Image $image)
     {
         $rules = [
-            'file' => 'file|max:700',
+            'file' => 'file|max:500',
         ];
 
         $this->validate($request, $rules);
