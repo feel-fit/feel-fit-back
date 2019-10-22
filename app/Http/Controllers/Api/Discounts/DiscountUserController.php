@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers\Api\Discounts;
 
+use App\Models\User;
+use App\Models\Discount;
+use Illuminate\Http\Request;
+use Illuminate\Http\JsonResponse;
+use App\Http\Controllers\Controller;
+use App\Http\Resources\UserCollection;
 use App\Http\Controllers\ApiController;
 use App\Http\Resources\Discounts\DiscountCollection;
-use App\Http\Resources\UserCollection;
-use App\Models\Discount;
-use App\Models\User;
-use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 
 class DiscountUserController extends ApiController
 {
@@ -23,7 +23,6 @@ class DiscountUserController extends ApiController
         return $this->showAll($discount->users, 200, UserCollection::class);
     }
 
-
     /**
      * Update the specified resource in storage.
      *
@@ -32,7 +31,7 @@ class DiscountUserController extends ApiController
      * @param  User  $user
      * @return JsonResponse
      */
-    public function store(Request $request,  Discount $discount)
+    public function store(Request $request, Discount $discount)
     {
         $discount->users()->sync(collect($request->all())->pluck('id'));
 
@@ -45,7 +44,7 @@ class DiscountUserController extends ApiController
      * @param  User  $user
      * @return JsonResponse
      */
-    public function destroy( Discount $discount,User $user)
+    public function destroy(Discount $discount, User $user)
     {
         $discount->users()->findOrFail($user->id);
         $discount->users()->detach([$user->id]);

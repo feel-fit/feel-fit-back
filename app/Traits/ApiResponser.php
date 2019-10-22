@@ -8,13 +8,13 @@
 
 namespace App\Traits;
 
-use App\Http\Resources\Categories\CategoryCollection;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Pagination\LengthAwarePaginator;
+use App\Http\Resources\Categories\CategoryCollection;
 
 /**
  * Trait ApiResponser.
@@ -156,20 +156,15 @@ trait ApiResponser
      */
     public function resource_all($collection, $resource)
     {
-
-        if (!$collection->isEmpty()) {
+        if (! $collection->isEmpty()) {
             $resource = $collection->first()->resourceCollection;
 
             if ($resource) {
                 $collection = new $resource($collection);
             }
-        }elseif($resource){
-
-            $collection =  new $resource($collection);
+        } elseif ($resource) {
+            $collection = new $resource($collection);
         }
-
-
-
 
         return $collection;
     }

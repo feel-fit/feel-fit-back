@@ -2,8 +2,8 @@
 
 namespace App\Observers;
 
-use App\Models\DetailShopping;
 use App\Models\Product;
+use App\Models\DetailShopping;
 
 class DetailShoppingObserver
 {

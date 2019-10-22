@@ -2,11 +2,11 @@
 
 namespace Tests\Feature\DetailShoppings;
 
+use Tests\TestCase;
 use App\Models\Address;
 use App\Models\Discount;
 use App\Models\Shipping;
 use App\Models\Shopping;
-use Tests\TestCase;
 use App\Models\DetailShopping;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;

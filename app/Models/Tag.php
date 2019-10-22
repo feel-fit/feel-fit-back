@@ -30,6 +30,6 @@ class Tag extends Model
      */
     public function products()
     {
-        return $this->belongsToMany(Product::class)->where('quantity','>',0);
+        return $this->belongsToMany(Product::class)->where('quantity', '>', 0);
     }
 }

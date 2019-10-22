@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers\Api\Categories;
 
-use App\Http\Controllers\ApiController;
-use App\Http\Resources\Categories\CategoryCollection;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
+use App\Http\Controllers\ApiController;
 use Illuminate\Validation\ValidationException;
+use App\Http\Resources\Categories\CategoryCollection;
 
 class CategoryController extends ApiController
 {
@@ -20,7 +20,7 @@ class CategoryController extends ApiController
     {
         $data = Category::all();
 
-        return $this->showAll($data,200,CategoryCollection::class);
+        return $this->showAll($data, 200, CategoryCollection::class);
     }
 
     /**

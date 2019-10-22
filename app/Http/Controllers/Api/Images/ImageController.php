@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers\Api\Images;
 
-use App\Http\Controllers\ApiController;
-use App\Http\Resources\Images\ImageCollection;
-use App\Models\Image;
 use Exception;
+use App\Models\Image;
 use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\ApiController;
 use Illuminate\Support\Facades\Storage;
+use App\Http\Resources\Images\ImageCollection;
 use Illuminate\Validation\ValidationException;
 
 class ImageController extends ApiController
@@ -37,14 +37,14 @@ class ImageController extends ApiController
     public function store(Request $request)
     {
         $rules = ['product_id' => 'required|numeric',
-            'file' => 'file|max:300',
-            'position' => 'numeric|nullable',];
+            'file' => 'file|max:500',
+            'position' => 'numeric|nullable', ];
         $this->validate($request, $rules);
         $file = $request->file('file');
         $image = \Intervention\Image\Facades\Image::make($file)->fit(600)->encode('png');
         $path = $file->hashName('public/productos');
 
-        Storage::put($path, (string)$image);
+        Storage::put($path, (string) $image);
         $url = Storage::url($path);
 
         if ($request->id) {
@@ -88,7 +88,7 @@ class ImageController extends ApiController
     public function update(Request $request, Image $image)
     {
         $rules = [
-            'file' => 'file|max:300',
+            'file' => 'file|max:500',
         ];
 
         $this->validate($request, $rules);
@@ -98,7 +98,7 @@ class ImageController extends ApiController
         $file = $request->file('file');
         $imagen = \Intervention\Image\Facades\Image::make($file)->fit(600)->encode('png');
         $path = $file->hashName('public/productos');
-        Storage::put($path, (string)$imagen);
+        Storage::put($path, (string) $imagen);
         $image->url = Storage::url($path);
 
         $image->save();

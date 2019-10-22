@@ -12,14 +12,14 @@ class reset extends Command
      * @var string
      */
     protected $signature = 'reset';
-    
+
     /**
      * The console command description.
      *
      * @var string
      */
     protected $description = 'Command description';
-    
+
     /**
      * Create a new command instance.
      */
@@ -27,7 +27,7 @@ class reset extends Command
     {
         parent::__construct();
     }
-    
+
     /**
      * Execute the console command.
      *
@@ -40,7 +40,5 @@ class reset extends Command
         $this->call('passport:install');
         $this->call('db:seed');
         $this->call('storage:link');
-        
-        
     }
 }

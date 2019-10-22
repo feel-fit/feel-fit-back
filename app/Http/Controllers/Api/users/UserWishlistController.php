@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers\Api\Users;
 
-use App\Http\Controllers\ApiController;
-use App\Http\Resources\UserCollection;
-use App\Http\Resources\Wishlists\WishlistCollection;
-use App\Models\Discount;
 use App\Models\User;
+use App\Models\Discount;
 use App\Models\Wishlist;
-use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Http\JsonResponse;
+use App\Http\Resources\UserCollection;
+use App\Http\Controllers\ApiController;
+use App\Http\Resources\Wishlists\WishlistCollection;
 
 class UserWishlistController extends ApiController
 {
@@ -22,7 +22,6 @@ class UserWishlistController extends ApiController
     {
         return $this->showAll($user->wishlists, 200, WishlistCollection::class);
     }
-
 
     /**
      * Update the specified resource in storage.

@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers\Api\Users;
 
+use App\Models\User;
+use App\Models\Discount;
+use Illuminate\Http\Request;
+use Illuminate\Http\JsonResponse;
+use App\Http\Resources\UserCollection;
 use App\Http\Controllers\ApiController;
 use App\Http\Resources\Discounts\DiscountCollection;
-use App\Http\Resources\UserCollection;
-use App\Models\Discount;
-use App\Models\User;
-use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
 
 class UserDiscountController extends ApiController
 {
@@ -21,7 +21,6 @@ class UserDiscountController extends ApiController
     {
         return $this->showAll($user->discounts, 200, DiscountCollection::class);
     }
-
 
     /**
      * Update the specified resource in storage.

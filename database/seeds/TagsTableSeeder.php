@@ -12,7 +12,6 @@ class TagsTableSeeder extends Seeder
      */
     public function run()
     {
-
         Tag::create(['name'=>'yogurt']);
         Tag::create(['name'=>'colour greek']);
         Tag::create(['name'=>'litro']);

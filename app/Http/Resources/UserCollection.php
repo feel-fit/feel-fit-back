@@ -2,10 +2,10 @@
 
 namespace App\Http\Resources;
 
-use App\Http\Resources\Shoppings\ShoppingCollection;
 use Illuminate\Http\Request;
-use Illuminate\Http\Resources\Json\ResourceCollection;
 use Illuminate\Support\Collection;
+use App\Http\Resources\Shoppings\ShoppingCollection;
+use Illuminate\Http\Resources\Json\ResourceCollection;
 
 class UserCollection extends ResourceCollection
 {
@@ -28,13 +28,12 @@ class UserCollection extends ResourceCollection
                 'roles' => $item->getRoleNames(),
                 'shoppings' => new ShoppingCollection($item->shoppings),
                 'discounts' => $item->discounts,
-                'status' => (boolean)$item->status,
-                'email_verified_at' => (string)$item->email_verified_at ? $item->email_verified_at : null,
-                'created_at' => (string)$item->created_at,
-                'updated_at' => (string)$item->updated_at,
-                'deleted_at' => (string)$item->deleted_at ? $item->deleted_at : null,
-                'addresses' => $item->addresses];
-
+                'status' => (bool) $item->status,
+                'email_verified_at' => (string) $item->email_verified_at ? $item->email_verified_at : null,
+                'created_at' => (string) $item->created_at,
+                'updated_at' => (string) $item->updated_at,
+                'deleted_at' => (string) $item->deleted_at ? $item->deleted_at : null,
+                'addresses' => $item->addresses, ];
         });
     }
 }

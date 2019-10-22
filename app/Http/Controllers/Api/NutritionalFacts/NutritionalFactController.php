@@ -2,15 +2,15 @@
 
 namespace App\Http\Controllers\Api\NutritionalFacts;
 
-use App\Http\Controllers\ApiController;
-use App\Http\Resources\NutritionalFacts\NutritionalFactCollection;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use App\Models\NutritionalFact;
 use Illuminate\Http\JsonResponse;
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\ApiController;
 use Illuminate\Validation\ValidationException;
+use App\Http\Resources\NutritionalFacts\NutritionalFactCollection;
 
 class NutritionalFactController extends ApiController
 {
@@ -23,7 +23,7 @@ class NutritionalFactController extends ApiController
     {
         $data = NutritionalFact::all();
 
-        return $this->showAll($data,200,NutritionalFactCollection::class);
+        return $this->showAll($data, 200, NutritionalFactCollection::class);
     }
 
     /**
@@ -70,7 +70,6 @@ class NutritionalFactController extends ApiController
      */
     public function update(Request $request, NutritionalFact $nutritionalFact)
     {
-       
         $nutritionalFact->fill($request->all());
         if ($nutritionalFact->isClean()) {
             return $this->errorNoClean();

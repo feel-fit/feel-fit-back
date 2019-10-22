@@ -17,7 +17,7 @@ class UsersTest extends TestCase
         $user = $this->model::find(1);
         $this->get($this->url, $this->headers())
             ->assertStatus(200);
-            //->assertJsonFragment($user->toArray());
+        //->assertJsonFragment($user->toArray());
     }
 
     public function testUsuariosPost()

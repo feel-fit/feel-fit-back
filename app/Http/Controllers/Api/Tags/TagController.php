@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers\Api\Tags;
 
-use App\Http\Controllers\ApiController;
-use App\Http\Resources\Tags\TagCollection;
-use App\Models\Tag;
 use Exception;
+use App\Models\Tag;
 use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\ApiController;
+use App\Http\Resources\Tags\TagCollection;
 use Illuminate\Validation\ValidationException;
 
 class TagController extends ApiController
@@ -22,7 +22,7 @@ class TagController extends ApiController
     {
         $data = Tag::all();
 
-        return $this->showAll($data,200,TagCollection::class);
+        return $this->showAll($data, 200, TagCollection::class);
     }
 
     /**
