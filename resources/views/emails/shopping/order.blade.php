@@ -12,32 +12,31 @@
             A continuacion puedes revisar los detalles de tu orden. <br><br>
             Esperamos volver a verte pronto
         </p>
-        <p class="texto-rigth">
-            Equipo Feel Fit Market
-        </p>
-
-        <table class="table table-bordered mx-5">
-            <thead class="thead-dark text-center">
+        <table id="products">
+            <thead >
             <tr>
                 <th scope="col">Nombre</th>
                 <th scope="col">Cantidad</th>
-                <th scope="col">Valor</th>
+                <th scope="col">Valor/Unidad</th>
             </tr>
             </thead>
             <tbody>
             @foreach ($shopping->details as $detail)
                 <tr>
-                    <td>{{$detail->name}}</td>
-                    <td class="text-right">{{$detail->quantity}}</td>
-                    <td class="text-right font-italic">{{$detail->value}}</td>
+                    <td>{{$detail->product->name}}</td>
+                    <td class="value">{{$detail->quantity}}</td>
+                    <td class="value">$ {{$detail->value}}</td>
                 </tr>
             @endforeach
             <tr>
-                <td colspan="2" class="font-weight-bold">Total</td>
-                <td class="text-right font-weight-bold font-italic">$ 2000</td>
+                <td colspan="2" class="">Total</td>
+                <td class="value">$ {{$shopping->total}}</td>
             </tr>
             </tbody>
         </table>
+        <p class="texto-rigth">
+            Equipo Feel Fit Market
+        </p>
 
     @endslot
 

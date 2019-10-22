@@ -10,7 +10,6 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
 Route::get('/', function () {
 
     /**
@@ -24,7 +23,8 @@ Route::get('/', function () {
      * $message->email="jcperdomoq@uqvirtual.edu.co";
      * return new  App\Mail\WellcomeUser();
      **/
-    $shopping = App\Models\Shopping::find(1);
 
-    return new \App\Mail\ShoppingMail($shopping);
+    //$shopping = App\Models\Shopping::find(1);
+    //return $data;
+    //return new \App\Mail\ShoppingMail($shopping);
 });
