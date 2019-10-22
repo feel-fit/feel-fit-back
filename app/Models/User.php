@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Notifications\MyResetPassword;
 use Laravel\Passport\HasApiTokens;
 use App\Http\Resources\UserResource;
 use App\Http\Resources\UserCollection;
@@ -107,5 +108,11 @@ class User extends Authenticatable
     public function wishlists()
     {
         return $this->hasMany(Wishlist::class);
+    }
+
+    //notificacion
+    public function sendPasswordResetNotification($token)
+    {
+        $this->notify(new MyResetPassword($token));
     }
 }

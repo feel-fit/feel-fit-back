@@ -33,7 +33,7 @@ class ForgotPasswordController extends Controller
     protected function sendResetLinkResponse($response)
     {
         if (request()->header('Content-Type') == 'application/json') {
-            return response()->json(['success' => 'Recovery email sent.']);
+            return response()->json(['success' => 'Correo de recuperación enviado.']);
         }
         return back()->with('status', trans($response));
     }
@@ -41,7 +41,7 @@ class ForgotPasswordController extends Controller
     protected function sendResetLinkFailedResponse(Request $request, $response)
     {
         if (request()->header('Content-Type') == 'application/json') {
-            return response()->json(['error' => 'Oops something went wrong.']);
+            return response()->json(['error' => 'Algo salió mal.']);
         }
 
         return back()->withErrors(
