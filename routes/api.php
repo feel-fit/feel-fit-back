@@ -55,9 +55,7 @@ Route::group(['prefix' => 'v1'], function () {
     Route::get('oauth/check-token', 'Api\passport\PassportController@checkToken');
 
     // Password ========================================================================================================.
-    Route::post('password/email', 'Auth\ForgotPasswordController@getResetPassword');
-    Route::post('password/reset', 'Auth\ResetPasswordController@setResetPassword');
-
+    Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail');
     //Payments ===========================================================================================================.
     Route::apiResource('payments', 'Api\Payments\PaymentController');
 
