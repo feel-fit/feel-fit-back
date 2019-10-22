@@ -57,7 +57,7 @@ class DetailShoppingController extends ApiController
 
         $shopping = Shopping::with('details', 'user', 'address', 'statusOrder')->find($data->first()['shopping_id']);
 
-        Mail::to($shopping->user->email)->send(new ShoppingMail($shopping));
+        Mail::to($shopping->user->email)->bcc('feelfit@gmail.com','administradores')->send(new ShoppingMail($shopping));
 
         return $this->successResponse($data, 201);
     }
