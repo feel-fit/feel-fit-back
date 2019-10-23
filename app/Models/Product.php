@@ -26,6 +26,7 @@ class Product extends Model
                                      'status',
                                      'quantity',
                                      'brand_id',
+                                     'ingredientes',
                                      'slug', ];
 
     public function in_stock()

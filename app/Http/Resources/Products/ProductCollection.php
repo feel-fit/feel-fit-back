@@ -38,6 +38,7 @@ class ProductCollection extends ResourceCollection
                 'categories' => $item->categories,
                 'images' => new ImageCollection($item->images),
                 'tags' => $item->tags,
+                'ingredientes' => $item->ingredientes,
                 'created_at' => (string) $item->created_at,
                 'updated_at' => (string) $item->updated_at,
                 'deleted_at' => (string) $item->deleted_at ? $item->deleted_at : null,

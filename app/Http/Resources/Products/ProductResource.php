@@ -34,6 +34,7 @@ class ProductResource extends JsonResource
             'categories' => $this->categories,
             'images' => new ImageCollection($this->images),
             'tags' => $this->tags,
+            'ingredientes' => $this->ingredientes,
             'created_at' => (string) $this->created_at,
             'updated_at' => (string) $this->updated_at,
             'deleted_at' => (string) $this->deleted_at ? $this->deleted_at : null,
