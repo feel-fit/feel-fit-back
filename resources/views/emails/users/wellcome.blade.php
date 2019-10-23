@@ -6,7 +6,6 @@
             <td class="header">
                 <div class="content-header">
                     <img src="{{asset('img/welcome/bg.png')}}" width="100%"/>
-                    <h1 class="titulo-welcome" >Bienvenido a Feel Fit</h1>
                 </div>
             </td>
         </tr>
