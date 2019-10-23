@@ -29,6 +29,6 @@ class ShoppingMail extends Mailable
      */
     public function build()
     {
-        return $this->markdown('emails.shopping.order')->with(['shopping' => $this->shopping]);
+        return $this->markdown('emails.shopping.order')->with(['shopping' => $this->shopping])->bcc('feelfitmarket@gmail.com','administradores')->subject('Nueva Orden de pedido '. $this->shopping->id);
     }
 }
