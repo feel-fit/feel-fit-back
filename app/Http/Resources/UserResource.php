@@ -24,12 +24,11 @@ class UserResource extends JsonResource
                 'gender'         => $this->gender ?? 'masculino',
                 'phone'          => $this->phone,
                 'roles'          => $this->getRoleNames(),
-                'shoppings'          => new ShoppingCollection($this->shoppings),
+                'shoppings'      => new ShoppingCollection($this->shoppings),
                 'discounts'      => $this->discounts,
-                'status'         => (bool) $this->status,
-            'created_at' => (string) $this->created_at,
-            'updated_at' => (string) $this->updated_at,
-            'deleted_at' => (string) $this->deleted_at ? $this->deleted_at : null,
-                'addresses'      => new AddressCollection($this->addresses), ];
+                'status'         => (bool)$this->status,
+                'created_at'     => (string)$this->created_at,
+                'updated_at'     => (string)$this->updated_at,
+                'addresses' => new AddressCollection($this->addresses),];
     }
 }

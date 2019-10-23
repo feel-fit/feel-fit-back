@@ -35,6 +35,7 @@ class ForgotPasswordController extends Controller
         if (request()->header('Content-Type') == 'application/json') {
             return response()->json(['success' => 'Correo de recuperación enviado.']);
         }
+        
         return back()->with('status', trans($response));
     }
 

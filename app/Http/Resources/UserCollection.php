@@ -32,7 +32,6 @@ class UserCollection extends ResourceCollection
                 'email_verified_at' => (string) $item->email_verified_at ? $item->email_verified_at : null,
                 'created_at' => (string) $item->created_at,
                 'updated_at' => (string) $item->updated_at,
-                'deleted_at' => (string) $item->deleted_at ? $item->deleted_at : null,
                 'addresses' => $item->addresses, ];
         });
     }
