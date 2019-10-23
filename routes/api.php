@@ -14,9 +14,12 @@ use Illuminate\Http\Request;
 */
 
 Route::group(['prefix' => 'v1'], function () {
-
+    Auth::routes();
+    
+    
     //Addresses ===========================================================================================================.
     Route::apiResource('addresses', 'Api\Addresses\AddressController');
+   
 
     //Brands ===========================================================================================================.
     Route::apiResource('brands', 'Api\Brands\BrandController');
