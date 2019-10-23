@@ -25,7 +25,7 @@ class UserObserver
 
     public function created(User $user)
     {
-        //Mail::to($user->email)->send(new WellcomeUser($user));
+        Mail::to($user->email)->send(new WellcomeUser($user));
         $user->createToken($user->email)->accessToken;
         $user->syncRoles('client');
     }
