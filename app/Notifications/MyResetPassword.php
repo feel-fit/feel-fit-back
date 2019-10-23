@@ -2,37 +2,13 @@
 
 namespace App\Notifications;
 
+use Illuminate\Auth\Notifications\ResetPassword;
 use Illuminate\Bus\Queueable;
-use Illuminate\Notifications\Notification;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
+use Illuminate\Support\Facades\Lang;
 
-class MyResetPassword extends Notification
+class MyResetPassword extends ResetPassword
 {
-    use Queueable;
-
-    private $token;
-    /**
-     * Create a new notification instance.
-     *
-     * @return void
-     */
-    public function __construct($token)
-    {
-        $this->token = $token;
-    }
-
-    /**
-     * Get the notification's delivery channels.
-     *
-     * @param  mixed  $notifiable
-     * @return array
-     */
-    public function via($notifiable)
-    {
-        return ['mail'];
-    }
-
     /**
      * Get the mail representation of the notification.
      *
@@ -41,25 +17,18 @@ class MyResetPassword extends Notification
      */
     public function toMail($notifiable)
     {
+        if (static::$toMailCallback) {
+            return call_user_func(static::$toMailCallback, $notifiable, $this->token);
+        }
+
         return (new MailMessage)
-            ->subject('Recuperar contraseña')
+            ->subject(Lang::getFromJson('Recuperar contraseña'))
             ->greeting('Hola')
-            ->line('Estás recibiendo este correo porque hiciste una solicitud de recuperación de contraseña para tu cuenta.')
-            ->action('Recuperar contraseña', route('password.reset', $this->token))
-            ->line('Si no realizaste esta solicitud, no se requiere realizar ninguna otra acción.')
+            ->line(Lang::getFromJson('Estás recibiendo este correo porque hiciste una solicitud de recuperación de contraseña para tu cuenta.'))
+            ->action(Lang::getFromJson('Recuperar contraseña'), url(config('app.url').route('password.reset', ['token' => $this->token, 'email' => $notifiable->getEmailForPasswordReset()], false)))
+            ->line(Lang::getFromJson('Este enlace de restablecimiento de contraseña caducará en :count minutes.', ['count' => config('auth.passwords.'.config('auth.defaults.passwords').'.expire')]))
+            ->line(Lang::getFromJson('Si no realizaste esta solicitud, no se requiere realizar ninguna otra acción.'))
             ->salutation('Saludos, '. config('app.name'));
     }
 
-    /**
-     * Get the array representation of the notification.
-     *
-     * @param  mixed  $notifiable
-     * @return array
-     */
-    public function toArray($notifiable)
-    {
-        return [
-            //
-        ];
-    }
 }
