@@ -10,26 +10,41 @@
         <p class="texto-left">
             Gracias por tu compra. Estamos preprando tu pedido para que sea enviado a tu direcci&oacute;n.<br>
             A continuacion puedes revisar los detalles de tu orden. <br><br>
-            Esperamos volver a verte pronto
+            Esperamos volver a verte pronto.
+        </p>
+        <p class="texto-left" style="font-weight: bold;">
+            Identificación: {{$shopping->user->identification}}<br>
+            Direccion de envio: {{$shopping->address->city->name}} / {{$shopping->address->city->department->name}} -
+            {{$shopping->address->address}} <br>
+            Telefono: {{$shopping->user->phone}}
         </p>
         <table id="products">
             <thead >
             <tr>
-                <th scope="col">Nombre</th>
+                <th scope="col" class="title-table">Nombre</th>
                 <th scope="col">Cantidad</th>
                 <th scope="col">Valor/Unidad</th>
+                <th scope="col">Valor</th>
             </tr>
             </thead>
             <tbody>
+            @php
+                $subtotal= 0
+            @endphp
             @foreach ($shopping->details as $detail)
                 <tr>
                     <td>{{$detail->product->name}}</td>
-                    <td class="value">{{$detail->quantity}}</td>
+                    <td class="value" style="text-align: center">{{$detail->quantity}}</td>
                     <td class="value">$ {{$detail->value}}</td>
+                    <td class="value">$ {{$detail->quantity*$detail->value}}{{!$subtotal = $subtotal+$detail->quantity*$detail->value}}</td>
                 </tr>
             @endforeach
             <tr>
-                <td colspan="2" class="">Total</td>
+                <td colspan="3" class="">Valor de envío</td>
+                <td class="value">$ {{$shopping->total-$subtotal}}</td>
+            </tr>
+            <tr>
+                <td colspan="3" class="">Total</td>
                 <td class="value">$ {{$shopping->total}}</td>
             </tr>
             </tbody>
