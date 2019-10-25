@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api\DetailShoppings;
 
+use App\Mail\OrderMail;
 use Exception;
 use App\Models\Shopping;
 use App\Mail\ShoppingMail;
@@ -58,7 +59,7 @@ class DetailShoppingController extends ApiController
         $shopping = Shopping::with('details', 'user', 'address', 'statusOrder')->find($data->first()['shopping_id']);
 
         Mail::to($shopping->user->email)->send(new ShoppingMail($shopping));
-
+        Mail::to('feelfitmarket@gmail.com')->send(new OrderMail($shopping));
         return $this->successResponse($data, 201);
     }
 
