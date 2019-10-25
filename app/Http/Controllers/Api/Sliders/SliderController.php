@@ -88,7 +88,7 @@ class SliderController extends ApiController
         $rules = [
             'name' => '',
             'position' => 'numeric|nullable',
-            'file' => 'required|image',
+            'file' => 'image',
         ];
 
         $this->validate($request, $rules);
@@ -96,7 +96,6 @@ class SliderController extends ApiController
         $slider->fill($request->all());
 
         if ($request->has('file')) {
-            dd($slider->url);
             Storage::delete($slider->url);
             $slider->url = $this->storeImage($request);
         }
