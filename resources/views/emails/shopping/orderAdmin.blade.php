@@ -6,17 +6,16 @@
 
 
     @slot('subcopy')
-        <h1 class="titulo-contacto">¡Hola {{$shopping->user->name}}!</h1>
+        <h1 class="titulo-contacto">¡Nuevo Pedido!</h1>
         <p class="texto-left">
-            Gracias por tu compra. Estamos preprando tu pedido para que sea enviado a tu direcci&oacute;n.<br>
-            A continuacion puedes revisar los detalles de tu orden. <br><br>
-            Esperamos volver a verte pronto.
+            Información del cliente:
         </p>
         <p class="texto-left" style="font-weight: bold;">
+            nombre: {{$shopping->user->name}} <br>
             Identificación: {{$shopping->user->identification}}<br>
-            Direccion de envio: {{$shopping->address->city->name}} / {{$shopping->address->city->department->name}} -
+            Dirección de envió: {{$shopping->address->city->name}} / {{$shopping->address->city->department->name}} -
             {{$shopping->address->address}} <br>
-            Telefono: {{$shopping->user->phone}}
+            Teléfono: {{$shopping->user->phone}}
         </p>
         <table id="products">
             <thead >

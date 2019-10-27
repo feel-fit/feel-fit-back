@@ -8,7 +8,7 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class ShoppingMail extends Mailable
+class OrderMail extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -29,6 +29,6 @@ class ShoppingMail extends Mailable
      */
     public function build()
     {
-        return $this->markdown('emails.shopping.order')->with(['shopping' => $this->shopping])->subject('Nueva Orden de pedido '. $this->shopping->id);
+        return $this->markdown('emails.shopping.orderAdmin')->with(['shopping' => $this->shopping])->subject('Nueva Orden de pedido '. $this->shopping->id);
     }
 }
