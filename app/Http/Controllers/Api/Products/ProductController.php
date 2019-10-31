@@ -109,7 +109,8 @@ class ProductController extends ApiController
     public function search(Request $request)
     {
         $data = Product::search($request->search)->get();
-        $request->request->remove('search');
+        
+        $request->query->remove('search');
 
         return $this->showAll($data, 200, ProductCollection::class);
     }
