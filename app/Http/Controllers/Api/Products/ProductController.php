@@ -48,7 +48,15 @@ class ProductController extends ApiController
         $product->categories()->sync(collect($request->categories)->pluck('id'));
         $product->tags()->sync(collect($request->tags)->pluck('id'));
         if ($request->facts) {
-            $product->nutritionalFacts()->createMany($request->facts);
+            foreach (collect($request->facts) as $item){
+                $item['product_id']=$product->id;
+                $fact =  NutritionalFact::create($item);
+                foreach (collect($item['children']) as $child){
+                    $child['product_id'] = $product->id;
+                    $child['parent_id'] = $fact->id;
+                    NutritionalFact::create($child);
+                }
+            }
         }
 
         $product = $product->fresh();
@@ -109,7 +117,7 @@ class ProductController extends ApiController
     public function search(Request $request)
     {
         $data = Product::search($request->search)->get();
-        
+
         $request->query->remove('search');
 
         return $this->showAll($data, 200, ProductCollection::class);
