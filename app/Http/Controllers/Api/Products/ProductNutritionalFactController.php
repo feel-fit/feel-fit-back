@@ -28,12 +28,20 @@ class ProductNutritionalFactController extends ApiController
 
     public function store(Request $request, Product $product)
     {
+        $listchildrenfact = collect([]);
         foreach (collect($request->all()) as $item) {
             $fact = NutritionalFact::find($item['id']);
             if ($fact) {
                 $fact->update($item);
             } else {
-                NutritionalFact::create($item);
+                if(array_key_exists('parent_id', $item)){
+                    $item['parent_id'] = $listchildrenfact->get($item['parent_id']);
+                    $fact = NutritionalFact::create($item);
+                    $listchildrenfact->put($item['id'],$fact->id);
+                }else{
+                   $fact =  NutritionalFact::create($item);
+                   $listchildrenfact->put($item['id'],$fact->id);
+                }
             }
         }
 
