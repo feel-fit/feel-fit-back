@@ -35,8 +35,13 @@ class ProductNutritionalFactController extends ApiController
                 $fact->update($item);
             } else {
                 if(array_key_exists('parent_id', $item)){
-                    $item['parent_id'] = $listchildrenfact->get($item['parent_id']);
-                    NutritionalFact::create($item);
+                    $fact_parent = NutritionalFact::find($item['parent_id']);
+                    if($fact_parent){
+                        NutritionalFact::create($item);
+                    }else{
+                        $item['parent_id'] = $listchildrenfact->get($item['parent_id']);
+                        NutritionalFact::create($item);
+                    }
                 }else{
                    $fact =  NutritionalFact::create($item);
                    $listchildrenfact->put($item['id'],$fact->id);
