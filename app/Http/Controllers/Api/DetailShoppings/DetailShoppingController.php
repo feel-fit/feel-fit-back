@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api\DetailShoppings;
 
 use App\Mail\OrderMail;
+use App\Models\Product;
 use Exception;
 use App\Models\Shopping;
 use App\Mail\ShoppingMail;
@@ -52,7 +53,13 @@ class DetailShoppingController extends ApiController
             $data = collect([$request->all()]);
         }
 
+        $total = 0;
         $data->each(function ($item) {
+            $product = Product::find($item['product_id']);
+            if($item['quantity']>$product->quantity){
+                $item['quantity']=$product->quantity;
+            }
+            $total+=$item['quantity']*$product->value;
             DetailShopping::create($item);
         });
 

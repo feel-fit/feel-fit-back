@@ -10,7 +10,7 @@ class DetailShoppingObserver
     public function created(DetailShopping $detailShopping)
     {
         $product = Product::find($detailShopping->product_id);
-        $product->quantity--;
+        $product->quantity-=$detailShopping->quantity;
         $product->save();
     }
 }
