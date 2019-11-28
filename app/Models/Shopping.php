@@ -84,4 +84,32 @@ class Shopping extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function transportationCost(){
+        if($this->address!=null){
+            if($this->address->city->department_id===24){
+                if($this->address->city->id===875){
+                    return 1500;
+                }
+                return 8000;
+            }
+        }
+        return 0;
+    }
+
+    public function calculateTotalProducts(){
+        return $this->details->sum(function ($detail){
+            return $detail->quantity*$detail->value;
+        });
+    }
+
+    public function calcularTotal(){
+        $total = $this->calculateTotalProducts()+$this->transportationCost();
+        if($this->discount!=null){
+            $total = $total - $total * $this->discount->value/100;
+        }
+        $this->total = $total;
+        $this->save();
+        return $total;
+    }
 }

@@ -53,21 +53,21 @@ class DetailShoppingController extends ApiController
             $data = collect([$request->all()]);
         }
 
-        $total = 0;
         $data->each(function ($item) {
             $product = Product::find($item['product_id']);
             if($item['quantity']>$product->quantity){
                 $item['quantity']=$product->quantity;
             }
-            $total+=$item['quantity']*$product->value;
-            DetailShopping::create($item);
+            if($item['quantity']>0){
+                DetailShopping::create($item);
+            }
         });
 
         $shopping = Shopping::with('details', 'user', 'address', 'statusOrder')->find($data->first()['shopping_id']);
-
         Mail::to($shopping->user->email)->send(new ShoppingMail($shopping));
         Mail::to('feelfitmarket@gmail.com')->send(new OrderMail($shopping));
-        return $this->successResponse($data, 201);
+        $shopping->total = $shopping->calcularTotal();
+        return $this->successResponse($shopping, 201);
     }
 
     /**

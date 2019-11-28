@@ -28,25 +28,30 @@
             </tr>
             </thead>
             <tbody>
-            @php
-                $subtotal= 0
-            @endphp
             @foreach ($shopping->details as $detail)
                 <tr>
                     <td>{{$detail->product->name}}</td>
                     <td class="value" style="text-align: center">{{$detail->quantity}}</td>
                     <td class="value">$ {{$detail->value}}</td>
-                    <td class="value">$ {{$detail->quantity*$detail->value}}{{!$subtotal = $subtotal+$detail->quantity*$detail->value}}</td>
+                    <td class="value">$ {{$detail->quantity*$detail->value}}</td>
                 </tr>
             @endforeach
             <tr>
                 <td colspan="3" class="">Valor de envío</td>
-                <td class="value">$ {{$shopping->total-$subtotal}}</td>
+                <td class="value">$ {{$shopping->transportationCost()}}</td>
             </tr>
-            <tr>
-                <td colspan="3" class="">Total</td>
-                <td class="value">$ {{$shopping->total}}</td>
-            </tr>
+            @if($shopping->discount!=null)
+                <tr>
+                    <td class="">Total</td>
+                    <td colspan="2" class="" style="color:red">Descuento ({{$shopping->discount->name}} {{$shopping->discount->value}}%)</td>
+                    <td class="value">$ {{($shopping->calcularTotal())}}</td>
+                </tr>
+            @else
+                <tr>
+                    <td colspan="3" class="">Total</td>
+                    <td class="value">$ {{($shopping->calcularTotal())}}</td>
+                </tr>
+            @endif
             </tbody>
         </table>
         <p class="texto-rigth">
