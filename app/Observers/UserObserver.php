@@ -8,6 +8,7 @@
 
 namespace App\Observers;
 
+use App\Mail\NewPasswordUser;
 use App\Models\User;
 use App\Mail\WellcomeUser;
 use Illuminate\Support\Facades\Mail;
@@ -16,8 +17,10 @@ class UserObserver
 {
     public function creating(User $user)
     {
-        if (! $user->password) {
-            $user->password = bcrypt(str_random(10));
+        if (!$user->password) {
+            $passwrod = str_random(10);
+            $user->password = bcrypt($passwrod);
+            Mail::to($user->email)->send(new NewPasswordUser($passwrod));
         } else {
             $user->password = bcrypt($user->password);
         }
