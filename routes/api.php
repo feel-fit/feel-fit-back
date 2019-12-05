@@ -15,11 +15,11 @@ use Illuminate\Http\Request;
 
 Route::group(['prefix' => 'v1'], function () {
     Auth::routes();
-    
-    
+
+
     //Addresses ===========================================================================================================.
     Route::apiResource('addresses', 'Api\Addresses\AddressController');
-   
+
 
     //Brands ===========================================================================================================.
     Route::apiResource('brands', 'Api\Brands\BrandController');
@@ -104,4 +104,14 @@ Route::group(['prefix' => 'v1'], function () {
 
     //Wishlists ===========================================================================================================.
     Route::apiResource('wishlists', 'Api\Wishlists\WishlistController');
+
+    //recipe ======================================================================================
+    Route::apiResource('recipe-category','Api\recipe\RecipeCategoryController');
+    Route::apiResource('recipe','Api\recipe\RecipeController');
+    Route::apiResource('recipe-ingredient','Api\recipe\RecipeIngredientController')->except(['index']);
+    Route::get('recipe/{recipe_id}/ingredient','Api\recipe\RecipeIngredientController@index');
+    Route::apiResource('recipe-preparation','Api\recipe\RecipePreparationController')->except(['index']);
+    Route::get('recipe/{recipe_id}/preparation','Api\recipe\RecipePreparationController@index');
+    Route::apiResource('recipe-supply','Api\recipe\RecipeSupplyController')->except(['index']);
+    Route::get('recipe/{recipe_id}/supply','Api\recipe\RecipeSupplyController@index');
 });

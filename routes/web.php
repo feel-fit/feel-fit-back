@@ -24,9 +24,9 @@ Route::get('/', function () {
      * return new  App\Mail\WellcomeUser();
      **/
 
-    //$shopping = App\Models\Shopping::find(1);
+    $shopping = App\Models\Shopping::find(44);
     //return $data;
-    //return new \App\Mail\ShoppingMail($shopping);
+    return new \App\Mail\ShoppingMail($shopping);
 });
 
 // Password Reset Routes...
