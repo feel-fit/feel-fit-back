@@ -10,7 +10,7 @@ class RecipePreparationController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth:api');
+        //$this->middleware('auth:api');
     }
 
     /**
@@ -32,13 +32,27 @@ class RecipePreparationController extends Controller
     public function store(Request $request)
     {
         $rules=[
-            'title'=>'string',
-            'description'=>'required|string',
-            'order'=>'required|numeric',
+            'preparations.*.id'=>'exists:recipe_preparations,id',
+            'preparations.*.title'=>'nullable|string',
+            'preparations.*.description'=>'required|string',
+            'preparations.*.order'=>'numeric',
             'recipe_id'=>'required|exists:recipes,id'
         ];
         $this->validate($request,$rules);
-        return RecipePreparation::create($request->all());
+        foreach ($request->preparations as $newPrepartion){
+            if(array_key_exists('id', $newPrepartion)){
+                $prepartion = RecipePreparation::find($newPrepartion['id']);
+                $prepartion->title = $newPrepartion['title'];
+                $prepartion->description = $newPrepartion['description'];
+                $prepartion->order = $newPrepartion['order'];
+                $prepartion->save();
+            }else{
+                $newPrepartion['recipe_id'] = $request->recipe_id;
+                RecipePreparation::create(
+                    $newPrepartion
+                );
+            }
+        }
     }
 
     /**

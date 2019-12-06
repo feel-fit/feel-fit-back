@@ -41,6 +41,9 @@ class RecipeController extends ApiController
             'duration'=>'required',
             'portions'=>'required|numeric',
             'difficult'=>'required|in:bajo,medio,alto',
+            'description'=>'nullable|string',
+            'suggestion'=>'nullable|string',
+            'url_video'=>'url',
             'photo'=>'required|image',
             'category_id'=>'required|exists:recipe_categories,id'
         ];
@@ -48,7 +51,7 @@ class RecipeController extends ApiController
         $recipe = new Recipe($request->all());
         $recipe->photo = $request->file('photo')->store('recipe','public');
         $recipe->save();
-        return $recipe;
+        return $this->showOne($recipe);
     }
 
     /**
@@ -59,9 +62,7 @@ class RecipeController extends ApiController
      */
     public function show(Recipe $recipe)
     {
-        $recipe->category;
-        $recipe->photo = url('storage/'.$recipe->photo);
-        return $recipe;
+        return $this->showOne($recipe);
     }
 
     /**
@@ -80,7 +81,10 @@ class RecipeController extends ApiController
             'duration'=>'',
             'portions'=>'numeric',
             'difficult'=>'in:bajo,medio,alto',
+            'description'=>'nullable|string',
+            'suggestion'=>'nullable|string',
             'photo'=>'image',
+            'url_video'=>'url',
             'category_id'=>'exists:recipe_categories,id'
         ];
         $this->validate($request,$rules);
@@ -92,7 +96,7 @@ class RecipeController extends ApiController
             $recipe->photo = $request->file('photo')->store('recipe','public');
         }
         $recipe->save();
-        return $recipe;
+        return $this->showOne($recipe);
     }
 
     /**
@@ -106,6 +110,6 @@ class RecipeController extends ApiController
         $recipe = Recipe::find($id);
         Storage::disk('public')->delete($recipe->photo);
         $recipe->delete();
-        return $recipe;
+        return $this->showOne($recipe);
     }
 }

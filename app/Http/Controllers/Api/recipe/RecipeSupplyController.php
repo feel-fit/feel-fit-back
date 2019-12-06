@@ -10,7 +10,7 @@ class RecipeSupplyController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth:api');
+       // $this->middleware('auth:api');
     }
 
     /**
@@ -32,11 +32,23 @@ class RecipeSupplyController extends Controller
     public function store(Request $request)
     {
         $rules=[
-            'name'=>'required|string',
+            'supplys.*.name'=>'required|string',
+            'supplys.*.id'=>'exists:recipe_supplies,id',
             'recipe_id'=>'required|exists:recipes,id'
         ];
         $this->validate($request,$rules);
-        return RecipeSupply::create($request->all());
+        foreach ($request->supplys as $newsupply){
+            if(array_key_exists('id', $newsupply)){
+                $supply = RecipeSupply::find($newsupply['id']);
+                $supply->name = $newsupply['name'];
+                $supply->save();
+            }else{
+                $newsupply['recipe_id'] = $request->recipe_id;
+                RecipeSupply::create(
+                    $newsupply
+                );
+            }
+        }
     }
 
     /**

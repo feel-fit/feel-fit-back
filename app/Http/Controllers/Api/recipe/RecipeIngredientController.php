@@ -11,7 +11,7 @@ class RecipeIngredientController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth:api');
+       // $this->middleware('auth:api');
     }
 
     /**
@@ -33,11 +33,23 @@ class RecipeIngredientController extends Controller
     public function store(Request $request)
     {
         $rules=[
-            'name'=>'required|string',
+            'ingredients.*.name'=>'required|string',
+            'ingredients.*.id'=>'exists:recipe_ingredients,id',
             'recipe_id'=>'required|exists:recipes,id'
         ];
         $this->validate($request,$rules);
-        return RecipeIngredient::create($request->all());
+        foreach ($request->ingredients as $newIngredient){
+            if(array_key_exists('id', $newIngredient)){
+                $ingredient = RecipeIngredient::find($newIngredient['id']);
+                $ingredient->name = $newIngredient['name'];
+                $ingredient->save();
+            }else{
+                $newIngredient['recipe_id'] = $request->recipe_id;
+                RecipeIngredient::create(
+                    $newIngredient
+                );
+            }
+        }
     }
 
     /**

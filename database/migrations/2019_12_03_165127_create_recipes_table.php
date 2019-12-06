@@ -20,7 +20,9 @@ class CreateRecipesTable extends Migration
             $table->time('duration', 0);
             $table->integer('portions')->unsigned();
             $table->enum('difficult',['bajo','medio','alto']);
+            $table->string('url_video')->nullable();
             $table->string('photo');
+            $table->text('description')->nullable();
             $table->text('suggestion')->nullable();
             $table->unsignedBigInteger('category_id');
             $table->timestamps();

@@ -15,12 +15,11 @@ class CreateRecipePreparationsTable extends Migration
     {
         Schema::create('recipe_preparations', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedInteger('order');
+            $table->unsignedInteger('order')->nullable();
             $table->string('title')->nullable();
             $table->text('description');
             $table->unsignedBigInteger('recipe_id');
             $table->timestamps();
-
             $table->foreign('recipe_id')
                 ->references('id')->on('recipes')
                 ->onDelete('cascade');

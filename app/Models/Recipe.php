@@ -3,14 +3,15 @@
 namespace App\Models;
 
 use App\Http\Resources\Recipes\RecipesCollection;
+use App\Http\Resources\Recipes\RecipesResource;
 use Illuminate\Database\Eloquent\Model;
 
 class Recipe extends Model
 {
-    protected $fillable = ['title','author','duration','portions','difficult','suggestion','photo','category_id'];
+    protected $fillable = ['title','author','duration','portions','difficult','url_video','description','suggestion','photo','category_id'];
 
     public $resourceCollection = RecipesCollection::class;
-
+    public $resource  = RecipesResource::class;
     /**
      * Get the category that owns the recipe.
      */
