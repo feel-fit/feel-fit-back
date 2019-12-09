@@ -114,4 +114,6 @@ Route::group(['prefix' => 'v1'], function () {
     Route::get('recipe/{recipe_id}/preparation','Api\recipe\RecipePreparationController@index');
     Route::apiResource('recipe-supply','Api\recipe\RecipeSupplyController')->except(['index']);
     Route::get('recipe/{recipe_id}/supply','Api\recipe\RecipeSupplyController@index');
+    //Blog ===========================================================================
+    Route::apiResource('blog','Api\Blog\BlogController');
 });
