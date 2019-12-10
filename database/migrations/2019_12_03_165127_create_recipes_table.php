@@ -21,7 +21,7 @@ class CreateRecipesTable extends Migration
             $table->integer('portions')->unsigned();
             $table->enum('difficult',['bajo','medio','alto']);
             $table->string('url_video')->nullable();
-            $table->string('photo');
+            $table->string('photo')->nullable();
             $table->text('description')->nullable();
             $table->text('suggestion')->nullable();
             $table->unsignedBigInteger('category_id');

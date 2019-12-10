@@ -44,7 +44,7 @@ class RecipeController extends ApiController
             'description'=>'nullable|string',
             'suggestion'=>'nullable|string',
             'url_video'=>'url',
-            'photo'=>'required|image',
+            'photo'=>'required_without:url_video|image',
             'category_id'=>'required|exists:recipe_categories,id'
         ];
         $this->validate($request,$rules);

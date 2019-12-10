@@ -21,6 +21,7 @@
         "laravel/scout": "^7.1",
         "laravel/socialite": "^3.0",
         "laravel/tinker": "^1.0",
+        "laraveles/spanish": "^1.4",
         "sentry/sentry-laravel": "^0.8.0",
         "spatie/laravel-permission": "^2.9",
         "spatie/laravel-responsecache": "^4.1",
