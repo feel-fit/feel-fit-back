@@ -74,4 +74,9 @@ class BlogController extends ApiController
         $blog->save();
         return $this->showOne($blog);
     }
+
+    public function latest(){
+        $message = Blog::latest()->first();
+        return $this->showOne($message);
+    }
 }

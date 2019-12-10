@@ -115,5 +115,9 @@ Route::group(['prefix' => 'v1'], function () {
     Route::apiResource('recipe-supply','Api\recipe\RecipeSupplyController')->except(['index']);
     Route::get('recipe/{recipe_id}/supply','Api\recipe\RecipeSupplyController@index');
     //Blog ===========================================================================
+    Route::get('blog/latest','Api\Blog\BlogController@latest');
     Route::apiResource('blog','Api\Blog\BlogController');
+    //Positive message ===========================================================================
+    Route::get('positive-message/latest','Api\PositiveMessage\PositiveMessageController@latest');
+    Route::apiResource('positive-message','Api\PositiveMessage\PositiveMessageController');
 });

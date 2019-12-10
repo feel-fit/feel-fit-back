@@ -6,7 +6,6 @@ use App\Http\Controllers\ApiController;
 use App\Http\Resources\Recipes\RecipesCollection;
 use App\Models\Recipe;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
 
 class RecipeController extends ApiController
@@ -44,7 +43,7 @@ class RecipeController extends ApiController
             'description'=>'nullable|string',
             'suggestion'=>'nullable|string',
             'url_video'=>'url',
-            'photo'=>'required_without:url_video|image',
+            'photo'=>'image',
             'category_id'=>'required|exists:recipe_categories,id'
         ];
         $this->validate($request,$rules);
