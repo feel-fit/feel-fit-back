@@ -76,7 +76,12 @@ class BlogController extends ApiController
     }
 
     public function latest(){
-        $message = Blog::latest()->first();
-        return $this->showOne($message);
+        $blog = Blog::latest()->first();
+        return $this->showOne($blog);
+    }
+
+    public function latests(){
+        $blog = Blog::latest()->limit(6)->get();
+        return $this->showAll($blog, 200, BlogCollection::class);
     }
 }

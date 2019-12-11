@@ -43,14 +43,12 @@ class RecipeController extends ApiController
             'description'=>'nullable|string',
             'suggestion'=>'nullable|string',
             'url_video'=>'url',
-            'photo'=>'image',
+            'photo'=>'required|image',
             'category_id'=>'required|exists:recipe_categories,id'
         ];
         $this->validate($request,$rules);
         $recipe = new Recipe($request->all());
-        if($request->has('photo')) {
-            $recipe->photo = $request->file('photo')->store('recipe', 'public');
-        }
+        $recipe->photo = $request->file('photo')->store('recipe', 'public');
         $recipe->save();
         return $this->showOne($recipe);
     }

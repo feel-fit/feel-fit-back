@@ -117,6 +117,7 @@ Route::group(['prefix' => 'v1'], function () {
     Route::get('recipe/{recipe_id}/supply','Api\recipe\RecipeSupplyController@index');
     //Blog ===========================================================================
     Route::get('blog/latest','Api\Blog\BlogController@latest');
+    Route::get('blog/latests','Api\Blog\BlogController@latests');
     Route::apiResource('blog','Api\Blog\BlogController');
     //Positive message ===========================================================================
     Route::get('positive-message/latest','Api\PositiveMessage\PositiveMessageController@latest');
