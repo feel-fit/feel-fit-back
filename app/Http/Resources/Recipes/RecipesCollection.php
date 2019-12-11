@@ -26,7 +26,7 @@ class RecipesCollection extends ResourceCollection
                 'difficult' => (string) $item->difficult,
                 'description'=>$item->description,
                 'suggestion' => (string) $item->suggestion,
-                'photo' => url('storage/'.$item->photo),
+                'photo' => $item->photo?url('storage/'.$item->photo):null,
                 'url_video'=>$item->url_video,
                 'category' => $item->category,
                 'created_at' => (string) $item->created_at,

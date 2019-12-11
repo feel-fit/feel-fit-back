@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers\Api\recipe;
 
+use App\Http\Controllers\ApiController;
+use App\Http\Resources\Recipes\RecipesCollection;
 use App\Models\RecipeCategory;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 
-class RecipeCategoryController extends Controller
+class RecipeCategoryController extends ApiController
 {
     public function __construct()
     {
@@ -79,5 +80,11 @@ class RecipeCategoryController extends Controller
         $recipeCategory = RecipeCategory::find($id);
         $recipeCategory->delete();
         return $recipeCategory;
+    }
+
+    public function recipes($name){
+        $category = RecipeCategory::where('name','=',$name)->first();
+        $data = $category->recipe;
+        return $this->showAll($data, 200,RecipesCollection::class);
     }
 }

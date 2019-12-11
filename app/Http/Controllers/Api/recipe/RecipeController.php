@@ -48,7 +48,9 @@ class RecipeController extends ApiController
         ];
         $this->validate($request,$rules);
         $recipe = new Recipe($request->all());
-        $recipe->photo = $request->file('photo')->store('recipe','public');
+        if($request->has('photo')) {
+            $recipe->photo = $request->file('photo')->store('recipe', 'public');
+        }
         $recipe->save();
         return $this->showOne($recipe);
     }

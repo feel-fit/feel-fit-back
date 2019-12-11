@@ -90,7 +90,7 @@ class PositiveMessageController extends ApiController
      */
     public function destroy($id)
     {
-        $message = Recipe::find($id);
+        $message = PositiveMessage::find($id);
         Storage::disk('public')->delete($message->image);
         $message->delete();
         return $this->showOne($message);
