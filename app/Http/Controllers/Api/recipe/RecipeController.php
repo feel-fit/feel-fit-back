@@ -111,4 +111,9 @@ class RecipeController extends ApiController
         $recipe->delete();
         return $this->showOne($recipe);
     }
+
+    public function latests(){
+        $recipes = Recipe::latest()->limit(3)->get();
+        return $this->showAll($recipes, 200, RecipesCollection::class);
+    }
 }

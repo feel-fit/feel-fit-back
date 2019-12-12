@@ -108,6 +108,7 @@ Route::group(['prefix' => 'v1'], function () {
     //recipe ======================================================================================
     Route::get('list-recipes/{name}','Api\recipe\RecipeCategoryController@recipes');
     Route::apiResource('recipe-category','Api\recipe\RecipeCategoryController');
+    Route::get('recipe/latests','Api\recipe\RecipeController@latests');
     Route::apiResource('recipe','Api\recipe\RecipeController');
     Route::apiResource('recipe-ingredient','Api\recipe\RecipeIngredientController')->except(['index']);
     Route::get('recipe/{recipe_id}/ingredient','Api\recipe\RecipeIngredientController@index');
