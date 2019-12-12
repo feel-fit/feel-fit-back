@@ -6,6 +6,7 @@ use App\Http\Controllers\ApiController;
 use App\Http\Resources\Blog\BlogCollection;
 use Illuminate\Http\Request;
 use \App\Models\Blog;
+use Illuminate\Support\Facades\Storage;
 
 class BlogController extends ApiController
 {
@@ -67,7 +68,7 @@ class BlogController extends ApiController
         $blog = Blog::find($id);
         $imgeAux = $blog->photo;
         $blog->fill($request->all());
-        if($request->has('blog')){
+        if($request->has('photo')){
             Storage::disk('public')->delete($imgeAux);
             $blog->photo = $request->file('photo')->store('blog','public');
         }
