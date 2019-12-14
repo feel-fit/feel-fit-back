@@ -123,4 +123,7 @@ Route::group(['prefix' => 'v1'], function () {
     //Positive message ===========================================================================
     Route::get('positive-message/latest','Api\PositiveMessage\PositiveMessageController@latest');
     Route::apiResource('positive-message','Api\PositiveMessage\PositiveMessageController');
+
+    //Suscribete ===============================
+    Route::apiResource('subscribe','Api\Subscribe\SubscribeController');
 });
