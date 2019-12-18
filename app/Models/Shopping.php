@@ -104,10 +104,11 @@ class Shopping extends Model
     }
 
     public function calcularTotal(){
-        $total = $this->calculateTotalProducts()+$this->transportationCost();
+        $total = $this->calculateTotalProducts();
         if($this->discount!=null){
             $total = $total - $total * $this->discount->value/100;
         }
+        $total=$total+$this->transportationCost();
         $this->total = $total;
         $this->save();
         return $total;

@@ -27,24 +27,31 @@
             </tr>
             </thead>
             <tbody>
-            @php
-                $subtotal= 0
-            @endphp
             @foreach ($shopping->details as $detail)
                 <tr>
                     <td>{{$detail->product->name}}</td>
                     <td class="value" style="text-align: center">{{$detail->quantity}}</td>
                     <td class="value">$ {{$detail->value}}</td>
-                    <td class="value">$ {{$detail->quantity*$detail->value}}{{!$subtotal = $subtotal+$detail->quantity*$detail->value}}</td>
+                    <td class="value">$ {{$detail->quantity*$detail->value}}</td>
                 </tr>
             @endforeach
             <tr>
-                <td colspan="3" class="">Valor de envío</td>
-                <td class="value">$ {{$shopping->total-$subtotal}}</td>
+                <td colspan="3" class="">Subtotal</td>
+                <td class="value">$ {{$shopping->calculateTotalProducts()}}</td>
+            </tr>
+            @if($shopping->discount!=null)
+                <tr>
+                    <td colspan="3" style="color:red">Descuento ({{$shopping->discount->name}} {{$shopping->discount->value}}%)</td>
+                    <td class="value" style="color:red">$ {{$shopping->calculateTotalProducts()*($shopping->discount->value/100)}}</td>
+                </tr>
+            @endif
+            <tr>
+                <td colspan="3" >Valor de envío</td>
+                <td class="value">$ {{$shopping->transportationCost()}}</td>
             </tr>
             <tr>
                 <td colspan="3" class="">Total</td>
-                <td class="value">$ {{$shopping->total}}</td>
+                <td class="value">$ {{($shopping->calcularTotal())}}</td>
             </tr>
             </tbody>
         </table>

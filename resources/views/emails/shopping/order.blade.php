@@ -37,21 +37,23 @@
                 </tr>
             @endforeach
             <tr>
-                <td colspan="3" class="">Valor de envío</td>
-                <td class="value">$ {{$shopping->transportationCost()}}</td>
+                <td colspan="3" class="">Subtotal</td>
+                <td class="value">$ {{$shopping->calculateTotalProducts()}}</td>
             </tr>
             @if($shopping->discount!=null)
                 <tr>
-                    <td class="">Total</td>
-                    <td colspan="2" class="" style="color:red">Descuento ({{$shopping->discount->name}} {{$shopping->discount->value}}%)</td>
-                    <td class="value">$ {{($shopping->calcularTotal())}}</td>
-                </tr>
-            @else
-                <tr>
-                    <td colspan="3" class="">Total</td>
-                    <td class="value">$ {{($shopping->calcularTotal())}}</td>
+                    <td colspan="3" style="color:red">Descuento ({{$shopping->discount->name}} {{$shopping->discount->value}}%)</td>
+                    <td class="value" style="color:red">$ {{$shopping->calculateTotalProducts()*($shopping->discount->value/100)}}</td>
                 </tr>
             @endif
+            <tr>
+                <td colspan="3" >Valor de envío</td>
+                <td class="value">$ {{$shopping->transportationCost()}}</td>
+            </tr>
+            <tr>
+                <td colspan="3" class="">Total</td>
+                <td class="value">$ {{($shopping->calcularTotal())}}</td>
+            </tr>
             </tbody>
         </table>
         <p class="texto-rigth">
