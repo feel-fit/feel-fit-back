@@ -85,4 +85,18 @@ class BlogController extends ApiController
         $blog = Blog::latest()->limit(6)->get();
         return $this->showAll($blog, 200, BlogCollection::class);
     }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        $blog = Blog::find($id);
+        Storage::disk('public')->delete($blog->photo);
+        $blog->delete();
+        return $this->showOne($blog);
+    }
 }
