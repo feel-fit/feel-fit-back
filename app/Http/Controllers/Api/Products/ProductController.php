@@ -116,7 +116,7 @@ class ProductController extends ApiController
 
     public function search(Request $request)
     {
-        $data = Product::where('quantity', '>', 0)->search($request->search)->get();
+        $data = Product::search($request->search)->where('quantity', '>', 0)->get();
 
         $request->query->remove('search');
 
