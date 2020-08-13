@@ -17,7 +17,7 @@
         <p class="texto-center">
             Desde este momento haces parte de nuestra familia de alimentaci&oacute;n saludable,
             gracias por decidir darle a tu cuerpo alimentos que ralmente te nutren;
-            nuestro principal objectivo es que tu alam y tu coraz&oacute;n se encuentren felices.
+            nuestro principal objectivo es que tu alma y tu coraz&oacute;n se encuentren felices.
         </p>
         <p class="texto-center">
             Recuerda siempre que tus alimentos son tu medicina
