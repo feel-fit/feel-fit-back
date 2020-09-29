@@ -89,9 +89,19 @@ class Shopping extends Model
         if($this->address!=null){
             if($this->address->city->department_id===24){
                 if($this->address->city->id===875){
+                    return 3000;
+                }
+                else if($this->address->city->id===1113){
                     return 1500;
                 }
-                return 8000;
+                else if(
+                    $this->address->city->id== 1114 ||
+                    $this->address->city->id == 1115 ||
+                    $this->address->city->id  == 877 ||
+                    $this->address->city->id == 878
+                ){
+                    return 6000;
+                }
             }
         }
         return 0;
